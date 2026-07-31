@@ -1,5 +1,5 @@
 //Backend API url
-const API_URL = "https://nepal-live-rates.onrender.com/api/forex";
+const API_URL = "http://localhost:5001/api/forex";
 
 //Country Flags
 const countryFlags = {
@@ -554,6 +554,19 @@ if (themeToggle) {
     }
   });
 }
+
+// ACTIVE CARD NAVIGATION
+document.querySelectorAll(".active-card").forEach(card => {
+  card.addEventListener("click", () => {
+    const category = card.dataset.category;
+    if (category == "forex") {
+      document.getElementById("forexSection").scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+      });
+    }
+  });
+});
 
 // COMING SOON MODAL
 const modal = document.getElementById("comingSoonModal");
