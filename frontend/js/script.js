@@ -1,5 +1,5 @@
 //Backend API url
-const API_URL = "http://nepal-live-rates.onrender.com/api/forex";
+const API_URL = "https://nepal-live-rates.onrender.com/api/forex";
 
 //Country Flags
 const countryFlags = {
