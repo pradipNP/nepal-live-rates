@@ -2,6 +2,40 @@
 
 Nepal Live Rates is a modern web application that provides live foreign exchange rates using official data from Nepal Rastra Bank (NRB). The project is designed to deliver accurate, up-to-date currency information through a clean, responsive, and user-friendly interface.
 
+## Live Demo
+
+🌐 Website: https://nepalliverates.netlify.app
+
+⚙️ Backend API: https://nepal-live-rates.onrender.com
+
+### API Endpoint
+
+```http
+GET https://nepal-live-rates.onrender.com/api/forex
+```
+
+## Project Status
+
+🚧 Active Development
+
+Current Version:
+
+* Live Forex Exchange Rates (Completed)
+
+In Progress:
+
+* Currency Converter
+* Historical Forex Charts
+
+Planned:
+
+* Gold Rates
+* Silver Rates
+* Fuel Prices
+* Cryptocurrency Market
+* Nepal Stock Market (NEPSE)
+* Market Insights Dashboard
+
 ## Features
 
 * Live Forex Rates from Nepal Rastra Bank (NRB)
@@ -62,7 +96,7 @@ Nepal-Live-Rates/
 ### Clone Repository
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/Nepal-Live-Rates.git
+git clone https://github.com/pradipNP/nepal-live-rates.git
 cd Nepal-Live-Rates
 ```
 
