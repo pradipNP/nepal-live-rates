@@ -1,0 +1,958 @@
+/* =========================================================
+   RESPONSIVE.CSS
+   Global responsive layout for Home + About
+========================================================= */
+
+
+/* =========================================================
+   TABLET
+   901px - 1200px
+========================================================= */
+
+@media (max-width: 1200px) {
+
+    /* -------------------------
+       NAVBAR
+    ------------------------- */
+
+    .navbar {
+        padding-left: 24px;
+        padding-right: 24px;
+    }
+
+    .nav-links {
+        gap: 18px;
+        margin-right: 10px;
+    }
+
+    .nav-link {
+        font-size: 14px;
+    }
+
+    .liveRate-button,
+    .refresh-button {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+
+    /* -------------------------
+       HOME STATUS BAR
+    ------------------------- */
+
+    .status-bar {
+        padding-left: 20px;
+        padding-right: 20px;
+        gap: 15px;
+    }
+
+    .status-item {
+        gap: 10px;
+    }
+
+    .status-content strong {
+        font-size: 0.9rem;
+    }
+
+
+    /* -------------------------
+       HOME CONTAINER
+    ------------------------- */
+
+    .container {
+        padding-left: 25px;
+        padding-right: 25px;
+    }
+
+    .about-container {
+        padding-left: 25px;
+        padding-right: 25px;
+    }
+
+}
+
+
+/* =========================================================
+   TABLET / SMALL LAPTOP
+   769px - 900px
+========================================================= */
+
+@media (max-width: 900px) {
+
+    /* -------------------------
+       NAVBAR
+    ------------------------- */
+
+    .navbar {
+        min-height: 80px;
+        padding: 12px 20px;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .brand {
+        flex-shrink: 1;
+        min-width: 0;
+    }
+
+    .brand-text {
+        min-width: 0;
+    }
+
+    .brand-text h2 {
+        font-size: 21px;
+    }
+
+    .brand-text p {
+        font-size: 12px;
+    }
+
+    .nav-links {
+        gap: 15px;
+        margin-left: auto;
+        margin-right: 0;
+    }
+
+    .nav-link {
+        height: 60px;
+        font-size: 14px;
+    }
+
+    .nav-link.active::after {
+        margin-bottom: 0;
+    }
+
+    .liveRate-button,
+    .refresh-button {
+        padding: 9px 13px;
+        font-size: 13px;
+    }
+
+    .theme-slider {
+        width: 60px;
+    }
+
+    .theme-switch input:checked
+    + .theme-slider
+    .theme-knob {
+        transform: translateX(26px);
+    }
+
+
+    /* -------------------------
+       HOME STATUS BAR
+    ------------------------- */
+
+    .status-bar {
+        flex-wrap: wrap;
+        padding: 20px;
+    }
+
+    .status-item {
+        min-width: 200px;
+    }
+
+    .status-divider {
+        display: none;
+    }
+
+    .live-status {
+        margin-left: auto;
+    }
+
+
+    /* -------------------------
+       HOME HERO
+    ------------------------- */
+
+    .hero {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 40px;
+        padding: 45px 35px;
+    }
+
+    .hero-content {
+        max-width: 50%;
+    }
+
+    .hero-visual {
+        align-self: center;
+        margin-left: 400px;
+        margin-top: -400px;
+    }
+
+
+    /* -------------------------
+       ABOUT
+    ------------------------- */
+
+    .about-hero {
+        flex-direction: column;
+        text-align: center;
+        gap: 40px;
+        padding: 50px 30px;
+    }
+
+    .feature-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .future-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+   651px - 768px
+========================================================= */
+
+@media (max-width: 768px) {
+
+    /* -------------------------
+       NAVBAR
+    ------------------------- */
+
+    .navbar {
+        min-height: auto;
+        padding: 15px 20px;
+        display: grid;
+        grid-template-columns: 1fr auto;
+        grid-template-areas:
+            "brand theme"
+            "links links";
+        row-gap: 10px;
+    }
+
+    .brand {
+        grid-area: brand;
+    }
+
+    .nav-links {
+        grid-area: links;
+
+        width: 100%;
+
+        display: flex;
+        justify-content: center;
+
+        gap: 25px;
+
+        margin: 0;
+
+        overflow-x: auto;
+        scrollbar-width: none;
+    }
+
+    .nav-links::-webkit-scrollbar {
+        display: none;
+    }
+
+    .nav-link {
+        height: 45px;
+        flex-shrink: 0;
+        font-size: 14px;
+    }
+
+    .nav-link.active::after {
+        margin-bottom: 0;
+    }
+
+    .theme-switch {
+        grid-area: theme;
+        justify-self: end;
+    }
+
+    .liveRate-button,
+    .refresh-button {
+        grid-area: refresh;
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: center;
+
+        padding: 8px 12px;
+
+        font-size: 12px;
+
+        white-space: nowrap;
+
+        flex-shrink: 0;
+    }
+
+
+    /* -------------------------
+       HOME CONTAINER
+    ------------------------- */
+
+    .container {
+        padding: 25px 20px 60px;
+    }
+
+
+    /* -------------------------
+       HOME STATUS BAR
+    ------------------------- */
+
+    .status-bar {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 18px;
+        margin-bottom: 40px;
+    }
+
+    .status-item {
+        width: 100%;
+        min-width: 0;
+    }
+
+    .live-status {
+        margin-left: 0;
+        align-items: flex-start;
+    }
+
+
+    /* -------------------------
+       HOME HERO
+    ------------------------- */
+
+    .hero {
+        padding: 40px 25px;
+    }
+
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero-visual {
+        align-self: center;
+        margin: 0 auto;
+        width: 320px;
+        height: 240px;
+        max-width: 100%;
+    }
+
+    .hero-content {
+        max-width: 100%;
+    }
+
+
+
+    /* -------------------------
+       MARKET GRID
+    ------------------------- */
+
+    .market-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    /* -------------------------
+       FOREX CARDS
+    ------------------------- */
+
+    .rates-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    /* -------------------------
+       ABOUT
+    ------------------------- */
+
+    .about-container {
+        padding: 30px 20px 60px;
+    }
+
+    .glass-card {
+        flex-direction: column;
+    }
+
+    .feature-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .future-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .about-hero {
+        min-height: auto;
+        padding: 40px 25px;
+    }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   481px - 650px
+========================================================= */
+
+@media (max-width: 650px) {
+
+    /* -------------------------
+       NAVBAR
+    ------------------------- */
+
+    .navbar {
+        padding: 14px 16px;
+    }
+
+    .brand {
+        gap: 9px;
+    }
+
+    .brand-icon {
+        width: 40px;
+        height: 40px;
+    }
+
+    .brand-text h2 {
+        font-size: 18px;
+    }
+
+    .brand-text p {
+        display: none;
+    }
+
+    .nav-links {
+        gap: 18px;
+    }
+
+    .nav-link {
+        font-size: 13px;
+    }
+
+    .nav-icon {
+        font-size: 16px;
+    }
+
+    .theme-slider {
+        width: 58px;
+        height: 32px;
+    }
+
+    .theme-knob {
+        width: 24px;
+        height: 24px;
+    }
+
+    .theme-switch input:checked
+    + .theme-slider
+    .theme-knob {
+        transform: translateX(26px);
+    }
+
+
+    /* -------------------------
+       HOME
+    ------------------------- */
+
+    .container {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    .section-heading h2 {
+        font-size: 24px;
+    }
+
+    .hero-content h1 {
+        font-size: 2.2rem;
+    }
+
+    .hero {
+        padding: 30px 20px;
+    }
+
+
+    /* -------------------------
+       ABOUT
+    ------------------------- */
+
+    .about-container {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    .section-heading h2,
+    .technology-section h2,
+    .future-content h2 {
+        font-size: 26px;
+    }
+
+}
+
+
+/* =========================================================
+   VERY SMALL MOBILE
+   480px and below
+========================================================= */
+
+@media (max-width: 480px) {
+
+    /* -------------------------
+       NAVBAR
+    ------------------------- */
+
+    .navbar {
+        padding: 12px 12px;
+    }
+
+    .brand-icon {
+        width: 36px;
+        height: 36px;
+    }
+
+    .brand-text h2 {
+        margin-left: 10px;
+        font-size: 18px;
+    }
+
+    .nav-links {
+        gap: 12px;
+        justify-content: space-between;
+    }
+
+    .nav-link {
+        margin-left: 10px;
+        font-size: 12px;
+        gap: 5px;
+    }
+
+    .nav-icon {
+        font-size: 14px;
+    }
+
+    .theme-slider {
+        width: 54px;
+        height: 30px;
+    }
+
+    .theme-knob {
+        width: 22px;
+        height: 22px;
+        top: 3px;
+        left: 3px;
+    }
+
+    .theme-switch input:checked
+    + .theme-slider
+    .theme-knob {
+        transform: translateX(24px);
+    }
+
+
+    /* -------------------------
+       STATUS BAR
+    ------------------------- */
+
+    .status-bar {
+        padding: 18px;
+    }
+
+    .status-icon {
+        width: 42px;
+        height: 42px;
+        font-size: 1.3rem;
+    }
+
+    .status-content strong {
+        font-size: 0.85rem;
+    }
+
+
+    /* -------------------------
+       HERO
+    ------------------------- */
+
+    .hero {
+        width: 100%;
+        height: 500px;
+        padding: 25px 18px;
+    }
+
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+
+    .hero-visual {
+        margin: 0 auto 30px;
+        width: 260px;
+        height: 220px;
+        max-width: 100%;
+    }
+
+    .currency-center {
+        width: 75px;
+        height: 75px;
+        font-size: 2.2rem;
+    }
+
+    .ring-one {
+        width: 120px;
+        height: 120px;
+    }
+
+    .ring-two {
+        width: 180px;
+        height: 180px;
+    }
+
+    .currency-orbit {
+        width: 45px;
+        height: 45px;
+        font-size: 1.3rem;
+    }
+
+    .section-heading h2 {
+        width: 100%;
+        
+    }
+    /* -------------------------
+       ABOUT
+    ------------------------- */
+
+    .glass-card {
+        padding: 25px;
+    }
+
+    .feature-card {
+        padding: 25px;
+    }
+
+}
+
+/* =========================================================
+   768 x 1024 TABLET PORTRAIT FIX
+========================================================= */
+
+@media (min-width: 700px) and (max-width: 768px) {
+
+    .hero {
+        min-height: 600px;
+        height: auto;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        justify-content: flex-start;
+
+        padding: 50px 35px 60px;
+        gap: 60px;
+    }
+
+    .hero-content {
+        width: 100%;
+        max-width: 100%;
+        text-align: center;
+    }
+
+    .hero-visual {
+        position: relative;
+        width: 320px;
+        height: 260px;
+        max-width: 100%;
+        margin: 0 auto;
+        align-self: center;
+    }
+
+    .orbit-one {
+        top: 0px;
+        left: 60px;
+    }
+
+    .orbit-two {
+        top: 20px;
+        right: 20px;
+    }
+
+    .orbit-three {
+        bottom: -20px;
+        right: 70px;
+    }
+
+    .orbit-four {
+        top: -20px;
+        left: 150px;
+    }
+
+    .orbit-five {
+        bottom: 40px;
+        left: 20px;
+    }
+
+    .orbit-six {
+        top: 100px;
+        right: 30px;
+    }
+
+    .orbit-seven {
+        bottom: -30px;
+        left: 90px;
+    }
+
+}
+
+/* =========================================================
+   412 x 915 MOBILE FIX
+========================================================= */
+
+@media (min-width: 400px) and (max-width: 430px) {
+
+    /* -------------------------
+       BRAND / NEPAL FLAG
+    ------------------------- */
+
+    .brand {
+        min-width: 0;
+        gap: 6px;
+        overflow: visible;
+    }
+
+    .brand-icon {
+        width: 36px;
+        height: 40px;
+        flex-shrink: 0;
+        overflow: visible;
+    }
+
+    .brand-icon img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        object-position: center;
+    }
+
+    .brand-text {
+        min-width: 0;
+        overflow: visible;
+    }
+
+
+    /* -------------------------
+       HERO
+    ------------------------- */
+
+    .hero {
+        height: auto;
+        min-height: 560px;
+
+        padding: 30px 20px 50px;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        gap: 40px;
+    }
+
+    .hero-content {
+        width: 100%;
+        max-width: 100%;
+        text-align: center;
+    }
+
+    .hero-visual {
+        position: relative;
+
+        width: 280px;
+        height: 240px;
+
+        max-width: 100%;
+
+        margin: 0 auto;
+
+        align-self: center;
+    }
+
+
+    /* -------------------------
+       CURRENCY ORBITS
+    ------------------------- */
+
+    .currency-orbit {
+        position: absolute;
+    }
+
+    .orbit-one {
+        top: 0px;
+        left: 45px;
+    }
+
+    .orbit-two {
+        top: 10px;
+        right: 10px;
+    }
+
+    .orbit-three {
+        bottom: -15px;
+        right: 50px;
+    }
+
+    .orbit-four {
+        top: -20px;
+        left: 120px;
+    }
+
+    .orbit-five {
+        bottom: 35px;
+        left: 5px;
+    }
+
+    .orbit-six {
+        top: 90px;
+        right: 15px;
+    }
+
+    .orbit-seven {
+        bottom: -25px;
+        left: 70px;
+    }
+
+}
+
+/* =========================================================
+   375 x 667 SMALL MOBILE FIX
+========================================================= */
+
+@media (min-width: 350px) and (max-width: 399px) {
+
+    /* -------------------------
+       BRAND / NEPAL FLAG
+    ------------------------- */
+
+    .brand {
+        gap: 5px;
+        min-width: 0;
+        overflow: visible;
+    }
+
+    .brand-icon {
+        width: 32px;
+        height: 38px;
+        flex-shrink: 0;
+        overflow: visible;
+    }
+
+    .brand-icon img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        object-position: center;
+    }
+
+    .brand-text {
+        min-width: 0;
+    }
+
+    .brand-text h2 {
+        margin-left: 0;
+        font-size: 16px;
+        white-space: nowrap;
+    }
+
+
+    /* -------------------------
+       SMALLER THEME SWITCH
+    ------------------------- */
+
+    .theme-slider {
+        width: 46px;
+        height: 26px;
+        padding: 3px;
+    }
+
+    .theme-icon {
+        width: 20px;
+        height: 20px;
+        font-size: 12px;
+    }
+
+    .theme-knob {
+        width: 20px;
+        height: 20px;
+
+        top: 2px;
+        left: 2px;
+    }
+
+    .theme-switch input:checked
+    + .theme-slider
+    .theme-knob {
+        transform: translateX(20px);
+    }
+
+
+    /* -------------------------
+       SMALLER VIEW LIVE RATES
+    ------------------------- */
+
+    .liveRate-button,
+    .refresh-button {
+        padding: 6px 9px;
+        font-size: 10px;
+        gap: 5px;
+    }
+
+    .liveRate-icon {
+        font-size: 14px;
+    }
+
+    .orbit-one {
+        top: 5px;
+        left: 25px;
+    }
+
+    .orbit-two {
+        top: 10px;
+        right: 0px;
+    }
+
+    .orbit-three {
+        bottom: -15px;
+        right: 35px;
+    }
+
+    .orbit-four {
+        top: -25px;
+        left: 100px;
+    }
+
+    .orbit-five {
+        bottom: 30px;
+        left: -10px;
+    }
+
+    .orbit-six {
+        top: 80px;
+        right: 0px;
+    }
+
+    .orbit-seven {
+        bottom: -25px;
+        left: 55px;
+    }
+
+    .search-wrapper {
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+        overflow: hidden;
+    }
+
+    .search-wrapper input {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        box-sizing: border-box;
+    }
+
+}
