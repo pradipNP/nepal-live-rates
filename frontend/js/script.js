@@ -225,6 +225,8 @@ async function getForexRates() {
         // DISPLAY 22 CURRENCY CARDS
         displayRates(allRates);
 
+        populateConverter();
+
         // SUCCESS STATE
         // Hide error after successful fetch
         hideError();
@@ -621,6 +623,58 @@ modal.addEventListener("click", function (event) {
 });
 
 document.getElementById("year").textContent = new Date().getFullYear();
+
+// Currency Converter
+const convertAmount = document.getElementById("convertAmount");
+const convertCurrency = document.getElementById("convertCurrency");
+const convertResult = document.getElementById("convertResult");
+
+function populateConverter() {
+  if (!convertCurrency) return;
+
+  convertCurrency.innerHTML = "";
+  allRates.forEach(rate => {
+    const option = document.createElement("option");
+    option.value = rate.currency.iso3;
+    option.textContent = `${rate.currency.iso3} - ${rate.currency.name}`;
+    convertCurrency.appendChild(option);
+  });
+  updateConverter();
+}
+
+function updateConverter() {
+  if (!convertAmount || !convertCurrency || !convertResult) {
+    return;
+  }
+  const amount = parseFloat(convertAmount.value) || 0;
+  const selectedCurrency = convertCurrency.value;
+  const rate = allRates.find(r => r.currency.iso3 === selectedCurrency);
+
+  if (!rate) {
+    convertResult.textContent = "NPR 0.00";
+    return;
+  }
+
+  // IMPORTANT:
+  // NRB may publish:
+  // 100 INR = NPR 160
+  // so we must divide by unit
+  const actualRate = rate.buy / rate.currency.unit;
+  const convertedValue = amount * actualRate;
+  convertResult.textContent = `NPR ${convertedValue.toFixed(2)}`;
+}
+
+document.addEventListener("input", function (e) {
+  if (e.target.id === "convertAmount") {
+    updateConverter();
+  }
+});
+
+document.addEventListener("change", function (e) {
+  if (e.target.id === "convertCurrency") {
+    updateConverter();
+  }
+});
 
 // START APPLICATION
 getForexRates();
