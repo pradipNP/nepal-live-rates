@@ -523,7 +523,7 @@ function applyTheme(isDark) {
 const savedTheme = localStorage.getItem("nepalLiveRatesTheme");
 
 // Default theme is DARK
-let isDark = savedTheme !== "light";
+let isDark = savedTheme == "light";
 
 // Apply saved theme immediately
 applyTheme(isDark);
