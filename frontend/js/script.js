@@ -676,5 +676,51 @@ document.addEventListener("change", function (e) {
   }
 });
 
+// CHART 
+let forexChart = null;
+async function loadHistoryChart(currencyCode) {
+  try {
+    const response = await fetch(`${API_URL}/history/${currencyCode}`);
+    const data = await response.json();
+
+    if (!data.success) {
+      return;
+    }
+
+    const labels = data.history.map(item => item.date);
+    const values = data.history.map(item => item.buy / item.unit);
+    const ctx = document.getElementById("forexChart").getContext("2d");
+
+    if (forexChart) {
+      forexChart.destroy();
+    }
+
+    forexChart = new Chart(ctx, {
+      type: "line",
+      data: {
+        labels,
+        datasets: [{
+          label: `${currencyCode} Buy Rate`,
+          data: values,
+          tension: 0.3
+        }]
+      }
+    });
+  } catch (error) {
+    console.error("Chart Error:", error);
+  }
+}
+document.getElementById("chartCurrency").addEventListener("change", function () {
+  loadHistoryChart(this.value);
+});
+
 // START APPLICATION
-getForexRates();
+(async () => {
+
+  await getForexRates();
+
+  loadHistoryChart(
+    "USD"
+  );
+
+})();
