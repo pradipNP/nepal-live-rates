@@ -21,15 +21,15 @@ GET https://nepal-live-rates.onrender.com/api/forex
 Current Version:
 
 * Live Forex Exchange Rates (Completed)
-* Currency Converter
+* Currency Converter (Completed)
+* Historical Forex Charts (Completed)
 
 In Progress:
 
-* Historical Forex Charts
+* Gold Rates
 
 Planned:
 
-* Gold Rates
 * Silver Rates
 * Fuel Prices
 * Cryptocurrency Market
