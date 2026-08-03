@@ -1847,3 +1847,7 @@ footer {
   font-size: 2rem;
   font-weight: 700;
 }
+
+#forexChart {
+    margin-bottom: 60px;
+}

@@ -247,6 +247,29 @@
         </div>
       </section>
 
+      <!-- Chart Section -->
+      <section class="chat=section">
+        <div class="section-heading">
+          <div>
+            <span class="section-label">HISTORICAL FOREX</span>
+            <h2>Exchange Rate Trends</h2>
+          </div>
+        </div>
+
+        <div class="chart-card">
+          <div class="chart-controls">
+            <select id="chartCurrency">
+              <option value="USD">USD</option>
+              <option value="INR">INR</option>
+              <option value="EUR">EUR</option>
+              <option value="GBP">GBP</option>
+            </select>
+          </div>
+
+          <canvas id="forexChart" height="100"></canvas>
+        </div>
+      </section>
+      
       <!-- Forex Section -->
       <section id="forexSection" class="forex-section">
         <div class="section-heading">
