@@ -21,10 +21,10 @@ GET https://nepal-live-rates.onrender.com/api/forex
 Current Version:
 
 * Live Forex Exchange Rates (Completed)
+* Currency Converter
 
 In Progress:
 
-* Currency Converter
 * Historical Forex Charts
 
 Planned:
@@ -39,6 +39,7 @@ Planned:
 ## Features
 
 * Live Forex Rates from Nepal Rastra Bank (NRB)
+* Money conversion implemented 
 * Real-time data retrieval through a custom Node.js backend API
 * Responsive design for desktop, tablet, and mobile devices
 * Dark and Light theme support
@@ -77,15 +78,18 @@ Nepal-Live-Rates/
 │
 ├── frontend/
 │   ├── assets/
+│   ├── css/
+│   │   ├── about.css
+│   │   ├── responsive.css
+│   │   ├── style.css
+│   │   └── theme.css
+│   ├── js/
+│   │   ├── about.js
+│   │   └── script.js
 │   ├── index.html
 │   ├── about.html
-│   ├── style.css
-│   ├── responsive.css
-│   ├── theme.css
-│   ├── script.js
 │   ├── about.css
 │   └── about.js
-│
 ├── README.md
 ├── LICENSE
 └── .gitignore
@@ -116,7 +120,7 @@ npm start
 Backend will run on:
 
 ```text
-http://localhost:5001
+https://nepal-live-rates.onrender.com/api/forex
 ```
 
 ### Open Frontend
