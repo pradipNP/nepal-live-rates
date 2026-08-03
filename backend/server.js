@@ -187,6 +187,66 @@ app.get("/api/forex", async (req, res) => {
     }
 });
 
+app.get("/api/forex/history/:currency", async (req, res) => {
+    try {
+        const currencyCode = req.params.currency.toUpperCase();
+        const today = new Date();
+        const startDate = new Date();
+
+        startDate.setDate(today.getDate() - 30);
+
+        const fromDate = formatDate(startDate);
+        const toDate = formatDate(today);
+
+        const response = await axios.get("https://www.nrb.org.np/api/forex/v1/rates", {
+            params: {
+                page: 1,
+                per_page: 50,
+                from: fromDate,
+                to: toDate
+            },
+            timeout: 10000
+        });
+        console.log(JSON.stringify(response.data, null, 2));
+        const payload = response.data?.data?.payload;
+
+        if (!Array.isArray(payload)) {
+            console.log(JSON.stringify(response.data, null, 2));
+
+            return res.status(500).json({
+                success: false,
+                message: "NRB returned invalid history data"
+            });
+        }
+
+        const history = [];
+
+        payload.forEach(day => {
+            const currency = day.rates.find(rate => rate.currency.iso3 === currencyCode);
+            if (currency) {
+                history.push({
+                    date: day.date,
+                    buy: currency.buy,
+                    sell: currency.sell,
+                    unit: currency.currency.unit
+                });
+            }
+        });
+
+        res.json({
+            success: true,
+            currency: currencyCode,
+            history
+        });
+    } catch (error) {
+        console.error("History API Error:", error.message);
+        res.status(500).json({
+            success: false,
+            message: "Unable to load historical data"
+        });
+    }
+});
+
 // Start server
 app.listen(PORT, () => {
     console.log(
