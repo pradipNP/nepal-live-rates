@@ -452,7 +452,31 @@ body {
     transition:
         0.3s ease;
 }
+.market-card.active {
+    border-color: #38bdf8;
+    box-shadow:
+        0 0 0 1px rgba(56,189,248,0.4),
+        0 15px 40px rgba(56,189,248,0.15);
+    transform: translateY(-4px);
+}
 
+.market-card.active .market-icon {
+    background: rgba(56,189,248,0.15);
+}
+
+.market-card.active::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 18px;
+    pointer-events: none;
+    background:
+        linear-gradient(
+            135deg,
+            rgba(56,189,248,0.10),
+            transparent
+        );
+}
 .market-card:hover {
     transform:
         translateY(-6px);
