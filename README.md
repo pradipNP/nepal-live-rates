@@ -1,6 +1,6 @@
 # Nepal Live Rates
 
-Nepal Live Rates is a modern web application that provides live foreign exchange rates using official data from Nepal Rastra Bank (NRB). The project is designed to deliver accurate, up-to-date currency information through a clean, responsive, and user-friendly interface.
+Nepal Live Rates is a modern web application that provides live foreign exchange rates using official data from Nepal Rastra Bank (NRB). The project is designed to deliver accurate, up-to-date currency information as well as more data through a clean, responsive, and user-friendly interface.
 
 ## Live Demo
 
@@ -12,6 +12,7 @@ Nepal Live Rates is a modern web application that provides live foreign exchange
 
 ```http
 GET https://nepal-live-rates.onrender.com/api/forex
+GET https://nepal-live-rates.onrender.com/api/gold
 ```
 
 ## Project Status
@@ -39,7 +40,8 @@ Planned:
 ## Features
 
 * Live Forex Rates from Nepal Rastra Bank (NRB)
-* Money conversion implemented 
+* Money conversion implemented
+* Chart for comparison
 * Real-time data retrieval through a custom Node.js backend API
 * Responsive design for desktop, tablet, and mobile devices
 * Dark and Light theme support
@@ -47,6 +49,7 @@ Planned:
 * Auto-refresh support
 * Modern glassmorphism UI design
 * Error handling and API validation
+* Gold API implemented
 
 ## Tech Stack
 
@@ -74,7 +77,10 @@ Nepal-Live-Rates/
 ├── backend/
 │   ├── server.js
 │   ├── package.json
-│   └── package-lock.json
+│   ├── package-lock.json
+│   └── routes/
+│       ├── forex.js
+│       ├── gold.js
 │
 ├── frontend/
 │   ├── assets/
@@ -157,10 +163,11 @@ GET /api/forex
 ### Available
 
 * Foreign Exchange Rates (Forex)
+* Gold Live Rates 
 
 ### Planned Features
 
-* Gold Rates
+* Gold Rates (few)
 * Silver Rates
 * Fuel Prices
 * Cryptocurrency Market
