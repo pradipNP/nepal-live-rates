@@ -1,6 +1,6 @@
 //Backend API url
 const API_URL = "https://nepal-live-rates.onrender.com/api/forex";
-const GOLD_API_URL = "http://localhost:5001/api/gold";
+const GOLD_API_URL = "https://nepal-live-rates.onrender.com/api/gold";
 
 let goldData = null;
 
