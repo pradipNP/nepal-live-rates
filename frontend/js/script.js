@@ -1,5 +1,8 @@
 //Backend API url
 const API_URL = "https://nepal-live-rates.onrender.com/api/forex";
+const GOLD_API_URL = "http://localhost:5001/api/gold";
+
+let goldData = null;
 
 //Country Flags
 const countryFlags = {
@@ -94,15 +97,17 @@ const rateDateElement = document.getElementById("rateDate");
 
 const retryButton = document.getElementById("retryButton");
 const errorMessage = document.getElementById("errorMessage");
+const tolaBtn = document.getElementById("tolaBtn");
+const gramBtn = document.getElementById("gramBtn");
 
 function showError(message) {
-    errorMessage.textContent =
-        message || "We couldn't retrieve the latest exchange rates.";
-    errorElement.hidden = false;
+  errorMessage.textContent =
+    message || "We couldn't retrieve the latest exchange rates.";
+  errorElement.hidden = false;
 }
 
 function hideError() {
-    errorElement.hidden = true;
+  errorElement.hidden = true;
 }
 
 // REFRESH BUTTON
@@ -123,7 +128,7 @@ refreshButton.addEventListener("click", async function () {
 
   try {
     // Fetch fresh data
-    await getForexRates();
+    await Promise.all([getForexRates(), loadGoldRates()]);
   } finally {
     // Restore button
     refreshButton.disabled = false;
@@ -160,132 +165,233 @@ function formatRateDate(dateString) {
 
 // Fetch Forex Data
 async function getForexRates() {
-    // Hide previous error
+  // Hide previous error
+  hideError();
+
+  // START LOADING STATE
+  loading.style.display = "block";
+  try {
+    console.log("Fetching forex rates...");
+    // FETCH DATA FROM BACKEND
+    const response = await fetch(API_URL);
+
+    console.log("Backend response status:", response.status);
+
+    // CHECK HTTP STATUS
+    if (!response.ok) {
+      let message = "Unable to load live rates.";
+      if (response.status === 404) {
+        message = "No forex rates are currently available.";
+      } else if (response.status === 502) {
+        message = "The rate provider is temporarily unavailable.";
+      } else if (response.status === 503) {
+        message =
+          "The rate service is currently unreachable. Please try again later.";
+      } else if (response.status === 504) {
+        message = "The rate service took too long to respond.";
+      }
+      throw new Error(message);
+    }
+
+    // CONVERT RESPONSE TO JSON
+    const data = await response.json();
+    console.log("Backend data:", data);
+
+    // VALIDATE BACKEND RESPONSE
+    if (
+      !data ||
+      data.success !== true ||
+      !Array.isArray(data.rates) ||
+      data.rates.length === 0
+    ) {
+      throw new Error("No valid forex rates are currently available.");
+    }
+
+    // SUCCESS
+    // Store rates
+    allRates = data.rates;
+
+    // UPDATE RATE DATE
+    if (data.rateDate) {
+      rateDateElement.textContent = formatRateDate(data.rateDate);
+    }
+
+    // UPDATE LAST UPDATED
+    if (data.publishedOn) {
+      lastUpdated.textContent = formatPublishedDate(data.publishedOn);
+    }
+
+    // DISPLAY 22 CURRENCY CARDS
+    displayRates(allRates);
+
+    populateConverter();
+
+    // SUCCESS STATE
+    // Hide error after successful fetch
     hideError();
 
-    // START LOADING STATE
-    loading.style.display = "block";
-    try {
-        console.log("Fetching forex rates...");
-        // FETCH DATA FROM BACKEND
-        const response = await fetch(API_URL);
+    console.log("Forex rates loaded successfully.");
+  } catch (error) {
+    console.error("Forex request failed:", error);
 
-        console.log(
-            "Backend response status:",
-            response.status
-        );
+    // Remove old cards
+    ratesContainer.innerHTML = "";
 
-        // CHECK HTTP STATUS
-        if (!response.ok) {
+    // Clear stored rates
+    allRates = [];
 
-            let message = "Unable to load live rates.";
-            if (response.status === 404) {
-                message = "No forex rates are currently available.";
-            } else if (response.status === 502) {
-                message = "The rate provider is temporarily unavailable.";
-            } else if (response.status === 503) {
-                message = "The rate service is currently unreachable. Please try again later.";
-            } else if (response.status === 504) {
-                message = "The rate service took too long to respond.";
-            }
-            throw new Error(message);
-        }
+    // Show error message
+    showError(
+      error.message || "Unable to load live rates. Please try again later.",
+    );
+  } finally {
+    // STOP LOADING
+    loading.style.display = "none";
+  }
+}
+function toNepaliNumber(value) {
+  const nepaliDigits = ["०","१","२","३","४","५","६","७","८","९"];
 
-        // CONVERT RESPONSE TO JSON
-        const data = await response.json();
-        console.log("Backend data:", data);
+  return value.toString().replace(/\d/g, digit => nepaliDigits[digit]);
+}
 
-        // VALIDATE BACKEND RESPONSE
-        if (
-            !data ||
-            data.success !== true ||
-            !Array.isArray(data.rates) ||
-            data.rates.length === 0
-        ) {
-            throw new Error(
-                "No valid forex rates are currently available."
-            );
-        }
+function formatGoldLastUpdated(dateString) {
+  const date = new Date(dateString);
 
-        // SUCCESS
-        // Store rates
-        allRates = data.rates;
+  try {
+    const bsDate = new NepaliDate.default(date);
 
-        // UPDATE RATE DATE
-        if (data.rateDate) {
-            rateDateElement.textContent = formatRateDate(data.rateDate);
+    // Nepali month/date/year
+    const nepaliDate = bsDate.format("MMMM DD, YYYY");
 
-        }
+    // English time
+    const englishTime = date.toLocaleTimeString("en-US", {
+      hour: "numeric",
+      minute: "2-digit",
+      second: "2-digit",
+      hour12: true,
+    });
 
-        // UPDATE LAST UPDATED
-        if (data.publishedOn) { 
-          lastUpdated.textContent = formatPublishedDate(data.publishedOn);
-        }
+    return `${nepaliDate}, ${englishTime}`;
+  } catch (error) {
+    console.error(error);
 
-        // DISPLAY 22 CURRENCY CARDS
-        displayRates(allRates);
+    return `Last updated: ${date.toLocaleString()}`;
+  }
+}
 
-        populateConverter();
+async function loadGoldRates() {
+  try {
+    const response = await fetch(GOLD_API_URL);
 
-        // SUCCESS STATE
-        // Hide error after successful fetch
-        hideError();
-
-        console.log(
-            "Forex rates loaded successfully."
-        );
-
-    } catch (error) {
-        console.error("Forex request failed:", error);
-
-        // Remove old cards
-        ratesContainer.innerHTML = "";
-
-        // Clear stored rates
-        allRates = [];
-
-        // Show error message
-        showError(
-            error.message ||
-            "Unable to load live rates. Please try again later."
-        );
-
-    } finally {
-        // STOP LOADING
-        loading.style.display = "none";
+    if (!response.ok) {
+      throw new Error(`Gold API Error: ${response.status}`);
     }
+
+    const data = await response.json();
+
+    if (!data.success) {
+      return;
+    }
+    goldData = data.gold;
+
+    document.getElementById("fineGoldPrice").textContent =
+      `NRS ${data.gold.tola.today.toLocaleString()}`;
+
+    const changeEl = document.getElementById("goldMovement");
+
+    const percent = data.gold.percentChange;
+
+    if (percent > 0) {
+      changeEl.innerHTML = `▲ ${percent.toFixed(2)}%`;
+      changeEl.style.color = "#22c55e";
+    } else if (percent < 0) {
+      changeEl.innerHTML = `▼ ${Math.abs(percent).toFixed(2)}%`;
+      changeEl.style.color = "#ef4444";
+    } else {
+      changeEl.innerHTML = "▬ 0.00%";
+    }
+
+    document.getElementById("goldUpdated").textContent = formatGoldLastUpdated(
+      data.lastUpdated,
+    );
+
+    document.getElementById("fineGoldYesterday").textContent =
+      `Yesterday: NRS ${data.gold.tola.yesterday.toLocaleString()}`;
+  } catch (error) {
+    console.error("Gold Load Error:", error);
+  }
+  showTolaPrices();
+}
+
+function showTolaPrices() {
+  if (!goldData) return;
+
+  document.getElementById("goldTitle").textContent = "Fine Gold (9999)";
+
+  document.getElementById("goldUnitLabel").textContent = "Per 1 Tola";
+
+  document.getElementById("fineGoldPrice").textContent =
+    goldData.tola.today.toLocaleString();
+
+  document.getElementById("fineGoldYesterday").textContent =
+    `Yesterday: NRS ${goldData.tola.yesterday.toLocaleString()}`;
+}
+
+function showGramPrices() {
+  if (!goldData) return;
+
+  document.getElementById("goldTitle").textContent = "Fine Gold (9999)";
+
+  document.getElementById("goldUnitLabel").textContent = "Per 10 Gram";
+
+  document.getElementById("fineGoldPrice").textContent =
+    goldData.gram10.today.toLocaleString();
+
+  document.getElementById("fineGoldYesterday").textContent =
+    `Yesterday: NRS ${goldData.gram10.yesterday.toLocaleString()}`;
+}
+
+if (tolaBtn) {
+  tolaBtn.addEventListener("click", () => {
+    tolaBtn.classList.add("active");
+    gramBtn?.classList.remove("active");
+    showTolaPrices();
+  });
+}
+
+if (gramBtn) {
+  gramBtn.addEventListener("click", () => {
+    gramBtn.classList.add("active");
+    tolaBtn?.classList.remove("active");
+    showGramPrices();
+  });
 }
 
 // RETRY BUTTON
-retryButton.addEventListener(
-    "click",
-    async function () {
-        // Prevent multiple clicks
-        if (retryButton.disabled) {
-            return;
-        }
+retryButton.addEventListener("click", async function () {
+  // Prevent multiple clicks
+  if (retryButton.disabled) {
+    return;
+  }
 
-        // Disable retry button
-        retryButton.disabled = true;
+  // Disable retry button
+  retryButton.disabled = true;
 
-        // Change button text
-        retryButton.textContent =
-            "Retrying...";
+  // Change button text
+  retryButton.textContent = "Retrying...";
 
-        try {
-            // Run the same API function
-            // used by Refresh Rates
-            await getForexRates();
+  try {
+    // Run the same API function
+    // used by Refresh Rates
+    await Promise.all([getForexRates(), loadGoldRates()]);
+  } finally {
+    // Restore button
+    retryButton.disabled = false;
 
-        } finally {
-            // Restore button
-            retryButton.disabled = false;
-
-            retryButton.textContent =
-                "Try Again";
-        }
-    }
-);
+    retryButton.textContent = "Try Again";
+  }
+});
 
 // DISPLAY FOREX CARDS
 function displayRates(rates) {
@@ -424,96 +530,77 @@ const themeToggle = document.getElementById("themeToggle");
 function applyTheme(isDark) {
   if (isDark) {
     // DARK THEME
-    document.documentElement.style.setProperty(
-      "--bg",
-      "#07111f"
-    );
+    document.documentElement.style.setProperty("--bg", "#07111f");
 
     document.documentElement.style.setProperty(
       "--card",
-      "rgba(15, 29, 48, 0.75)"
+      "rgba(15, 29, 48, 0.75)",
     );
 
-    document.documentElement.style.setProperty(
-      "--text",
-      "#f8fafc"
-    );
+    document.documentElement.style.setProperty("--text", "#f8fafc");
 
-    document.documentElement.style.setProperty(
-      "--muted",
-      "#94a3b8"
-    );
+    document.documentElement.style.setProperty("--muted", "#94a3b8");
 
     document.documentElement.style.setProperty(
       "--hero-bg",
-      "rgba(10, 24, 42, 0.75)"
+      "rgba(10, 24, 42, 0.75)",
     );
 
     document.documentElement.style.setProperty(
       "--status-bg",
-      "rgba(10, 24, 42, 0.72)"
+      "rgba(10, 24, 42, 0.72)",
     );
 
     document.documentElement.style.setProperty(
       "--border",
-      "rgba(255, 255, 255, 0.12)"
+      "rgba(255, 255, 255, 0.12)",
     );
 
     document.documentElement.style.setProperty(
       "--glass-highlight",
-      "rgba(255, 255, 255, 0.08)"
+      "rgba(255, 255, 255, 0.08)",
     );
 
     document.documentElement.style.setProperty(
       "--shadow",
-      "rgba(0, 0, 0, 0.35)"
+      "rgba(0, 0, 0, 0.35)",
     );
-
   } else {
     // LIGHT THEME
-    document.documentElement.style.setProperty(
-      "--bg",
-      "#f1f5f9"
-    );
+    document.documentElement.style.setProperty("--bg", "#f1f5f9");
 
     document.documentElement.style.setProperty(
       "--card",
-      "rgba(255, 255, 255, 0.8)"
+      "rgba(255, 255, 255, 0.8)",
     );
 
-    document.documentElement.style.setProperty(
-      "--text",
-      "#0f172a"
-    );
+    document.documentElement.style.setProperty("--text", "#0f172a");
 
-    document.documentElement.style.setProperty(
-      "--muted",
-      "#64748b"
-    );
+    document.documentElement.style.setProperty("--muted", "#64748b");
 
     document.documentElement.style.setProperty(
       "--hero-bg",
-      "rgba(255, 255, 255, 0.75)"
+      "rgba(255, 255, 255, 0.75)",
     );
 
     document.documentElement.style.setProperty(
       "--status-bg",
-      "rgba(255, 255, 255, 0.72)"
+      "rgba(255, 255, 255, 0.72)",
     );
 
     document.documentElement.style.setProperty(
       "--border",
-      "rgba(15, 23, 42, 0.12)"
+      "rgba(15, 23, 42, 0.12)",
     );
 
     document.documentElement.style.setProperty(
       "--glass-highlight",
-      "rgba(255, 255, 255, 0.8)"
+      "rgba(255, 255, 255, 0.8)",
     );
 
     document.documentElement.style.setProperty(
       "--shadow",
-      "rgba(15, 23, 42, 0.15)"
+      "rgba(15, 23, 42, 0.15)",
     );
   }
 }
@@ -544,31 +631,12 @@ if (themeToggle) {
 
     // Save theme preference
     if (isDark) {
-      localStorage.setItem(
-        "nepalLiveRatesTheme",
-        "dark"
-      );
+      localStorage.setItem("nepalLiveRatesTheme", "dark");
     } else {
-      localStorage.setItem(
-        "nepalLiveRatesTheme",
-        "light"
-      );
+      localStorage.setItem("nepalLiveRatesTheme", "light");
     }
   });
 }
-
-// ACTIVE CARD NAVIGATION
-document.querySelectorAll(".active-card").forEach(card => {
-  card.addEventListener("click", () => {
-    const category = card.dataset.category;
-    if (category == "forex") {
-      document.getElementById("forexSection").scrollIntoView({
-        behavior: "smooth",
-        block: "start"
-      });
-    }
-  });
-});
 
 // COMING SOON MODAL
 const modal = document.getElementById("comingSoonModal");
@@ -584,6 +652,42 @@ const categoryNames = {
   diesel: "Diesel",
   oil: "Crude Oil",
 };
+
+function showMarket(category) {
+  const forexPage = document.getElementById("forexPage");
+
+  const goldPage = document.getElementById("goldPage");
+
+  // Hide everything first
+  forexPage.style.display = "none";
+
+  goldPage.style.display = "none";
+
+  // Remove active state
+  document.querySelectorAll(".market-card").forEach((card) => {
+    card.classList.remove("active");
+  });
+
+  // Highlight clicked card
+  const activeCard = document.querySelector(`[data-category="${category}"]`);
+
+  if (activeCard) {
+    activeCard.classList.add("active");
+  }
+
+  // Show selected section
+  if (category === "forex") {
+    forexPage.style.display = "block";
+  }
+
+  if (category === "gold") {
+    goldPage.style.display = "block";
+  }
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth",
+  });
+}
 
 // COMING SOON CARD CLICK
 document.querySelectorAll(".coming-card").forEach((card) => {
@@ -622,6 +726,24 @@ modal.addEventListener("click", function (event) {
   }
 });
 
+// FOREX CLICK
+const forexCard = document.querySelector('[data-category="forex"]');
+
+if (forexCard) {
+  forexCard.addEventListener("click", function () {
+    showMarket("forex");
+  });
+}
+
+// GOLD CLICK
+const goldCard = document.querySelector('[data-category="gold"]');
+
+if (goldCard) {
+  goldCard.addEventListener("click", function () {
+    showMarket("gold");
+  });
+}
+
 document.getElementById("year").textContent = new Date().getFullYear();
 
 // Currency Converter
@@ -633,7 +755,7 @@ function populateConverter() {
   if (!convertCurrency) return;
 
   convertCurrency.innerHTML = "";
-  allRates.forEach(rate => {
+  allRates.forEach((rate) => {
     const option = document.createElement("option");
     option.value = rate.currency.iso3;
     option.textContent = `${rate.currency.iso3} - ${rate.currency.name}`;
@@ -648,7 +770,7 @@ function updateConverter() {
   }
   const amount = parseFloat(convertAmount.value) || 0;
   const selectedCurrency = convertCurrency.value;
-  const rate = allRates.find(r => r.currency.iso3 === selectedCurrency);
+  const rate = allRates.find((r) => r.currency.iso3 === selectedCurrency);
 
   if (!rate) {
     convertResult.textContent = "NPR 0.00";
@@ -676,7 +798,7 @@ document.addEventListener("change", function (e) {
   }
 });
 
-// CHART 
+// CHART
 let forexChart = null;
 async function loadHistoryChart(currencyCode) {
   try {
@@ -687,8 +809,8 @@ async function loadHistoryChart(currencyCode) {
       return;
     }
 
-    const labels = data.history.map(item => item.date);
-    const values = data.history.map(item => item.buy / item.unit);
+    const labels = data.history.map((item) => item.date);
+    const values = data.history.map((item) => item.buy / item.unit);
     const ctx = document.getElementById("forexChart").getContext("2d");
 
     if (forexChart) {
@@ -699,28 +821,55 @@ async function loadHistoryChart(currencyCode) {
       type: "line",
       data: {
         labels,
-        datasets: [{
-          label: `${currencyCode} Buy Rate`,
-          data: values,
-          tension: 0.3
-        }]
-      }
+        datasets: [
+          {
+            label: `${currencyCode} Buy Rate`,
+            data: values,
+            tension: 0.3,
+          },
+        ],
+      },
     });
   } catch (error) {
     console.error("Chart Error:", error);
   }
 }
-document.getElementById("chartCurrency").addEventListener("change", function () {
-  loadHistoryChart(this.value);
-});
+document
+  .getElementById("chartCurrency")
+  .addEventListener("change", function () {
+    loadHistoryChart(this.value);
+  });
+
+function initializeGoldPage() {
+  const nepaliDate = document.getElementById("goldNepaliDate");
+
+  const englishDate = document.getElementById("goldEnglishDate");
+
+  if (englishDate) {
+    englishDate.textContent = new Date().toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    });
+  }
+
+  if (nepaliDate) {
+    try {
+      const bsDate = new NepaliDate.default();
+
+      nepaliDate.textContent = bsDate.format("YYYY MMMM DD");
+    } catch (error) {
+      console.error("Nepali date error:", error);
+
+      nepaliDate.textContent = "Unavailable";
+    }
+  }
+}
 
 // START APPLICATION
 (async () => {
-
-  await getForexRates();
-
-  loadHistoryChart(
-    "USD"
-  );
-
+  await Promise.all([getForexRates(), loadGoldRates()]);
+  initializeGoldPage();
+  showMarket("forex");
+  loadHistoryChart("USD");
 })();

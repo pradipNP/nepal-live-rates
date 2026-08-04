@@ -9,8 +9,11 @@
     <link rel="stylesheet" href="css/responsive.css" />
     <link rel="stylesheet" href="css/theme.css" />
 
-    <link rel="icon" href="assets/flags/logo1.png">
-    <meta name="description" content="Live Nepal foreign exchange rates from Nepal Rastra Bank."/>
+    <link rel="icon" href="assets/flags/logo1.png" />
+    <meta
+      name="description"
+      content="Live Nepal foreign exchange rates from Nepal Rastra Bank."
+    />
   </head>
 
   <body>
@@ -59,260 +62,352 @@
 
     <!-- Main Content -->
     <main class="container">
-      <!-- Hero Section -->
-      <section class="hero">
-        <!-- LEFT SIDE -->
-        <div class="hero-content">
-          <div class="hero-line"></div>
+      <div id="forexPage">
+        <!-- Hero Section -->
+        <section class="hero">
+          <!-- LEFT SIDE -->
+          <div class="hero-content">
+            <div class="hero-line"></div>
 
-          <h1>
-            Nepal Foreign
-            <span class="gradient-text"> Exchange Rates </span>
-          </h1>
-          <p>Live foreign exchange rates published by Nepal Rastra Bank.</p>
-        </div>
-
-        <!-- RIGHT SIDE -->
-        <div class="hero-visual">
-          <div class="currency-orbit orbit-one">$</div>
-          <div class="currency-orbit orbit-two">€</div>
-          <div class="currency-orbit orbit-three">£</div>
-          <div class="currency-orbit orbit-four">¥</div>
-          <div class="currency-orbit orbit-five">₩</div>
-          <div class="currency-orbit orbit-six">₽</div>
-          <div class="currency-orbit orbit-seven">₿</div>
-
-          <div class="currency-center">₹</div>
-
-          <div class="currency-ring ring-one"></div>
-          <div class="currency-ring ring-two"></div>
-        </div>
-      </section>
-
-      <!-- Status Bar -->
-      <section class="status-bar">
-        <!-- RATES DATE -->
-        <div class="status-item">
-          <div class="status-icon calendar-icon">📅</div>
-
-          <div class="status-content">
-            <span> Rates Date </span>
-            <strong id="rateDate"> Loading... </strong>
-          </div>
-        </div>
-
-        <div class="status-divider"></div>
-        <!-- LAST UPDATED -->
-        <div class="status-item">
-          <div class="status-icon clock-icon">🕐</div>
-          <div class="status-content">
-            <span> Last Updated </span>
-            <strong id="lastUpdated"> Loading... </strong>
-          </div>
-        </div>
-
-        <div class="status-divider"></div>
-        <!-- SOURCE -->
-        <div class="status-item">
-          <div class="status-icon bank-icon">🏦</div>
-          <div class="status-content">
-            <span> Source </span>
-            <strong class="source-name"> Nepal Rastra Bank </strong>
-          </div>
-        </div>
-
-        <div class="status-divider"></div>
-        <!-- LIVE -->
-        <div class="live-status">
-          <div class="live-badge"><span class="live-dot"></span>Live</div>
-          <small> Auto-updating </small>
-        </div>
-      </section>
-
-      <!-- Market Categories -->
-      <section class="market-section">
-        <div class="section-heading">
-          <div>
-            <span class="section-label">MARKET DATA</span>
-            <h2>Explore Rates</h2>
+            <h1>
+              Nepal Foreign
+              <span class="gradient-text"> Exchange Rates </span>
+            </h1>
+            <p>Live foreign exchange rates published by Nepal Rastra Bank.</p>
           </div>
 
-          <span class="section-description">Select a category</span>
-        </div>
+          <!-- RIGHT SIDE -->
+          <div class="hero-visual">
+            <div class="currency-orbit orbit-one">$</div>
+            <div class="currency-orbit orbit-two">€</div>
+            <div class="currency-orbit orbit-three">£</div>
+            <div class="currency-orbit orbit-four">¥</div>
+            <div class="currency-orbit orbit-five">₩</div>
+            <div class="currency-orbit orbit-six">₽</div>
+            <div class="currency-orbit orbit-seven">₿</div>
 
-        <div class="market-grid">
-          <!-- Forex -->
-          <div class="market-card active-card active" data-category="forex">
-            <div class="market-icon">💱</div>
-            <div class="market-info">
-              <h3>Foreign Exchange</h3>
-              <p>Live currency rates</p>
-            </div>
+            <div class="currency-center">₹</div>
 
-            <div class="market-status live-status">
-              <span></span>
-              LIVE
+            <div class="currency-ring ring-one"></div>
+            <div class="currency-ring ring-two"></div>
+          </div>
+        </section>
+
+        <!-- Status Bar -->
+        <section class="status-bar">
+          <!-- RATES DATE -->
+          <div class="status-item">
+            <div class="status-icon calendar-icon">📅</div>
+
+            <div class="status-content">
+              <span> Rates Date </span>
+              <strong id="rateDate"> Loading... </strong>
             </div>
           </div>
 
-          <!-- Gold -->
-          <div class="market-card coming-card" data-category="gold">
-            <div class="market-icon">🥇</div>
-            <div class="market-info">
-              <h3>Gold</h3>
-              <p>Gold market rates</p>
+          <div class="status-divider"></div>
+          <!-- LAST UPDATED -->
+          <div class="status-item">
+            <div class="status-icon clock-icon">🕐</div>
+            <div class="status-content">
+              <span> Last Updated </span>
+              <strong id="lastUpdated"> Loading... </strong>
+            </div>
+          </div>
+
+          <div class="status-divider"></div>
+          <!-- SOURCE -->
+          <div class="status-item">
+            <div class="status-icon bank-icon">🏦</div>
+            <div class="status-content">
+              <span> Source </span>
+              <strong class="source-name"> Nepal Rastra Bank </strong>
+            </div>
+          </div>
+
+          <div class="status-divider"></div>
+          <!-- LIVE -->
+          <div class="live-status">
+            <div class="live-badge"><span class="live-dot"></span>Live</div>
+            <small> Auto-updating </small>
+          </div>
+        </section>
+
+        <!-- Market Categories -->
+        <section class="market-section">
+          <div class="section-heading">
+            <div>
+              <span class="section-label">MARKET DATA</span>
+              <h2>Explore Rates</h2>
             </div>
 
-            <div class="market-status">SOON</div>
+            <span class="section-description">Select a category</span>
           </div>
 
-          <!-- Silver -->
-          <div class="market-card coming-card" data-category="silver">
-            <div class="market-icon">🥈</div>
-            <div class="market-info">
-              <h3>Silver</h3>
-              <p>Silver market rates</p>
+          <div class="market-grid">
+            <!-- Forex -->
+            <div class="market-card active-card active" data-category="forex">
+              <div class="market-icon">💱</div>
+              <div class="market-info">
+                <h3>Foreign Exchange</h3>
+                <p>Live currency rates</p>
+              </div>
+
+              <div class="market-status live-status">
+                <span></span>
+                LIVE
+              </div>
             </div>
 
-            <div class="market-status">SOON</div>
-          </div>
+            <!-- Gold -->
+            <div class="market-card" data-category="gold">
+              <div class="market-icon">🥇</div>
+              <div class="market-info">
+                <h3>Gold</h3>
+                <p>Gold market rates</p>
+              </div>
 
-          <!-- Petrol -->
-          <div class="market-card coming-card" data-category="petrol">
-            <div class="market-icon">⛽</div>
-            <div class="market-info">
-              <h3>Petrol</h3>
-              <p>Fuel price information</p>
+              <div class="market-status">READY</div>
             </div>
 
-            <div class="market-status">SOON</div>
-          </div>
+            <!-- Silver -->
+            <div class="market-card coming-card" data-category="silver">
+              <div class="market-icon">🥈</div>
+              <div class="market-info">
+                <h3>Silver</h3>
+                <p>Silver market rates</p>
+              </div>
 
-          <!-- Diesel -->
-          <div class="market-card coming-card" data-category="diesel">
-            <div class="market-icon">🛢️</div>
-            <div class="market-info">
-              <h3>Diesel</h3>
-              <p>Diesel price information</p>
+              <div class="market-status">SOON</div>
             </div>
 
-            <div class="market-status">SOON</div>
-          </div>
+            <!-- Petrol -->
+            <div class="market-card coming-card" data-category="petrol">
+              <div class="market-icon">⛽</div>
+              <div class="market-info">
+                <h3>Petrol</h3>
+                <p>Fuel price information</p>
+              </div>
 
-          <!-- Oil -->
-          <div class="market-card coming-card" data-category="oil">
-            <div class="market-icon">📈</div>
-            <div class="market-info">
-              <h3>Crude Oil</h3>
-              <p>Global oil market</p>
+              <div class="market-status">SOON</div>
             </div>
 
-            <div class="market-status">SOON</div>
-          </div>
-        </div>
-      </section>
+            <!-- Diesel -->
+            <div class="market-card coming-card" data-category="diesel">
+              <div class="market-icon">🛢️</div>
+              <div class="market-info">
+                <h3>Diesel</h3>
+                <p>Diesel price information</p>
+              </div>
 
-      <!-- Converter Section -->
-      <section class="converter-section">
-        <div class="section-heading">
-          <div>
-            <span class="section-label">CURRENCY CONVERTER</span>
-            <h2>Convert to Nepalese Rupee (NPR)</h2>
-          </div>
-        </div>
+              <div class="market-status">SOON</div>
+            </div>
 
-        <div class="converter-card">
-          <div class="converter-row">
-            <div class="converter-field">
-              <label>Amount</label>
+            <!-- Oil -->
+            <div class="market-card coming-card" data-category="oil">
+              <div class="market-icon">📈</div>
+              <div class="market-info">
+                <h3>Crude Oil</h3>
+                <p>Global oil market</p>
+              </div>
+
+              <div class="market-status">SOON</div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Converter Section -->
+        <section class="converter-section">
+          <div class="section-heading">
+            <div>
+              <span class="section-label">CURRENCY CONVERTER</span>
+              <h2>Convert to Nepalese Rupee (NPR)</h2>
+            </div>
+          </div>
+
+          <div class="converter-card">
+            <div class="converter-row">
+              <div class="converter-field">
+                <label>Amount</label>
+                <input
+                  type="number"
+                  id="convertAmount"
+                  value="100"
+                  min="0"
+                  step="0.01"
+                />
+              </div>
+
+              <div class="converter-field">
+                <label>Currency</label>
+                <select id="convertCurrency"></select>
+              </div>
+
+              <div class="converter-result">
+                <span>Converted Value</span>
+                <strong id="convertResult">NPR 0.00</strong>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Chart Section -->
+        <section class="chart-section">
+          <div class="section-heading">
+            <div>
+              <span class="section-label">HISTORICAL FOREX</span>
+              <h2>Exchange Rate Trends</h2>
+            </div>
+          </div>
+
+          <div class="chart-card">
+            <div class="chart-controls">
+              <select id="chartCurrency">
+                <option value="USD">USD</option>
+                <option value="INR">INR</option>
+                <option value="EUR">EUR</option>
+                <option value="GBP">GBP</option>
+              </select>
+            </div>
+
+            <canvas id="forexChart" height="100"></canvas>
+          </div>
+        </section>
+
+        <!-- Forex Section -->
+        <section id="forexSection" class="forex-section">
+          <div class="section-heading">
+            <div>
+              <span class="section-label">CURRENCY EXCHANGE</span>
+              <h2>Nepal Foreign Exchange Rates</h2>
+            </div>
+
+            <div class="search-wrapper">
+              🔍
               <input
-                type="number"
-                id="convertAmount"
-                value="100"
-                min="0"
-                step="0.01"
+                type="text"
+                id="searchInput"
+                placeholder="Search currency..."
               />
             </div>
+          </div>
 
-            <div class="converter-field">
-              <label>Currency</label>
-              <select id="convertCurrency"></select>
+          <!-- Loading -->
+          <div id="loading" class="loading">
+            <div class="loader"></div>
+            <p>Fetching latest rates...</p>
+          </div>
+
+          <!-- Error -->
+          <div id="error" class="error-message" hidden>
+            <div class="error-icon">⚠️</div>
+
+            <div class="error-content">
+              <strong> Unable to load live rates </strong>
+
+              <p id="errorMessage">
+                We couldn't retrieve the latest exchange rates.
+              </p>
+
+              <button id="retryButton" type="button">Try Again</button>
+            </div>
+          </div>
+
+          <!-- Cards -->
+          <div id="ratesContainer" class="rates-grid"></div>
+        </section>
+
+        <!-- Gold Section -->
+        <section id="goldSection" class="gold-section" style="display: none">
+          <div class="section-heading">
+            <div>
+              <span class="section-label">GOLD MARKET</span>
+              <h2>Latest Gold Rates in Nepal</h2>
+            </div>
+          </div>
+        </section>
+      </div>
+      <!-- forexPage -->
+
+      <div id="goldPage" style="display: none">
+        <section class="hero">
+          <div class="hero-content">
+            <div class="hero-line"></div>
+
+            <h1>
+              Nepal
+              <span class="gradient-text"> Gold Rates </span>
+            </h1>
+
+            <p>Daily gold prices in Nepal.</p>
+          </div>
+        </section>
+
+        <section class="status-bar">
+          <div class="status-item">
+            <div class="status-icon">🥇</div>
+
+            <div class="status-content">
+              <span>Market</span>
+              <strong>Gold</strong>
+            </div>
+          </div>
+        </section>
+
+        <section class="gold-section">
+          <div class="gold-topbar">
+            <div class="gold-date-card">
+              <span>Nepali Date</span>
+              <strong id="goldNepaliDate"> Loading... </strong>
             </div>
 
-            <div class="converter-result">
-              <span>Converted Value</span>
-              <strong id="convertResult">NPR 0.00</strong>
+            <div class="gold-date-card">
+              <span>English Date</span>
+              <strong id="goldEnglishDate"> Loading... </strong>
             </div>
           </div>
-        </div>
-      </section>
 
-      <!-- Chart Section -->
-      <section class="chat=section">
-        <div class="section-heading">
-          <div>
-            <span class="section-label">HISTORICAL FOREX</span>
-            <h2>Exchange Rate Trends</h2>
-          </div>
-        </div>
+          <div class="gold-unit-toggle">
+            <button id="tolaBtn" class="gold-toggle active">Tola</button>
 
-        <div class="chart-card">
-          <div class="chart-controls">
-            <select id="chartCurrency">
-              <option value="USD">USD</option>
-              <option value="INR">INR</option>
-              <option value="EUR">EUR</option>
-              <option value="GBP">GBP</option>
-            </select>
+            <button id="gramBtn" class="gold-toggle">Gram</button>
           </div>
 
-          <canvas id="forexChart" height="100"></canvas>
-        </div>
-      </section>
+          <div class="gold-rates-grid">
+            <div class="gold-rate-card">
+              <div class="gold-card-header">
+                <div class="gold-icon">🥇</div>
 
-      <!-- Forex Section -->
-      <section id="forexSection" class="forex-section">
-        <div class="section-heading">
-          <div>
-            <span class="section-label">CURRENCY EXCHANGE</span>
-            <h2>Nepal Foreign Exchange Rates</h2>
+                <div id="goldMovement" class="gold-movement">▼ 0.07%</div>
+              </div>
+
+              <h3 id="goldTitle">Fine Gold (9999)</h3>
+
+              <div id="goldUnitLabel" class="gold-unit-label">Per 1 Tola</div>
+
+              <div class="gold-price-row">
+                <span class="gold-currency"> Nrs </span>
+
+                <span id="fineGoldPrice" class="gold-price"> 283,800 </span>
+
+                <span class="gold-slash"> /- </span>
+              </div>
+
+              <div id="fineGoldYesterday" class="gold-yesterday">
+                Yesterday: NRS 0
+              </div>
+
+              <div class="gold-updated">
+                <span>Last updated:</span>
+                <strong id="goldUpdated">Loading...</strong>
+              </div>
+              <div class="gold-bottom-line"></div>
+            </div>
           </div>
-
-          <div class="search-wrapper">
-            🔍
-            <input
-              type="text"
-              id="searchInput"
-              placeholder="Search currency..."
-            />
-          </div>
-        </div>
-
-        <!-- Loading -->
-        <div id="loading" class="loading">
-          <div class="loader"></div>
-          <p>Fetching latest rates...</p>
-        </div>
-
-        <!-- Error -->
-        <div id="error" class="error-message" hidden>
-          <div class="error-icon">⚠️</div>
-
-          <div class="error-content">
-            <strong> Unable to load live rates </strong>
-
-            <p id="errorMessage">
-              We couldn't retrieve the latest exchange rates.
-            </p>
-
-            <button id="retryButton" type="button">Try Again</button>
-          </div>
-        </div>
-
-        <!-- Cards -->
-        <div id="ratesContainer" class="rates-grid"></div>
-      </section>
+        </section>
+      </div>
     </main>
+
     <!-- Coming Soon Modal -->
     <div id="comingSoonModal" class="modal">
       <div class="modal-content">
@@ -332,15 +427,20 @@
 
     <footer>
       <p class="copyright">
-        © <img src="assets/flags/np.svg" alt="Nepal-Flag" /><span id="year"></span>Nepal Live Rates
+        © <img src="assets/flags/np.svg" alt="Nepal-Flag" /><span
+          id="year"
+        ></span
+        >Nepal Live Rates
       </p>
 
       <p class="footer-note">
-        Exchange rates are for informational purposes only and may change without notice.
+        Exchange rates are for informational purposes only and may change
+        without notice.
       </p>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/nepali-date-converter/dist/nepali-date-converter.umd.js"></script>
     <script src="js/script.js"></script>
   </body>
 </html>
