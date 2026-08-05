@@ -35,6 +35,7 @@ async function loadGoldRates() {
     }
 
     goldData = data.gold;
+    updateGoldCalculator();
     // Status Bar Date & Time
     const fullDateTime = formatGoldLastUpdated(data.lastUpdated);
     // Example:
@@ -153,6 +154,42 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
+function updateGoldCalculator() {
+  if (!goldData) return;
+
+  const quantity =
+    parseFloat(document.getElementById("goldQuantity").value) || 0;
+
+  const unit = document.getElementById("goldCalculatorUnit").value;
+
+  let pricePerUnit = 0;
+
+  if (unit === "tola") {
+    pricePerUnit = goldData.tola.today;
+  } else if (unit === "gram") {
+    pricePerUnit = goldData.gram10.today / 10;
+  } else if (unit === "lal") {
+    pricePerUnit = goldData.tola.today / 96;
+  }
+
+  const total = quantity * pricePerUnit;
+
+  document.getElementById("goldCalculatorResult").textContent =
+    `NPR ${total.toLocaleString(undefined, {
+      maximumFractionDigits: 2,
+    })}`;
+}
+document.addEventListener("input", (e) => {
+  if (e.target.id === "goldQuantity" || e.target.id === "goldCalculatorUnit") {
+    updateGoldCalculator();
+  }
+});
+
+document.addEventListener("change", (e) => {
+  if (e.target.id === "goldCalculatorUnit") {
+    updateGoldCalculator();
+  }
+});
 //  GLOBAL THEME MANAGEMENT
 const themeToggle = document.getElementById("themeToggle");
 // Apply theme variables
