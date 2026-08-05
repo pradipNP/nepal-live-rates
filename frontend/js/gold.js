@@ -254,12 +254,20 @@ function renderGoldChart(unit) {
               : "Gold Price (10 Gram)",
 
           data: prices,
-
+          borderColor: "#d97706",
+          backgroundColor: "rgba(251, 191, 36, 0.2)",
           tension: 0.35,
 
           fill: true,
 
           borderWidth: 3,
+          pointRadius: 6,
+
+          pointHoverRadius: 8,
+
+          pointBackgroundColor: "#FFD700",
+
+          pointBorderWidth: 0
         },
       ],
     },

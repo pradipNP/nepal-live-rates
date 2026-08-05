@@ -2068,3 +2068,13 @@ footer {
     font-size:28px;
     color:#d97706;
 }
+
+#goldChartUnit {
+    height: 30px;
+    width: 100px;
+}
+.chart-card {
+  height: 400px;
+  display: flex;
+  margin-left: 150px;
+}
