@@ -1,5 +1,6 @@
 const GOLD_API_URL = "https://nepal-live-rates.onrender.com/api/gold";
-const GOLD_HISTORY_API = "https://nepal-live-rates.onrender.com/api/gold/history";
+const GOLD_HISTORY_API =
+  "https://nepal-live-rates.onrender.com/api/gold/history";
 
 let goldData = null;
 
@@ -135,6 +136,14 @@ document.addEventListener("DOMContentLoaded", () => {
   initializeGoldPage();
   loadGoldChart();
 
+  const goldChartUnit = document.getElementById("goldChartUnit");
+
+  if (goldChartUnit) {
+    goldChartUnit.addEventListener("change", function () {
+      renderGoldChart(this.value);
+    });
+  }
+
   const tolaBtn = document.getElementById("tolaBtn");
 
   const gramBtn = document.getElementById("gramBtn");
@@ -194,6 +203,7 @@ document.addEventListener("change", (e) => {
 });
 
 let goldChart = null;
+let goldChartData = null;
 
 async function loadGoldChart() {
   try {
@@ -205,54 +215,73 @@ async function loadGoldChart() {
       return;
     }
 
-    const labels = data.history.map((item) => item.label);
+    goldChartData = data.history;
 
-    const prices = data.history.map((item) => item.tola);
-
-    const ctx = document
-      .getElementById("goldChart")
-      .getContext("2d");
-
-    if (goldChart) {
-      goldChart.destroy();
-    }
-
-    goldChart = new Chart(ctx, {
-      type: "line",
-
-      data: {
-        labels,
-
-        datasets: [
-          {
-            label: "Gold Price (Per Tola)",
-            data: prices,
-            tension: 0.35,
-            fill: true,
-            borderWidth: 3,
-          },
-        ],
-      },
-
-      options: {
-        responsive: true,
-
-        plugins: {
-          legend: {
-            display: true,
-          },
-        },
-
-        scales: {
-          y: {
-            beginAtZero: false,
-          },
-        },
-      },
-    });
+    renderGoldChart("tola");
   } catch (error) {
     console.error("Gold Chart Error:", error);
   }
+}
+
+function renderGoldChart(unit) {
+  if (!goldChartData) return;
+
+  const labels = goldChartData.map((item) => item.label);
+
+  const prices = goldChartData.map((item) =>
+  unit === "tola"
+    ? item.tola
+    : item.gram10
+  );
+
+  const ctx = document.getElementById("goldChart").getContext("2d");
+
+  if (goldChart) {
+    goldChart.destroy();
+  }
+
+  goldChart = new Chart(ctx, {
+    type: "line",
+
+    data: {
+      labels,
+
+      datasets: [
+        {
+          label:
+            unit === "tola"
+              ? "Gold Price (1 Tola)"
+              : "Gold Price (10 Gram)",
+
+          data: prices,
+
+          tension: 0.35,
+
+          fill: true,
+
+          borderWidth: 3,
+        },
+      ],
+    },
+
+    options: {
+      responsive: true,
+
+      maintainAspectRatio: true,
+
+      plugins: {
+        legend: {
+          display: true,
+        },
+      },
+
+      scales: {
+        y: {
+          beginAtZero: false,
+        },
+      },
+    },
+  });
 }
 
 //  GLOBAL THEME MANAGEMENT
