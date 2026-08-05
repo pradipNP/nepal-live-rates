@@ -4,7 +4,8 @@ Nepal Live Rates is a modern web application that provides live foreign exchange
 
 ## Live Demo
 
-🌐 Website: https://nepalliverates.netlify.app
+🌐 Website: https://nepalliverates.netlify.app (Old)
+🌐 Website: https://nepal-live-rates.pages.dev (Updated)
 
 ⚙️ Backend API: https://nepal-live-rates.onrender.com
 
@@ -91,11 +92,11 @@ Nepal-Live-Rates/
 │   │   └── theme.css
 │   ├── js/
 │   │   ├── about.js
+│   │   ├── gold.js
 │   │   └── script.js
 │   ├── index.html
 │   ├── about.html
-│   ├── about.css
-│   └── about.js
+│   └── gold.html
 ├── README.md
 ├── LICENSE
 └── .gitignore
