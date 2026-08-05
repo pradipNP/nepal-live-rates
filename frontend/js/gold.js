@@ -1,4 +1,5 @@
 const GOLD_API_URL = "https://nepal-live-rates.onrender.com/api/gold";
+const GOLD_HISTORY_API = "https://nepal-live-rates.onrender.com/api/gold/history";
 
 let goldData = null;
 
@@ -132,6 +133,7 @@ function initializeGoldPage() {
 
 document.addEventListener("DOMContentLoaded", () => {
   initializeGoldPage();
+  loadGoldChart();
 
   const tolaBtn = document.getElementById("tolaBtn");
 
@@ -190,6 +192,69 @@ document.addEventListener("change", (e) => {
     updateGoldCalculator();
   }
 });
+
+let goldChart = null;
+
+async function loadGoldChart() {
+  try {
+    const response = await fetch(GOLD_HISTORY_API);
+
+    const data = await response.json();
+
+    if (!data.success) {
+      return;
+    }
+
+    const labels = data.history.map((item) => item.label);
+
+    const prices = data.history.map((item) => item.tola);
+
+    const ctx = document
+      .getElementById("goldChart")
+      .getContext("2d");
+
+    if (goldChart) {
+      goldChart.destroy();
+    }
+
+    goldChart = new Chart(ctx, {
+      type: "line",
+
+      data: {
+        labels,
+
+        datasets: [
+          {
+            label: "Gold Price (Per Tola)",
+            data: prices,
+            tension: 0.35,
+            fill: true,
+            borderWidth: 3,
+          },
+        ],
+      },
+
+      options: {
+        responsive: true,
+
+        plugins: {
+          legend: {
+            display: true,
+          },
+        },
+
+        scales: {
+          y: {
+            beginAtZero: false,
+          },
+        },
+      },
+    });
+  } catch (error) {
+    console.error("Gold Chart Error:", error);
+  }
+}
+
 //  GLOBAL THEME MANAGEMENT
 const themeToggle = document.getElementById("themeToggle");
 // Apply theme variables
