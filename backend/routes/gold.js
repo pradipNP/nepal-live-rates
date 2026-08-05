@@ -79,4 +79,33 @@ router.get("/", async (req, res) => {
     }
 });
 
+router.get("/history", async (req, res) => {
+  try {
+    const response = await axios.get(
+      "https://api.fenegosida.org/api/website/v1/Dashboard/WeeklyChartRate?weekmonthyear=7",
+      {
+        timeout: 10000,
+      }
+    );
+
+    const history = response.data.goldData.map((item) => ({
+      label: `${item.date} ${item.month}`,
+      tola: item.tola,
+      gram10: item.gm,
+    }));
+
+    res.json({
+      success: true,
+      history,
+    });
+  } catch (error) {
+    console.error("Gold History Error:", error.message);
+
+    res.status(500).json({
+      success: false,
+      message: "Unable to fetch gold history",
+    });
+  }
+});
+
 module.exports = router;
