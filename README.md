@@ -25,14 +25,14 @@ Current Version:
 * Live Forex Exchange Rates (Completed)
 * Currency Converter (Completed)
 * Historical Forex Charts (Completed)
+* Gold Rates
 
 In Progress:
 
-* Gold Rates
+* Silver Rates
 
 Planned:
 
-* Silver Rates
 * Fuel Prices
 * Cryptocurrency Market
 * Nepal Stock Market (NEPSE)
@@ -51,6 +51,7 @@ Planned:
 * Modern glassmorphism UI design
 * Error handling and API validation
 * Gold API implemented
+* Gold Chart, Converter, Unit Converter implemented
 
 ## Tech Stack
 
@@ -168,7 +169,6 @@ GET /api/forex
 
 ### Planned Features
 
-* Gold Rates (few)
 * Silver Rates
 * Fuel Prices
 * Cryptocurrency Market
