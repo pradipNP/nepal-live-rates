@@ -1455,7 +1455,7 @@ footer {
 
 #forexChart1 {
   margin-bottom: 60px;
-  height: 400px;
+  height: 100%;
   display: flex;
 }
 

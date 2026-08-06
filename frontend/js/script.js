@@ -578,7 +578,6 @@ if (forexCard) {
   });
 }
 
-
 // GOLD CLICK
 const goldCard = document.querySelector('[data-category="gold"]');
 
@@ -670,6 +669,16 @@ async function loadHistoryChart(currencyCode) {
             label: `${currencyCode} Buy Rate`,
             data: values,
             tension: 0.3,
+            fill: true,
+
+            borderWidth: 3,
+            pointRadius: 6,
+
+            pointHoverRadius: 8,
+
+            pointBackgroundColor: "#1100ff",
+
+            pointBorderWidth: 0,
           },
         ],
       },
@@ -689,5 +698,4 @@ document
   // Forex Home Page
   await getForexRates();
   loadHistoryChart("USD");
-
 })();
