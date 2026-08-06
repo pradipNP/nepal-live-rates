@@ -295,6 +295,59 @@
         </div>
         </section>
 
+        <!-- Gold Unit Converter Section -->
+        <section class="gold-converter-section">
+            <div class="section-heading">
+                <div>
+                    <span class="section-label">GOLD UNIT CONVERTER</span>
+                    <h2>Convert Gold Units</h2>
+                </div>
+            </div>
+            <div class="gold-converter-card">
+                <h3>Gold Unit Converter</h3>
+
+                <div class="converter-grid">
+                    <input
+                        type="number"
+                        id="converterValue"
+                        placeholder="Enter value"
+                        min="0"
+                    />
+
+                    <select id="converterFrom">
+                        <option value="tola">Tola</option>
+                        <option value="gram">Gram</option>
+                        <option value="aana">Aana</option>
+                        <option value="lal">Lal</option>
+                    </select>
+
+                    <span class="converter-arrow">⇄</span>
+
+                    <select id="converterTo">
+                        <option value="gram">Gram</option>
+                        <option value="tola">Tola</option>
+                        <option value="aana">Aana</option>
+                        <option value="lal">Lal</option>
+                    </select>
+                </div>
+
+                <div class="converter-result" id="converterResult">
+                    Enter a value
+                </div>
+
+                <div class="conversion-reference">
+                    <h4>Quick Reference</h4>
+                    <ul>
+                    <li>1 Tola = 11.6638 Gram</li>
+                    <li>1 Aana = 0.7290 Gram</li>
+                    <li>1 Lal = 0.1166 Gram</li>
+                    <li>16 Aana = 1 Tola</li>
+                    <li>100 Lal = 1 Tola</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
         <!-- Gold History Chart -->
         <section class="chart-section">
             <div class="section-heading">

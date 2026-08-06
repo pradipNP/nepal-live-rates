@@ -135,7 +135,19 @@ function initializeGoldPage() {
 document.addEventListener("DOMContentLoaded", () => {
   initializeGoldPage();
   loadGoldChart();
+  updateUnitConverter();
 
+  document
+    .getElementById("converterValue")
+    ?.addEventListener("input", updateUnitConverter);
+
+  document
+    .getElementById("converterFrom")
+    ?.addEventListener("change", updateUnitConverter);
+
+  document
+    .getElementById("converterTo")
+    ?.addEventListener("change", updateUnitConverter);
   const goldChartUnit = document.getElementById("goldChartUnit");
 
   if (goldChartUnit) {
@@ -186,7 +198,7 @@ function updateGoldCalculator() {
   const total = quantity * pricePerUnit;
 
   document.getElementById("goldCalculatorResult").textContent =
-    `NPR ${total.toLocaleString(undefined, {
+    `Nrs. ${total.toLocaleString(undefined, {
       maximumFractionDigits: 2,
     })}`;
 }
@@ -229,9 +241,7 @@ function renderGoldChart(unit) {
   const labels = goldChartData.map((item) => item.label);
 
   const prices = goldChartData.map((item) =>
-  unit === "tola"
-    ? item.tola
-    : item.gram10
+    unit === "tola" ? item.tola : item.gram10,
   );
 
   const ctx = document.getElementById("goldChart").getContext("2d");
@@ -249,9 +259,7 @@ function renderGoldChart(unit) {
       datasets: [
         {
           label:
-            unit === "tola"
-              ? "Gold Price (1 Tola)"
-              : "Gold Price (10 Gram)",
+            unit === "tola" ? "Gold Price (1 Tola)" : "Gold Price (10 Gram)",
 
           data: prices,
           borderColor: "#d97706",
@@ -267,7 +275,7 @@ function renderGoldChart(unit) {
 
           pointBackgroundColor: "#FFD700",
 
-          pointBorderWidth: 0
+          pointBorderWidth: 0,
         },
       ],
     },
@@ -434,4 +442,30 @@ if (forexCard) {
   forexCard.addEventListener("click", () => {
     window.location.href = "index.html";
   });
+}
+
+const CONVERSION_TO_GRAMS = {
+  tola: 11.6638,
+  gram: 1,
+  aana: 0.7289875, // 11.6638 / 16
+  lal: 0.116638,
+};
+
+function updateUnitConverter() {
+  const value =
+    parseFloat(document.getElementById("converterValue").value) || 0;
+
+  const from = document.getElementById("converterFrom").value;
+
+  const to = document.getElementById("converterTo").value;
+
+  // convert to grams first
+  const grams = value * CONVERSION_TO_GRAMS[from];
+
+  // grams to target unit
+  const result = grams / CONVERSION_TO_GRAMS[to];
+
+  document.getElementById("converterResult").innerHTML = `
+    <span class="converter-number">${result.toFixed(4)}</span>
+    <span class="converter-unit">${to.charAt(0).toUpperCase() + to.slice(1)}</span>`;
 }

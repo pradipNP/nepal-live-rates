@@ -643,7 +643,7 @@ document.addEventListener("change", function (e) {
 });
 
 // CHART
-let forexChart = null;
+let forexChart1 = null;
 async function loadHistoryChart(currencyCode) {
   try {
     const response = await fetch(`${API_URL}/history/${currencyCode}`);
@@ -655,13 +655,13 @@ async function loadHistoryChart(currencyCode) {
 
     const labels = data.history.map((item) => item.date);
     const values = data.history.map((item) => item.buy / item.unit);
-    const ctx = document.getElementById("forexChart").getContext("2d");
+    const ctx = document.getElementById("forexChart1").getContext("2d");
 
-    if (forexChart) {
-      forexChart.destroy();
+    if (forexChart1) {
+      forexChart1.destroy();
     }
 
-    forexChart = new Chart(ctx, {
+    forexChart1 = new Chart(ctx, {
       type: "line",
       data: {
         labels,
