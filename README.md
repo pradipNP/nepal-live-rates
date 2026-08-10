@@ -1,57 +1,97 @@
 # Nepal Live Rates
 
-Nepal Live Rates is a modern web application that provides live foreign exchange rates using official data from Nepal Rastra Bank (NRB). The project is designed to deliver accurate, up-to-date currency information as well as more data through a clean, responsive, and user-friendly interface.
+Nepal Live Rates is a modern web application that provides real-time financial and commodity market information for Nepal. The platform currently offers live Foreign Exchange (Forex), Gold Rates, and Silver Rates through a responsive and user-friendly interface powered by a custom Node.js backend.
 
 ## Live Demo
 
-🌐 Website: https://nepalliverates.netlify.app (Old)
-🌐 Website: https://nepal-live-rates.pages.dev (Updated)
+🌐 Frontend (Latest): https://nepal-live-rates.pages.dev
+
+🌐 Legacy Frontend: https://nepalliverates.netlify.app
 
 ⚙️ Backend API: https://nepal-live-rates.onrender.com
 
-### API Endpoint
+---
+
+## API Endpoints
 
 ```http
-GET https://nepal-live-rates.onrender.com/api/forex
-GET https://nepal-live-rates.onrender.com/api/gold
+GET /api/forex
+GET /api/gold
+GET /api/gold/history
+GET /api/silver
+GET /api/silver/history
 ```
+
+---
 
 ## Project Status
 
-🚧 Active Development
+### Current Version
 
-Current Version:
+✅ Live Forex Exchange Rates
+✅ Currency Converter
+✅ Historical Forex Charts
+✅ Gold Rates Module
+✅ Gold Calculator
+✅ Gold Unit Converter
+✅ Gold Price Trend Chart
+✅ Silver Rates Module
+✅ Silver Calculator
+✅ Silver Unit Converter
+✅ Silver Price Trend Chart
+✅ Dark / Light Theme Support
+✅ Responsive UI
 
-* Live Forex Exchange Rates (Completed)
-* Currency Converter (Completed)
-* Historical Forex Charts (Completed)
-* Gold Rates
-
-In Progress:
-
-* Silver Rates
-
-Planned:
+### Planned Features
 
 * Fuel Prices
 * Cryptocurrency Market
-* Nepal Stock Market (NEPSE)
+* Nepal Stock Exchange (NEPSE)
 * Market Insights Dashboard
+* Price Alerts & Notifications
+* Economic Indicators
+
+---
 
 ## Features
 
-* Live Forex Rates from Nepal Rastra Bank (NRB)
-* Money conversion implemented
-* Chart for comparison
-* Real-time data retrieval through a custom Node.js backend API
-* Responsive design for desktop, tablet, and mobile devices
-* Dark and Light theme support
+### Forex Module
+
+* Live exchange rates from Nepal Rastra Bank (NRB)
 * Currency search functionality
-* Auto-refresh support
-* Modern glassmorphism UI design
-* Error handling and API validation
-* Gold API implemented
-* Gold Chart, Converter, Unit Converter implemented
+* Currency converter
+* Historical exchange rate chart
+* Auto refresh support
+
+### Gold Module
+
+* Live Gold Rates
+* Tola and Gram pricing
+* Gold calculator
+* Gold unit converter
+* 7-day historical gold chart
+* Price movement tracking
+
+### Silver Module
+
+* Live Silver Rates
+* Tola and Gram pricing
+* Silver calculator
+* Silver unit converter
+* 7-day historical silver chart
+* Price movement tracking
+
+### General Features
+
+* Responsive design
+* Mobile-friendly interface
+* Dark and Light themes
+* Glassmorphism UI
+* API error handling
+* Auto-refresh functionality
+* Optimized performance
+
+---
 
 ## Tech Stack
 
@@ -59,7 +99,8 @@ Planned:
 
 * HTML5
 * CSS3
-* JavaScript (Vanilla JS)
+* Vanilla JavaScript
+* Chart.js
 
 ### Backend
 
@@ -67,9 +108,12 @@ Planned:
 * Express.js
 * Axios
 
-### Data Source
+### Data Sources
 
-* Nepal Rastra Bank (NRB) Forex API
+* Nepal Rastra Bank (NRB)
+* Federation of Nepal Gold and Silver Dealers' Associations (FENEGOSIDA)
+
+---
 
 ## Project Structure
 
@@ -83,6 +127,7 @@ Nepal-Live-Rates/
 │   └── routes/
 │       ├── forex.js
 │       ├── gold.js
+│       └── silver.js
 │
 ├── frontend/
 │   ├── assets/
@@ -90,18 +135,26 @@ Nepal-Live-Rates/
 │   │   ├── about.css
 │   │   ├── responsive.css
 │   │   ├── style.css
-│   │   └── theme.css
+│   │   ├── theme.css
+│   │   └── silver.css
+│   │
 │   ├── js/
 │   │   ├── about.js
+│   │   ├── script.js
 │   │   ├── gold.js
-│   │   └── script.js
+│   │   └── silver.js
+│   │
 │   ├── index.html
 │   ├── about.html
-│   └── gold.html
+│   ├── gold.html
+│   └── silver.html
+│
 ├── README.md
 ├── LICENSE
 └── .gitignore
 ```
+
+---
 
 ## Installation
 
@@ -125,77 +178,91 @@ npm install
 npm start
 ```
 
-Backend will run on:
-
-```text
-https://nepal-live-rates.onrender.com/api/forex
-```
-
-### Open Frontend
-
-Open the frontend folder and launch:
-
-```text
-index.html
-```
-
-in your browser.
-
-## API Endpoint
-
-### Get Latest Forex Rates
+Backend will run locally on:
 
 ```http
-GET /api/forex
+http://localhost:5000
 ```
 
-### Sample Response
+Example:
+
+```http
+http://localhost:5000/api/forex
+```
+
+---
+
+## Sample API Response
+
+### Gold API
 
 ```json
 {
   "success": true,
-  "source": "Nepal Rastra Bank",
-  "rateDate": "2026-07-30",
-  "rates": []
+  "source": "FENEGOSIDA",
+  "lastUpdated": "2026-08-10",
+  "gold": {
+    "tola": {
+      "today": 210000,
+      "yesterday": 208500
+    },
+    "gram10": {
+      "today": 180050,
+      "yesterday": 178700
+    },
+    "change": 1500,
+    "percentChange": 0.72
+  }
 }
 ```
+
+---
 
 ## Current Modules
 
 ### Available
 
 * Foreign Exchange Rates (Forex)
-* Gold Live Rates 
-
-### Planned Features
-
+* Gold Rates
 * Silver Rates
+* Currency Converter
+* Historical Charts
+* Unit Converters
+
+### Upcoming
+
 * Fuel Prices
 * Cryptocurrency Market
-* Nepal Stock Market
-* Historical Charts
-* Currency Converter
+* Nepal Stock Market (NEPSE)
+* Notifications
 * Market Insights Dashboard
-* Notification System
+
+---
 
 ## Security
 
-* No API keys exposed on the frontend
-* Server-side API communication
+* No sensitive API credentials exposed
+* Backend-controlled data fetching
 * Request timeout protection
 * Structured error handling
 * HTTPS-compatible architecture
+
+---
 
 ## License
 
 This project is licensed under the MIT License.
 
+---
+
 ## Author
 
 **Pradip Kumar Prajapati**
 
-Nepal Live Rates Project
+Developer of Nepal Live Rates
+
+GitHub: https://github.com/pradipNP
 
 ---
 
-If you find this project useful, consider giving it a star on GitHub.
+⭐ If you find this project useful, consider starring the repository and following future updates.
