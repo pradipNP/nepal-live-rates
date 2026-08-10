@@ -425,7 +425,7 @@ if (refreshButton) {
     refreshButton.classList.add("refreshing");
 
     try {
-      await loadGoldRates();
+      await loadSilverRates();
     } finally {
       refreshButton.disabled = false;
       refreshButton.innerHTML =
@@ -436,11 +436,20 @@ if (refreshButton) {
   });
 }
 
+// card switching
 const forexCard = document.querySelector('[data-category="forex"]');
 
 if (forexCard) {
   forexCard.addEventListener("click", () => {
     window.location.href = "index.html";
+  });
+}
+
+const silverCard = document.querySelector('[data-category="silver"]');
+
+if (silverCard) {
+  silverCard.addEventListener("click", () => {
+    window.location.href = "silver.html";
   });
 }
 
@@ -465,7 +474,7 @@ function updateUnitConverter() {
   // grams to target unit
   const result = grams / CONVERSION_TO_GRAMS[to];
 
-  document.getElementById("converterResult").innerHTML = `
-    <span class="converter-number">${result.toFixed(4)}</span>
-    <span class="converter-unit">${to.charAt(0).toUpperCase() + to.slice(1)}</span>`;
+  document.getElementById("goldconverterResult").innerHTML = `
+    <span class="gold-converter-number">${result.toFixed(4)}</span>
+    <span class="gold-converter-unit">${to.charAt(0).toUpperCase() + to.slice(1)}</span>`;
 }
