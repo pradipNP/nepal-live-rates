@@ -596,8 +596,6 @@ if (silverCard) {
   });
 }
 
-document.getElementById("year").textContent = new Date().getFullYear();
-
 // Currency Converter
 const convertAmount = document.getElementById("convertAmount");
 const convertCurrency = document.getElementById("convertCurrency");
