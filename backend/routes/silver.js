@@ -71,5 +71,33 @@ router.get("/", async (req, res) => {
     });
   }
 });
+router.get("/history", async (req, res) => {
+  try {
+    const response = await axios.get(
+      "https://api.fenegosida.org/api/website/v1/Dashboard/WeeklyChartRate?weekmonthyear=7",
+      {
+        timeout: 10000,
+      }
+    );
+    console.log(response.data);
+    const history = response.data.silverData.map((item) => ({
+      label: `${item.date} ${item.month}`,
+      tola: item.tola,
+      gram10: item.gm,
+    }));
+
+    res.json({
+      success: true,
+      history,
+    });
+  } catch (error) {
+    console.error("Silver History Error:", error.message);
+
+    res.status(500).json({
+      success: false,
+      message: "Unable to fetch silver history",
+    });
+  }
+});
 
 module.exports = router;
