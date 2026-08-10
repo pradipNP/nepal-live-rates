@@ -4,6 +4,7 @@ const cors = require("cors");
 
 const forexRoutes = require("./routes/forex");
 const goldRoutes = require("./routes/gold");
+const silverRoutes = require("./routes/silver");
 
 const app = express();
 
@@ -12,6 +13,7 @@ const PORT = process.env.PORT || 5001;
 app.use(cors());
 app.use("/api/forex", forexRoutes);
 app.use("/api/gold", goldRoutes);
+app.use("/api/silver", silverRoutes);
 
 // Home route
 app.get("/", (req, res) => {
