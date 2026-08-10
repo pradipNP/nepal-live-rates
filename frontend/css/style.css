@@ -1451,6 +1451,7 @@ footer {
 .converter-result strong {
   font-size: 2rem;
   font-weight: 700;
+  color: var(--accent);
 }
 
 #forexChart1 {
@@ -1638,13 +1639,21 @@ footer {
 }
 
 .calculator-result {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  padding: 1.5rem;
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  text-align: center;
+}
+
+.calculator-result span {
+  display: block;
+  color: var(--muted);
+  margin-bottom: 0.5rem;
 }
 
 .calculator-result strong {
-  font-size: 28px;
+  font-size: 2rem;
+  font-weight: 700;
   color: #d97706;
 }
 
@@ -1688,7 +1697,7 @@ footer {
   text-align: center;
 }
 
-.converter-result {
+.gold-converter-result {
   margin-top: 20px;
   font-size: 24px;
   font-weight: 700;
@@ -1699,14 +1708,14 @@ footer {
   gap: 6px;
 }
 
-.converter-result .converter-number {
+.gold-converter-result .gold-converter-number {
   color: #d97706;
   font-size: 2rem;
   font-weight: 700;
   display: inline;
 }
 
-.converter-result .converter-unit {
+.gold-converter-result .gold-converter-unit {
   color: #d97706;
   margin-left: 3px;
   font-size: 1.2rem;

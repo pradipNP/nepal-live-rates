@@ -587,6 +587,15 @@ if (goldCard) {
   });
 }
 
+// SILVER CLICK
+const silverCard = document.querySelector('[data-category="silver"]');
+
+if (silverCard) {
+  silverCard.addEventListener("click", () => {
+    window.location.href = "silver.html";
+  });
+}
+
 document.getElementById("year").textContent = new Date().getFullYear();
 
 // Currency Converter
