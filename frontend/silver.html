@@ -1,0 +1,405 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Silver Rates - Nepal Live Rates</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/responsive.css" />
+    <link rel="stylesheet" href="css/theme.css" />
+    <link rel="stylesheet" href="css/silver.css" />
+    <link rel="icon" href="assets/flags/logo1.png" />
+    <meta name="description" content="Live Silver rates Nepal." />
+  </head>
+
+  <body>
+    <!-- Animated background -->
+    <div class="background-glow glow-one"></div>
+    <div class="background-glow glow-two"></div>
+
+    <!-- Navigation -->
+    <header class="navbar">
+      <!-- LEFT: BRAND -->
+      <div class="brand">
+        <div class="brand-icon">
+          <img src="assets/flags/logo1.png" alt="Nepal Flag" />
+        </div>
+        <div class="brand-text">
+          <h2>Nepal Live <span>Rates</span></h2>
+          <p>Real-time Nepal Silver Rates</p>
+        </div>
+      </div>
+
+      <!-- RIGHT: NAVIGATION -->
+      <nav class="nav-links">
+        <a href="index.html" class="nav-link active"
+          ><span class="nav-icon">⌂</span>Home</a
+        >
+        <a href="about.html" class="nav-link"
+          ><span class="nav-icon">ⓘ</span>About</a
+        >
+
+        <!-- THEME SWITCH -->
+        <label class="theme-switch" aria-label="Toggle theme">
+          <input type="checkbox" id="themeToggle" />
+          <span class="theme-slider">
+            <span class="theme-icon moon">☾</span>
+            <span class="theme-icon sun">☀</span>
+            <span class="theme-knob"></span>
+          </span>
+        </label>
+
+        <!-- REFRESH BUTTON -->
+        <button id="refreshButton" class="refresh-button">
+          <span class="refresh-icon">↻</span>Refresh Rates
+        </button>
+      </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container">
+      <!-- Hero Section -->
+      <section class="hero">
+        <!-- LEFT SIDE -->
+        <div class="hero-content">
+          <div class="hero-line"></div>
+
+          <h1>
+            Nepal
+            <span class="gradient-text"> Silver Rates </span>
+          </h1>
+          <p>Live silver prices published from Nepal's silver market source.</p>
+        </div>
+
+        <!-- RIGHT SIDE -->
+        <div class="hero-visual">
+          <div class="currency-orbit orbit-one">🥈</div>
+          <div class="currency-orbit orbit-two">💍</div>
+          <div class="currency-orbit orbit-three">♛</div>
+          <div class="currency-orbit orbit-four">⚔️</div>
+          <div class="currency-orbit orbit-five">🩶</div>
+          <div class="currency-orbit orbit-six">🔩</div>
+          <div class="currency-orbit orbit-seven">⚙️</div>
+
+          <div class="currency-center">🪩</div>
+
+          <div class="currency-ring ring-one"></div>
+          <div class="currency-ring ring-two"></div>
+        </div>
+      </section>
+
+      <!-- Status Bar -->
+      <section class="status-bar">
+        <!-- RATES DATE -->
+        <div class="status-item">
+          <div class="status-icon calendar-icon">📅</div>
+
+          <div class="status-content">
+            <span> Rates Date </span>
+            <strong id="rateDate"> Loading... </strong>
+          </div>
+        </div>
+
+        <div class="status-divider"></div>
+        <!-- LAST UPDATED -->
+        <div class="status-item">
+          <div class="status-icon clock-icon">🕐</div>
+          <div class="status-content">
+            <span> Last Updated </span>
+            <strong id="lastUpdated"> Loading... </strong>
+          </div>
+        </div>
+
+        <div class="status-divider"></div>
+        <!-- SOURCE -->
+        <div class="status-item">
+          <div class="status-icon bank-icon">🏦</div>
+          <div class="status-content">
+            <span> Source </span>
+            <strong class="source-name"> FENEGOSIDA </strong>
+          </div>
+        </div>
+
+        <div class="status-divider"></div>
+        <!-- LIVE -->
+        <div class="live-status">
+          <div class="live-badge"><span class="live-dot"></span>Live</div>
+          <small> Auto-updating </small>
+        </div>
+      </section>
+
+      <!-- Market Categories -->
+      <section class="market-section">
+        <div class="section-heading">
+          <div>
+            <span class="section-label">MARKET DATA</span>
+            <h2>Explore Rates</h2>
+          </div>
+
+          <span class="section-description">Select a category</span>
+        </div>
+
+        <div class="market-grid">
+          <!-- Forex -->
+          <div class="market-card active-card" data-category="forex">
+            <div class="market-icon">💱</div>
+            <div class="market-info">
+              <h3>Foreign Exchange</h3>
+              <p>Live currency rates</p>
+            </div>
+
+            <div class="market-status live-status">
+              <span></span>
+              LIVE
+            </div>
+          </div>
+
+          <!-- Gold -->
+          <div class="market-card active-card" data-category="gold">
+            <div class="market-icon">🥇</div>
+            <div class="market-info">
+              <h3>Gold</h3>
+              <p>Gold market rates</p>
+            </div>
+
+            <div class="market-status live-status">
+              <span></span>
+              LIVE
+            </div>
+          </div>
+
+          <!-- Silver -->
+          <div class="market-card active-card active" data-category="silver">
+            <div class="market-icon">🥈</div>
+            <div class="market-info">
+              <h3>Silver</h3>
+              <p>Silver market rates</p>
+            </div>
+
+            <div class="market-status live-status">
+              <span></span>
+              LIVE
+            </div>
+          </div>
+
+          <!-- Petrol -->
+          <div class="market-card coming-card" data-category="petrol">
+            <div class="market-icon">⛽</div>
+            <div class="market-info">
+              <h3>Petrol</h3>
+              <p>Fuel price information</p>
+            </div>
+
+            <div class="market-status">SOON</div>
+          </div>
+
+          <!-- Diesel -->
+          <div class="market-card coming-card" data-category="diesel">
+            <div class="market-icon">🛢️</div>
+            <div class="market-info">
+              <h3>Diesel</h3>
+              <p>Diesel price information</p>
+            </div>
+
+            <div class="market-status">SOON</div>
+          </div>
+
+          <!-- Oil -->
+          <div class="market-card coming-card" data-category="oil">
+            <div class="market-icon">📈</div>
+            <div class="market-info">
+              <h3>Crude Oil</h3>
+              <p>Global oil market</p>
+            </div>
+
+            <div class="market-status">SOON</div>
+          </div>
+        </div>
+      </section>
+
+        <!-- Silver Rates Section -->
+        <div class="silver-unit-toggle">
+        <button id="silverTolaBtn" class="silver-toggle active">Tola</button>
+        <button id="silverGramBtn" class="silver-toggle">Gram</button>
+        </div>
+
+        <div class="silver-rates-grid">
+        <div class="silver-rate-card">
+            <div class="silver-card-header">
+            <div class="silver-icon">🥈</div>
+
+            <div id="silverMovement" class="silver-movement">
+                ▲ 0.00%
+            </div>
+            </div>
+
+            <h3 id="silverTitle">Pure Silver</h3>
+
+            <div id="silverUnitLabel" class="silver-unit-label">
+            Per 1 Tola
+            </div>
+
+            <div class="silver-price-row">
+            <span class="silver-currency">Nrs.</span>
+
+            <span id="silverPrice" class="silver-price">
+                Loading...
+            </span>
+
+            <span class="silver-slash">/-</span>
+            </div>
+
+            <div id="silverYesterday" class="silver-yesterday">
+            Yesterday: Loading...
+            </div>
+
+            <div class="silver-updated">
+            <span>Last updated:</span>
+
+            <strong id="silverUpdated">
+                Loading...
+            </strong>
+            </div>
+
+            <div class="silver-bottom-line"></div>
+        </div>
+        </div>
+
+        <!-- Silver Calculator -->
+        <section class="silver-calculator-section">
+        <div class="section-heading">
+            <div>
+            <span class="section-label">
+                SILVER CALCULATOR
+            </span>
+
+            <h2>Calculate Silver Value</h2>
+            </div>
+        </div>
+
+        <div class="silver-calculator-card">
+            <div class="calculator-row">
+
+            <div class="calculator-field">
+                <label>Quantity</label>
+
+                <input
+                type="number"
+                id="silverQuantity"
+                value="1"
+                min="0"
+                step="0.01"
+                />
+            </div>
+
+            <div class="calculator-field">
+                <label>Unit</label>
+
+                <select id="silverCalculatorUnit">
+                <option value="tola">Tola</option>
+                <option value="gram">Gram</option>
+                <option value="lal">Lal</option>
+                </select>
+            </div>
+
+            <div class="calculator-result">
+                <span>Total Value</span>
+
+                <strong id="silverCalculatorResult">
+                NPR 0
+                </strong>
+            </div>
+
+            </div>
+        </div>
+    </section>
+
+        <!-- Silver Converter Section -->
+        <section class="silver-converter-section">
+            <div class="section-heading">
+                <div>
+                    <span class="section-label">SILVER UNIT CONVERTER</span>
+                    <h2>Convert Silver Units</h2>
+                </div>
+            </div>
+            <div class="silver-converter-card">
+                <h3>Silver Unit Converter</h3>
+
+                <div class="silver-converter-grid">
+                    <input
+                        type="number"
+                        id="silverConverterValue"
+                        placeholder="Enter value"
+                        min="0"
+                    />
+
+                    <select id="silverConverterFrom">
+                        <option value="tola">Tola</option>
+                        <option value="gram">Gram</option>
+                        <option value="aana">Aana</option>
+                        <option value="lal">Lal</option>
+                    </select>
+
+                    <span class="silver-converter-arrow">⇄</span>
+
+                    <select id="silverConverterTo">
+                        <option value="gram">Gram</option>
+                        <option value="tola">Tola</option>
+                        <option value="aana">Aana</option>
+                        <option value="lal">Lal</option>
+                    </select>
+                </div>
+
+                <div class="silver-converter-result" id="silverConverterResult">
+                    Enter a value
+                </div>
+
+                <div class="conversion-reference">
+                    <h4>Quick Reference</h4>
+                    <ul>
+                    <li>1 Tola = 11.6638 Gram</li>
+                    <li>1 Aana = 0.7290 Gram</li>
+                    <li>1 Lal = 0.1166 Gram</li>
+                    <li>16 Aana = 1 Tola</li>
+                    <li>100 Lal = 1 Tola</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Silver History Chart -->
+        <section class="silver-chart-section">
+            <div class="section-heading">
+                <div>
+                    <span class="section-label">SILVER TREND</span>
+                    <h2>Last 7 Days Silver Price</h2>
+                </div>
+                <div class="chart-controls">
+                    <select id="silverChartUnit">
+                        <option value="tola">1 Tola</option>
+                        <option value="gram">10 Gram</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="silver-chart-card">
+                <canvas id="silverChart"></canvas>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p class="copyright">
+           © <img src="assets/flags/np.svg" alt="Nepal-Flag" /><span id="year"></span>Nepal Live Rates
+        </p>
+
+        <p class="footer-note">
+            Exchange rates are for informational purposes only and may change without notice.
+        </p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/nepali-date-converter/dist/nepali-date-converter.umd.js"></script>
+    <script src="js/silver.js"></script>
+  </body>
+</html>
