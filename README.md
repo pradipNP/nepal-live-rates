@@ -29,17 +29,29 @@ GET /api/silver/history
 ### Current Version
 
 ✅ Live Forex Exchange Rates
+
 ✅ Currency Converter
+
 ✅ Historical Forex Charts
+
 ✅ Gold Rates Module
+
 ✅ Gold Calculator
+
 ✅ Gold Unit Converter
+
 ✅ Gold Price Trend Chart
+
 ✅ Silver Rates Module
+
 ✅ Silver Calculator
+
 ✅ Silver Unit Converter
+
 ✅ Silver Price Trend Chart
+
 ✅ Dark / Light Theme Support
+
 ✅ Responsive UI
 
 ### Planned Features
