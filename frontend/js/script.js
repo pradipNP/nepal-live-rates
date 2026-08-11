@@ -569,33 +569,6 @@ modal.addEventListener("click", function (event) {
   }
 });
 
-// FOREX CLICK
-const forexCard = document.querySelector('[data-category="forex"]');
-
-if (forexCard) {
-  forexCard.addEventListener("click", function () {
-    showMarket("forex");
-  });
-}
-
-// GOLD CLICK
-const goldCard = document.querySelector('[data-category="gold"]');
-
-if (goldCard) {
-  goldCard.addEventListener("click", () => {
-    window.location.href = "gold.html";
-  });
-}
-
-// SILVER CLICK
-const silverCard = document.querySelector('[data-category="silver"]');
-
-if (silverCard) {
-  silverCard.addEventListener("click", () => {
-    window.location.href = "silver.html";
-  });
-}
-
 // Currency Converter
 const convertAmount = document.getElementById("convertAmount");
 const convertCurrency = document.getElementById("convertCurrency");
@@ -699,6 +672,39 @@ document
   .addEventListener("change", function () {
     loadHistoryChart(this.value);
   });
+
+const forexCard = document.querySelector('[data-category="forex"]');
+
+if (forexCard) {
+  forexCard.addEventListener("click", () => {
+    window.location.href = "index.html";
+  });
+}
+
+const goldCard = document.querySelector('[data-category="gold"]');
+
+if (goldCard) {
+  goldCard.addEventListener("click", () => {
+    window.location.href = "gold.html";
+  });
+}
+
+const silverCard = document.querySelector('[data-category="silver"]');
+
+if (silverCard) {
+  silverCard.addEventListener("click", () => {
+    window.location.href = "silver.html";
+  });
+}
+
+const petrolCard = document.querySelector('[data-category="petrol"]');
+
+if (petrolCard) {
+  petrolCard.addEventListener("click", () => {
+    window.location.href = "petrol.html";
+  });
+}
+
 
 // START APPLICATION
 (async () => {
