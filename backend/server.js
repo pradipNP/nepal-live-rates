@@ -6,6 +6,7 @@ const forexRoutes = require("./routes/forex");
 const goldRoutes = require("./routes/gold");
 const silverRoutes = require("./routes/silver");
 const petrolRoutes = require("./routes/petrol");
+const dieselRoutes = require("./routes/diesel");
 
 const app = express();
 
@@ -16,6 +17,7 @@ app.use("/api/forex", forexRoutes);
 app.use("/api/gold", goldRoutes);
 app.use("/api/silver", silverRoutes);
 app.use("/api/petrol", petrolRoutes);
+app.use("/api/diesel", dieselRoutes);
 
 // Home route
 app.get("/", (req, res) => {
