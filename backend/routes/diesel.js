@@ -1,7 +1,10 @@
 const express = require("express");
 const axios = require("axios");
+const cheerio = require("cheerio");
 
 const router = express.Router();
+
+const NOC_DIESEL_URL = "https://noc.org.np/diesel";
 
 const CATEGORY_1_AREAS = [
   "Charali",
@@ -31,64 +34,122 @@ const DROPDOWN_AREAS = [
   "Surkhet",
 ];
 
-const priceHistory = [];
-let previousDaySnapshot = null;
+const REGION_TABLES = [
+  {
+    id: "category1",
+    headingIncludes: ["Birgunj", "Dhangadi"],
+    areas: CATEGORY_1_AREAS,
+  },
+  {
+    id: "category2",
+    headingIncludes: ["Surkhet", "Dang"],
+    areas: CATEGORY_2_AREAS,
+  },
+  {
+    id: "category3",
+    headingIncludes: ["Kathmandu", "Pokhara", "Dipayal"],
+    areas: CATEGORY_3_AREAS,
+  },
+];
 
-function getTodayKey() {
-  return new Date().toISOString().split("T")[0];
+let cachedDieselPage = null;
+let cacheTimestamp = 0;
+const CACHE_TTL_MS = 5 * 60 * 1000;
+
+function normalizeHeading(text) {
+  return text.replace(/\s+/g, " ").trim();
 }
 
-function buildDieselPrices(category1, category2, category3) {
+function parseTableRows(table) {
+  const rows = [];
+
+  table.find("tr").each((_, row) => {
+    const cells = cheerio.load(row)("td")
+      .map((__, cell) => cheerio.load(cell).text().trim())
+      .get();
+
+    if (cells.length < 2) {
+      return;
+    }
+
+    const price = parseFloat(cells[0]);
+    const date = cells[1];
+
+    if (Number.isNaN(price) || !date) {
+      return;
+    }
+
+    rows.push({ price, date });
+  });
+
+  return rows;
+}
+
+function parseNocDieselPage(html) {
+  const $ = cheerio.load(html);
+  const parsedTables = [];
+
+  $("h5").each((_, el) => {
+    const heading = normalizeHeading($(el).text());
+    const table = $(el).next("table");
+
+    if (!table.length) {
+      return;
+    }
+
+    const rows = parseTableRows(table);
+
+    if (!rows.length) {
+      return;
+    }
+
+    parsedTables.push({ heading, rows });
+  });
+
+  const regionData = {};
+
+  REGION_TABLES.forEach((region) => {
+    const matches = parsedTables.filter((table) =>
+      region.headingIncludes.every((part) => table.heading.includes(part)),
+    );
+
+    if (!matches.length) {
+      throw new Error(`Unable to find diesel table for ${region.id}`);
+    }
+
+    matches.sort((a, b) => new Date(b.rows[0].date) - new Date(a.rows[0].date));
+    regionData[region.id] = matches[0].rows;
+  });
+
+  return regionData;
+}
+
+function buildDieselPrices(regionData) {
   const diesel = {};
 
-  CATEGORY_1_AREAS.forEach((area) => {
-    diesel[area] = category1;
-  });
+  REGION_TABLES.forEach((region) => {
+    const currentPrice = regionData[region.id][0].price;
 
-  CATEGORY_2_AREAS.forEach((area) => {
-    diesel[area] = category2;
-  });
-
-  CATEGORY_3_AREAS.forEach((area) => {
-    diesel[area] = category3;
+    region.areas.forEach((area) => {
+      diesel[area] = currentPrice;
+    });
   });
 
   return diesel;
 }
 
-function parseNocDieselPrices(html) {
-  const matches = [...html.matchAll(/Diesel\(HSD\):NRs\s*([\d.]+)/gi)];
-
-  if (matches.length < 3) {
-    throw new Error("Unable to parse NOC diesel prices");
-  }
-
-  const category1 = parseFloat(matches[0][1]);
-  const category2 = parseFloat(matches[1][1]);
-  const category3 = parseFloat(matches[2][1]);
-
-  return buildDieselPrices(category1, category2, category3);
-}
-
-function getFilteredDiesel(diesel) {
-  const filtered = {};
-
-  DROPDOWN_AREAS.forEach((area) => {
-    filtered[area] = diesel[area];
-  });
-
-  return filtered;
-}
-
-function buildYesterdayPrices(currentDiesel) {
+function buildYesterdayPrices(regionData) {
   const yesterday = {};
 
-  DROPDOWN_AREAS.forEach((area) => {
-    if (previousDaySnapshot?.diesel?.[area] != null) {
-      yesterday[area] = previousDaySnapshot.diesel[area];
-    } else {
-      yesterday[area] = currentDiesel[area];
-    }
+  REGION_TABLES.forEach((region) => {
+    const previousPrice =
+      regionData[region.id][1]?.price ?? regionData[region.id][0].price;
+
+    region.areas.forEach((area) => {
+      if (DROPDOWN_AREAS.includes(area)) {
+        yesterday[area] = previousPrice;
+      }
+    });
   });
 
   return yesterday;
@@ -112,56 +173,83 @@ function buildPercentChange(currentDiesel, yesterdayDiesel) {
   return percentChange;
 }
 
-function recordDailySnapshot(diesel) {
-  const todayKey = getTodayKey();
-  const existingIndex = priceHistory.findIndex((entry) => entry.date === todayKey);
+function getFilteredDiesel(diesel) {
+  const filtered = {};
 
-  if (existingIndex >= 0) {
-    priceHistory[existingIndex] = {
-      date: todayKey,
-      diesel: { ...diesel },
-    };
-  } else {
-    if (
-      priceHistory.length > 0 &&
-      priceHistory[priceHistory.length - 1].date !== todayKey
-    ) {
-      previousDaySnapshot = priceHistory[priceHistory.length - 1];
-    }
+  DROPDOWN_AREAS.forEach((area) => {
+    filtered[area] = diesel[area];
+  });
 
-    priceHistory.push({
-      date: todayKey,
-      diesel: { ...diesel },
-    });
-
-    if (priceHistory.length > 14) {
-      priceHistory.shift();
-    }
-  }
+  return filtered;
 }
 
-async function fetchNocDieselData() {
-  const response = await axios.get("https://noc.org.np/", {
-    timeout: 15000,
+function getRegionIdForArea(area) {
+  if (CATEGORY_3_AREAS.includes(area)) {
+    return "category3";
+  }
+
+  if (CATEGORY_2_AREAS.includes(area)) {
+    return "category2";
+  }
+
+  return "category1";
+}
+
+function buildHistoryForArea(regionData, area) {
+  const regionId = getRegionIdForArea(area);
+  const rows = regionData[regionId].slice(0, 7).reverse();
+
+  return rows.map((row) => {
+    const date = new Date(`${row.date}T12:00:00`);
+
+    return {
+      label: date.toLocaleDateString("en-US", {
+        month: "short",
+        day: "numeric",
+      }),
+      price: row.price,
+      date: row.date,
+    };
+  });
+}
+
+async function fetchNocDieselPage() {
+  const now = Date.now();
+
+  if (cachedDieselPage && now - cacheTimestamp < CACHE_TTL_MS) {
+    return cachedDieselPage;
+  }
+
+  const response = await axios.get(NOC_DIESEL_URL, {
+    timeout: 20000,
     headers: {
       "User-Agent":
         "Mozilla/5.0 (compatible; NepalLiveRates/1.0; +https://nepal-live-rates.onrender.com)",
     },
   });
 
-  const diesel = parseNocDieselPrices(response.data);
-  const filteredDiesel = getFilteredDiesel(diesel);
+  const regionData = parseNocDieselPage(response.data);
 
-  recordDailySnapshot(filteredDiesel);
+  cachedDieselPage = regionData;
+  cacheTimestamp = now;
 
-  const yesterdayDiesel = buildYesterdayPrices(filteredDiesel);
-  const percentChange = buildPercentChange(filteredDiesel, yesterdayDiesel);
+  return regionData;
+}
+
+async function fetchNocDieselData() {
+  const regionData = await fetchNocDieselPage();
+  const diesel = getFilteredDiesel(buildDieselPrices(regionData));
+  const yesterday = buildYesterdayPrices(regionData);
+  const percentChange = buildPercentChange(diesel, yesterday);
+
+  const latestDate = regionData.category3[0].date;
 
   return {
-    diesel: filteredDiesel,
-    yesterday: yesterdayDiesel,
+    diesel,
+    yesterday,
     percentChange,
-    lastUpdated: new Date().toISOString(),
+    regionData,
+    lastUpdated: `${latestDate}T12:00:00.000Z`,
   };
 }
 
@@ -198,38 +286,8 @@ router.get("/history", async (req, res) => {
       });
     }
 
-    if (priceHistory.length === 0) {
-      await fetchNocDieselData();
-    }
-
-    const historyEntries = priceHistory.slice(-7);
-    const fallbackPrice =
-      historyEntries[historyEntries.length - 1]?.diesel?.[area] || 0;
-
-    const history = historyEntries.map((entry) => {
-      const date = new Date(`${entry.date}T12:00:00`);
-
-      return {
-        label: date.toLocaleDateString("en-US", {
-          month: "short",
-          day: "numeric",
-        }),
-        price: entry.diesel[area] ?? fallbackPrice,
-      };
-    });
-
-    while (history.length < 7) {
-      const placeholderDate = new Date();
-      placeholderDate.setDate(placeholderDate.getDate() - (7 - history.length));
-
-      history.unshift({
-        label: placeholderDate.toLocaleDateString("en-US", {
-          month: "short",
-          day: "numeric",
-        }),
-        price: fallbackPrice,
-      });
-    }
+    const data = await fetchNocDieselData();
+    const history = buildHistoryForArea(data.regionData, area);
 
     res.json({
       success: true,
