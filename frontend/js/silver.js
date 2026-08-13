@@ -465,35 +465,3 @@ function updateUnitConverter() {
     <span class="silver-converter-number">${result.toFixed(4)}</span>
     <span class="silver-converter-unit">${to.charAt(0).toUpperCase() + to.slice(1)}</span>`;
 }
-
-const forexCard = document.querySelector('[data-category="forex"]');
-
-if (forexCard) {
-  forexCard.addEventListener("click", () => {
-    window.location.href = "index.html";
-  });
-}
-
-const goldCard = document.querySelector('[data-category="gold"]');
-
-if (goldCard) {
-  goldCard.addEventListener("click", () => {
-    window.location.href = "gold.html";
-  });
-}
-
-const silverCard = document.querySelector('[data-category="silver"]');
-
-if (silverCard) {
-  silverCard.addEventListener("click", () => {
-    window.location.href = "silver.html";
-  });
-}
-
-const petrolCard = document.querySelector('[data-category="petrol"]');
-
-if (petrolCard) {
-  petrolCard.addEventListener("click", () => {
-    window.location.href = "petrol.html";
-  });
-}
