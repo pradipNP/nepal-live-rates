@@ -1,5 +1,6 @@
 const LPG_API_URL = "https://nepal-live-rates.onrender.com/api/lpg";
 const LPG_HISTORY_API = "https://nepal-live-rates.onrender.com/api/lpg/history";
+const LPG_DOCUMENTS_API = "https://nepal-live-rates.onrender.com/api/lpg/documents";
 
 let lpgData = null;
 let lpgChart = null;
@@ -172,9 +173,95 @@ function renderLpgChart() {
   });
 }
 
+function escapeHtml(value) {
+  return String(value)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+}
+
+function renderLpgDocumentsState(message, isError = false) {
+  const container = document.getElementById("lpgDocumentsContainer");
+
+  if (!container) {
+    return;
+  }
+
+  container.innerHTML = `<div class="lpg-documents-state${isError ? " error" : ""}">${escapeHtml(message)}</div>`;
+}
+
+function renderLpgDocuments(documents) {
+  const container = document.getElementById("lpgDocumentsContainer");
+
+  if (!container) {
+    return;
+  }
+
+  if (!documents.length) {
+    renderLpgDocumentsState("No official LPG documents are available right now.");
+    return;
+  }
+
+  container.innerHTML = documents
+    .map((document) => {
+      const dateMarkup = document.date
+        ? `<span>📅 Published: ${escapeHtml(document.date)}</span>`
+        : "";
+
+      return `
+        <article class="lpg-document-card">
+          <div class="lpg-document-title">📄 ${escapeHtml(document.title)}</div>
+          <div class="lpg-document-meta">
+            ${dateMarkup}
+            <span>🏢 Source: NOC</span>
+          </div>
+          <a
+            class="lpg-document-button"
+            href="${escapeHtml(document.url)}"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            View Document
+          </a>
+        </article>
+      `;
+    })
+    .join("");
+}
+
+async function loadLpgDocuments() {
+  renderLpgDocumentsState("Loading official documents...");
+
+  try {
+    const response = await fetch(LPG_DOCUMENTS_API);
+
+    if (!response.ok) {
+      throw new Error(`LPG Documents API Error ${response.status}`);
+    }
+
+    const data = await response.json();
+
+    if (!data.success) {
+      renderLpgDocumentsState("Unable to load official LPG documents.", true);
+      return;
+    }
+
+    renderLpgDocuments(data.documents || []);
+  } catch (error) {
+    console.error("LPG Documents Error:", error);
+    renderLpgDocumentsState(
+      "Unable to load official LPG documents. Please try again later.",
+      true,
+    );
+  }
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   initializeLpgPage();
   loadLpgChart();
+  loadLpgDocuments();
 });
 
 document.addEventListener("input", (e) => {
@@ -286,6 +373,7 @@ if (refreshButton) {
     try {
       await loadLpgRates();
       await loadLpgChart();
+      await loadLpgDocuments();
     } finally {
       refreshButton.disabled = false;
       refreshButton.innerHTML =
