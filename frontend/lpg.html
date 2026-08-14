@@ -1,0 +1,348 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LPG Rates - Nepal Live Rates</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/responsive.css" />
+    <link rel="stylesheet" href="css/theme.css" />
+    <link rel="stylesheet" href="css/lpg.css" />
+    <link rel="icon" href="assets/flags/logo1.png" />
+    <meta name="description" content="Live LPG rates Nepal." />
+  </head>
+
+  <body>
+    <!-- Animated background -->
+    <div class="background-glow glow-one"></div>
+    <div class="background-glow glow-two"></div>
+
+    <!-- Navigation -->
+    <header class="navbar">
+      <!-- LEFT: BRAND -->
+      <div class="brand">
+        <div class="brand-icon">
+          <img src="assets/flags/logo1.png" alt="Nepal Flag" />
+        </div>
+        <div class="brand-text">
+          <h2>Nepal Live <span>Rates</span></h2>
+          <p>Real-time Nepal LPG Rates</p>
+        </div>
+      </div>
+
+      <!-- RIGHT: NAVIGATION -->
+      <nav class="nav-links">
+        <a href="index.html" class="nav-link active"
+          ><span class="nav-icon">⌂</span>Home</a
+        >
+        <a href="about.html" class="nav-link"
+          ><span class="nav-icon">ⓘ</span>About</a
+        >
+
+        <!-- THEME SWITCH -->
+        <label class="theme-switch" aria-label="Toggle theme">
+          <input type="checkbox" id="themeToggle" />
+          <span class="theme-slider">
+            <span class="theme-icon moon">☾</span>
+            <span class="theme-icon sun">☀</span>
+            <span class="theme-knob"></span>
+          </span>
+        </label>
+
+        <!-- REFRESH BUTTON -->
+        <button id="refreshButton" class="refresh-button">
+          <span class="refresh-icon">↻</span>Refresh Rates
+        </button>
+      </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container">
+      <!-- Hero Section -->
+      <section class="hero">
+        <!-- LEFT SIDE -->
+        <div class="hero-content">
+          <div class="hero-line"></div>
+
+          <h1>
+            Nepal
+            <span class="gradient-text"> LPG Rates </span>
+          </h1>
+          <p>Live LPG prices published from Nepal Oil Corporation (NOC).</p>
+        </div>
+
+        <!-- RIGHT SIDE -->
+        <div class="hero-visual">
+          <div class="currency-orbit orbit-one">🔥</div>
+          <div class="currency-orbit orbit-two">🏠</div>
+          <div class="currency-orbit orbit-three">🍳</div>
+          <div class="currency-orbit orbit-four">🏔️</div>
+          <div class="currency-orbit orbit-five">♨️</div>
+          <div class="currency-orbit orbit-six">⚡</div>
+          <div class="currency-orbit orbit-seven">🛢️</div>
+
+          <div class="currency-center">🔥</div>
+
+          <div class="currency-ring ring-one"></div>
+          <div class="currency-ring ring-two"></div>
+        </div>
+      </section>
+
+      <!-- Status Bar -->
+      <section class="status-bar">
+        <!-- RATES DATE -->
+        <div class="status-item">
+          <div class="status-icon calendar-icon">📅</div>
+
+          <div class="status-content">
+            <span> Rates Date </span>
+            <strong id="rateDate"> Loading... </strong>
+          </div>
+        </div>
+
+        <div class="status-divider"></div>
+        <!-- LAST UPDATED -->
+        <div class="status-item">
+          <div class="status-icon clock-icon">🕐</div>
+          <div class="status-content">
+            <span> Last Updated </span>
+            <strong id="lastUpdated"> Loading... </strong>
+          </div>
+        </div>
+
+        <div class="status-divider"></div>
+        <!-- SOURCE -->
+        <div class="status-item">
+          <div class="status-icon bank-icon">🏦</div>
+          <div class="status-content">
+            <span> Source </span>
+            <strong class="source-name"> NOC </strong>
+          </div>
+        </div>
+
+        <div class="status-divider"></div>
+        <!-- LIVE -->
+        <div class="live-status">
+          <div class="live-badge"><span class="live-dot"></span>Live</div>
+          <small> Auto-updating </small>
+        </div>
+      </section>
+
+      <!-- Market Categories -->
+      <section class="market-section">
+        <div class="section-heading">
+          <div>
+            <span class="section-label">MARKET DATA</span>
+            <h2>Explore Rates</h2>
+          </div>
+
+          <span class="section-description">Select a category</span>
+        </div>
+
+        <div class="market-grid">
+          <!-- Forex -->
+          <div class="market-card active-card" data-category="forex">
+            <div class="market-icon">💱</div>
+            <div class="market-info">
+              <h3>Foreign Exchange</h3>
+              <p>Live currency rates</p>
+            </div>
+
+            <div class="market-status live-status">
+              <span></span>
+              LIVE
+            </div>
+          </div>
+
+          <!-- Gold -->
+          <div class="market-card active-card" data-category="gold">
+            <div class="market-icon">🥇</div>
+            <div class="market-info">
+              <h3>Gold</h3>
+              <p>Gold market rates</p>
+            </div>
+
+            <div class="market-status live-status">
+              <span></span>
+              LIVE
+            </div>
+          </div>
+
+          <!-- Silver -->
+          <div class="market-card active-card" data-category="silver">
+            <div class="market-icon">🥈</div>
+            <div class="market-info">
+              <h3>Silver</h3>
+              <p>Silver market rates</p>
+            </div>
+
+            <div class="market-status live-status">
+              <span></span>
+              LIVE
+            </div>
+          </div>
+
+          <!-- Petrol -->
+          <div class="market-card active-card" data-category="petrol">
+            <div class="market-icon">⛽</div>
+            <div class="market-info">
+              <h3>Petrol</h3>
+              <p>Fuel price information</p>
+            </div>
+
+            <div class="market-status live-status">
+              <span></span>
+              LIVE
+            </div>
+          </div>
+
+          <!-- Diesel -->
+          <div class="market-card active-card" data-category="diesel">
+            <div class="market-icon">🛢️</div>
+            <div class="market-info">
+              <h3>Diesel</h3>
+              <p>Diesel price information</p>
+            </div>
+
+            <div class="market-status live-status">
+              <span></span>
+              LIVE
+            </div>
+          </div>
+
+          <!-- LPG -->
+          <div class="market-card active-card active" data-category="lpg">
+            <div class="market-icon">🔥</div>
+            <div class="market-info">
+              <h3>LPG</h3>
+              <p>LPG cylinder prices</p>
+            </div>
+
+            <div class="market-status live-status">
+              <span></span>
+              LIVE
+            </div>
+          </div>
+
+          <!-- Crude Oil -->
+          <div class="market-card coming-card" data-category="oil">
+            <div class="market-icon">📈</div>
+            <div class="market-info">
+              <h3>Crude Oil</h3>
+              <p>Global oil market</p>
+            </div>
+
+            <div class="market-status">SOON</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- LPG Rates Section -->
+      <div class="lpg-rates-grid">
+        <div class="lpg-rate-card">
+          <div class="lpg-card-header">
+            <div class="lpg-icon">🔥</div>
+
+            <div id="lpgMovement" class="lpg-movement neutral">▬ 0.00%</div>
+          </div>
+
+          <h3>LPG Gas</h3>
+
+          <div class="lpg-type-label">Domestic Cylinder (14.2 KG)</div>
+
+          <div class="lpg-price-row">
+            <span class="lpg-currency">NPR</span>
+
+            <span id="lpgPrice" class="lpg-price"> Loading... </span>
+          </div>
+
+          <div id="lpgYesterday" class="lpg-yesterday">Yesterday: Loading...</div>
+
+          <div class="lpg-updated">
+            <span>Last updated:</span>
+
+            <strong id="lpgUpdated"> Loading... </strong>
+          </div>
+
+          <div class="lpg-bottom-line"></div>
+        </div>
+      </div>
+
+      <!-- LPG Calculator -->
+      <section class="lpg-calculator-section">
+        <div class="section-heading">
+          <div>
+            <span class="section-label"> LPG CALCULATOR </span>
+
+            <h2>Calculate LPG Cost</h2>
+          </div>
+        </div>
+
+        <div class="lpg-calculator-card">
+          <div class="calculator-row">
+            <div class="calculator-field">
+              <label>Quantity</label>
+
+              <input
+                type="number"
+                id="lpgQuantity"
+                value="1"
+                min="0"
+                step="1"
+              />
+            </div>
+
+            <div class="calculator-field">
+              <label>Unit</label>
+
+              <select id="lpgCalculatorUnit">
+                <option value="1cylinder">1 Cylinder</option>
+                <option value="2cylinder">2 Cylinders</option>
+                <option value="5cylinder">5 Cylinders</option>
+                <option value="10cylinder">10 Cylinders</option>
+              </select>
+            </div>
+
+            <div class="calculator-result">
+              <span>Total Value</span>
+
+              <strong id="lpgCalculatorResult"> NPR 0 </strong>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- LPG History Chart -->
+      <section class="lpg-chart-section">
+        <div class="section-heading">
+          <div>
+            <span class="section-label">LPG TREND</span>
+            <h2>Last 7 Days LPG Prices</h2>
+          </div>
+        </div>
+
+        <div class="lpg-chart-card">
+          <canvas id="lpgChart"></canvas>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p class="copyright">
+        ©
+        <img src="assets/flags/np.svg" alt="Nepal-Flag" /><span id="year"></span
+        >Nepal Live Rates
+      </p>
+
+      <p class="footer-note">
+        Fuel prices are for informational purposes only and may change without
+        notice.
+      </p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/nepali-date-converter/dist/nepali-date-converter.umd.js"></script>
+    <script src="js/lpg.js"></script>
+    <script src="js/common.js"></script>
+  </body>
+</html>
