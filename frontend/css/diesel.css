@@ -50,7 +50,7 @@
 .diesel-price {
   font-size: 45px;
   font-weight: 800;
-  color: #2563eb;
+  color: #0088CC;
   line-height: 1;
 }
 
@@ -112,7 +112,7 @@
   width: 100%;
   margin-top: 40px;
   border-radius: 999px;
-  background: linear-gradient(90deg, #8ab4fd, #2563eb);
+  background: linear-gradient(90deg, #8ab4fd, #ebe825);
 }
 
 .diesel-updated {
@@ -163,7 +163,7 @@
 .diesel-calculator-card .calculator-result strong {
   font-size: 2rem;
   font-weight: 700;
-  color: #2563eb;
+  color: #0088CC;
 }
 
 .diesel-calculator-card .calculator-result span {
