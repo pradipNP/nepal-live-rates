@@ -26,7 +26,7 @@
 .lpg-price {
   font-size: 45px;
   font-weight: 800;
-  color: #f97316;
+  color: #CE2B2B;
   line-height: 1;
 }
 
@@ -75,7 +75,7 @@
   width: 100%;
   margin-top: 40px;
   border-radius: 999px;
-  background: linear-gradient(90deg, #fdba74, #f97316);
+  background: linear-gradient(90deg, #fd8874, #f91616);
 }
 
 .lpg-updated {
@@ -126,7 +126,7 @@
 .lpg-calculator-card .calculator-result strong {
   font-size: 2rem;
   font-weight: 700;
-  color: #f97316;
+  color: #CE2B2B;
 }
 
 .lpg-calculator-card .calculator-result span {
@@ -228,7 +228,7 @@
   border-radius: 12px;
   border: 1px solid rgba(249, 115, 22, 0.35);
   background: rgba(249, 115, 22, 0.12);
-  color: #f97316;
+  color: #CE2B2B;
   font-weight: 700;
   text-decoration: none;
   transition: transform 0.2s ease, background 0.2s ease;
