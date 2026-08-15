@@ -4,7 +4,8 @@ const pageRoutes = {
   silver: "silver.html",
   petrol: "petrol.html",
   diesel: "diesel.html",
-  lpg: "lpg.html"
+  lpg: "lpg.html",
+  oil: "crude.html",
 };
 
 function initializeMarketCardNavigation() {
