@@ -1,0 +1,374 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Crude Oil Rates - Nepal Live Rates</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/responsive.css" />
+    <link rel="stylesheet" href="css/theme.css" />
+    <link rel="stylesheet" href="css/crude.css" />
+    <link rel="icon" href="assets/flags/logo1.png" />
+    <meta name="description" content="Live Crude Oil rates." />
+  </head>
+
+  <body>
+    <!-- Animated background -->
+    <div class="background-glow glow-one"></div>
+    <div class="background-glow glow-two"></div>
+
+    <!-- Navigation -->
+    <header class="navbar">
+      <!-- LEFT: BRAND -->
+      <div class="brand">
+        <div class="brand-icon">
+          <img src="assets/flags/logo1.png" alt="Nepal Flag" />
+        </div>
+        <div class="brand-text">
+          <h2>Nepal Live <span>Rates</span></h2>
+          <p>Real-time Global Crude Oil Rates</p>
+        </div>
+      </div>
+
+      <!-- RIGHT: NAVIGATION -->
+      <nav class="nav-links">
+        <a href="index.html" class="nav-link active"
+          ><span class="nav-icon">⌂</span>Home</a
+        >
+        <a href="about.html" class="nav-link"
+          ><span class="nav-icon">ⓘ</span>About</a
+        >
+
+        <!-- THEME SWITCH -->
+        <label class="theme-switch" aria-label="Toggle theme">
+          <input type="checkbox" id="themeToggle" />
+          <span class="theme-slider">
+            <span class="theme-icon moon">☾</span>
+            <span class="theme-icon sun">☀</span>
+            <span class="theme-knob"></span>
+          </span>
+        </label>
+
+        <!-- REFRESH BUTTON -->
+        <button id="refreshButton" class="refresh-button">
+          <span class="refresh-icon">↻</span>Refresh Rates
+        </button>
+      </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container">
+      <!-- Hero Section -->
+      <section class="hero">
+        <!-- LEFT SIDE -->
+        <div class="hero-content">
+          <div class="hero-line"></div>
+
+          <h1>
+            Global
+            <span class="gradient-text"> Crude Oil Rates </span>
+          </h1>
+          <p>
+            Live WTI and Brent crude oil prices from Oil-Price.net benchmarks.
+          </p>
+        </div>
+
+        <!-- RIGHT SIDE -->
+        <div class="hero-visual">
+          <div class="currency-orbit orbit-one">🛢️</div>
+          <div class="currency-orbit orbit-two">📈</div>
+          <div class="currency-orbit orbit-three">🌍</div>
+          <div class="currency-orbit orbit-four">⚡</div>
+          <div class="currency-orbit orbit-five">🏭</div>
+          <div class="currency-orbit orbit-six">💹</div>
+          <div class="currency-orbit orbit-seven">🔥</div>
+
+          <div class="currency-center">🛢️</div>
+
+          <div class="currency-ring ring-one"></div>
+          <div class="currency-ring ring-two"></div>
+        </div>
+      </section>
+
+      <!-- Status Bar -->
+      <section class="status-bar">
+        <!-- RATES DATE -->
+        <div class="status-item">
+          <div class="status-icon calendar-icon">📅</div>
+
+          <div class="status-content">
+            <span> Rates Date </span>
+            <strong id="rateDate"> Loading... </strong>
+          </div>
+        </div>
+
+        <div class="status-divider"></div>
+        <!-- LAST UPDATED -->
+        <div class="status-item">
+          <div class="status-icon clock-icon">🕐</div>
+          <div class="status-content">
+            <span> Last Updated </span>
+            <strong id="lastUpdated"> Loading... </strong>
+          </div>
+        </div>
+
+        <div class="status-divider"></div>
+        <!-- SOURCE -->
+        <div class="status-item">
+          <div class="status-icon bank-icon">🏦</div>
+          <div class="status-content">
+            <span> Source </span>
+            <strong class="source-name"> Oil-Price.net </strong>
+          </div>
+        </div>
+
+        <div class="status-divider"></div>
+        <!-- LIVE -->
+        <div class="live-status">
+          <div class="live-badge"><span class="live-dot"></span>Live</div>
+          <small> Auto-updating </small>
+        </div>
+      </section>
+
+      <!-- Market Categories -->
+      <section class="market-section">
+        <div class="section-heading">
+          <div>
+            <span class="section-label">MARKET DATA</span>
+            <h2>Explore Rates</h2>
+          </div>
+
+          <span class="section-description">Select a category</span>
+        </div>
+
+        <div class="market-grid">
+          <!-- Forex -->
+          <div class="market-card active-card" data-category="forex">
+            <div class="market-icon">💱</div>
+            <div class="market-info">
+              <h3>Foreign Exchange</h3>
+              <p>Live currency rates</p>
+            </div>
+
+            <div class="market-status live-status">
+              <span></span>
+              LIVE
+            </div>
+          </div>
+
+          <!-- Gold -->
+          <div class="market-card active-card" data-category="gold">
+            <div class="market-icon">🥇</div>
+            <div class="market-info">
+              <h3>Gold</h3>
+              <p>Gold market rates</p>
+            </div>
+
+            <div class="market-status live-status">
+              <span></span>
+              LIVE
+            </div>
+          </div>
+
+          <!-- Silver -->
+          <div class="market-card active-card" data-category="silver">
+            <div class="market-icon">🥈</div>
+            <div class="market-info">
+              <h3>Silver</h3>
+              <p>Silver market rates</p>
+            </div>
+
+            <div class="market-status live-status">
+              <span></span>
+              LIVE
+            </div>
+          </div>
+
+          <!-- Petrol -->
+          <div class="market-card active-card" data-category="petrol">
+            <div class="market-icon">⛽</div>
+            <div class="market-info">
+              <h3>Petrol</h3>
+              <p>Fuel price information</p>
+            </div>
+
+            <div class="market-status live-status">
+              <span></span>
+              LIVE
+            </div>
+          </div>
+
+          <!-- Diesel -->
+          <div class="market-card active-card" data-category="diesel">
+            <div class="market-icon">🛢️</div>
+            <div class="market-info">
+              <h3>Diesel</h3>
+              <p>Diesel price information</p>
+            </div>
+
+            <div class="market-status live-status">
+              <span></span>
+              LIVE
+            </div>
+          </div>
+
+          <!-- LPG -->
+          <div class="market-card active-card" data-category="lpg">
+            <div class="market-icon">🔥</div>
+            <div class="market-info">
+              <h3>LPG</h3>
+              <p>LPG cylinder prices</p>
+            </div>
+
+            <div class="market-status live-status">
+              <span></span>
+              LIVE
+            </div>
+          </div>
+
+          <!-- Crude Oil -->
+          <div class="market-card active-card active" data-category="oil">
+            <div class="market-icon">📈</div>
+            <div class="market-info">
+              <h3>Crude Oil</h3>
+              <p>Global oil market</p>
+            </div>
+
+            <div class="market-status live-status">
+              <span></span>
+              LIVE
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Market Selection -->
+      <div class="crude-market-select">
+        <div>
+          <label for="crudeMarketSelect">Select Market</label>
+          <select id="crudeMarketSelect" class="crude-market-dropdown">
+            <option value="WTI" selected>WTI Crude Oil</option>
+            <option value="Brent">Brent Crude Oil</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Crude Oil Rates Section -->
+      <div class="crude-rates-grid">
+        <div class="crude-rate-card">
+          <div class="crude-card-header">
+            <div class="crude-icon">🛢️</div>
+
+            <div id="crudeMovement" class="crude-movement neutral">
+              ▬ 0.00%
+            </div>
+          </div>
+
+          <h3 id="crudeMarketLabel">WTI Crude Oil</h3>
+
+          <div class="crude-price-row">
+            <span class="crude-currency">USD</span>
+
+            <span id="crudePrice" class="crude-price"> Loading... </span>
+
+            <span class="crude-per-barrel">/Barrel</span>
+          </div>
+
+          <div id="crudeYesterday" class="crude-yesterday">
+            Yesterday: Loading...
+          </div>
+
+          <div class="crude-updated">
+            <span>Last updated:</span>
+
+            <strong id="crudeUpdated"> Loading... </strong>
+          </div>
+
+          <div class="crude-bottom-line"></div>
+        </div>
+      </div>
+
+      <!-- Crude Oil Calculator -->
+      <section class="crude-calculator-section">
+        <div class="section-heading">
+          <div>
+            <span class="section-label"> CRUDE OIL CALCULATOR </span>
+
+            <h2>Calculate Crude Oil Value</h2>
+          </div>
+        </div>
+
+        <div class="crude-calculator-card">
+          <div class="calculator-row">
+            <div class="calculator-field">
+              <label>Quantity</label>
+
+              <input
+                type="number"
+                id="crudeQuantity"
+                value="1"
+                min="0"
+                step="0.01"
+              />
+            </div>
+
+            <div class="calculator-field">
+              <label>Unit</label>
+
+              <select id="crudeCalculatorUnit">
+                <option value="barrel">Barrel</option>
+                <option value="5barrel">5 Barrels</option>
+                <option value="10barrel">10 Barrels</option>
+                <option value="50barrel">50 Barrels</option>
+              </select>
+            </div>
+
+            <div class="calculator-result">
+              <span>Total Value</span>
+
+              <strong id="crudeCalculatorResult"> USD 0 </strong>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Crude Oil History Chart -->
+      <section class="crude-chart-section">
+        <div class="section-heading">
+          <div>
+            <span class="section-label">CRUDE OIL TREND</span>
+            <h2>Last 7 Days Crude Oil Prices</h2>
+          </div>
+          <div class="chart-controls">
+            <select id="crudeChartMarket">
+              <option value="WTI" selected>WTI Crude Oil</option>
+              <option value="Brent">Brent Crude Oil</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="crude-chart-card">
+          <canvas id="crudeChart"></canvas>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p class="copyright">
+        ©
+        <img src="assets/flags/np.svg" alt="Nepal-Flag" /><span id="year"></span
+        >Nepal Live Rates
+      </p>
+
+      <p class="footer-note">
+        Crude oil prices are for informational purposes only and may change
+        without notice.
+      </p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/nepali-date-converter/dist/nepali-date-converter.umd.js"></script>
+    <script src="js/crude.js"></script>
+    <script src="js/common.js"></script>
+  </body>
+</html>
