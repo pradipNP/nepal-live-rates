@@ -8,6 +8,7 @@ const silverRoutes = require("./routes/silver");
 const petrolRoutes = require("./routes/petrol");
 const dieselRoutes = require("./routes/diesel");
 const lpgRoutes = require("./routes/lpg");
+const crudeRoutes = require("./routes/crude");
 
 const app = express();
 
@@ -20,6 +21,7 @@ app.use("/api/silver", silverRoutes);
 app.use("/api/petrol", petrolRoutes);
 app.use("/api/diesel", dieselRoutes);
 app.use("/api/lpg", lpgRoutes);
+app.use("/api/crude", crudeRoutes);
 
 // Home route
 app.get("/", (req, res) => {
