@@ -1,0 +1,192 @@
+.kerosene-area-select {
+  margin-top: 60px;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+.kerosene-area-select label {
+  display: block;
+  margin-bottom: 8px;
+  text-align: center;
+  color: var(--muted);
+}
+
+.kerosene-area-dropdown {
+  min-width: 280px;
+  padding: 14px 16px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: #fde68a;
+  color: var(--text);
+  font-size: 16px;
+}
+
+.kerosene-rates-grid {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.kerosene-rate-card {
+  width: 100%;
+  max-width: 850px;
+  padding: 20px 28px;
+  border-radius: 24px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  overflow: hidden;
+}
+
+.kerosene-movement {
+  padding: 10px 18px;
+  border-radius: 999px;
+  background: #fee2e2;
+  color: #dc2626;
+  font-weight: 700;
+  font-size: 20px;
+}
+
+.kerosene-price {
+  font-size: 45px;
+  font-weight: 800;
+  color: #ea580c;
+  line-height: 1;
+}
+
+.kerosene-yesterday {
+  margin-top: 30px;
+  color: var(--muted);
+}
+
+.kerosene-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.kerosene-icon {
+  font-size: 42px;
+}
+
+.kerosene-rate-card h3 {
+  font-size: 48px;
+  margin-bottom: 8px;
+}
+
+.kerosene-area-label {
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--muted);
+  margin-bottom: 12px;
+}
+
+.kerosene-price-row {
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+  margin: 8px 0;
+}
+
+.kerosene-currency {
+  font-size: 22px;
+  color: var(--muted);
+}
+
+.kerosene-per-litre {
+  font-size: 22px;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+
+.kerosene-bottom-line {
+  height: 6px;
+  width: 100%;
+  margin-top: 40px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #fbbf24, #ea580c);
+}
+
+.kerosene-updated {
+  margin-top: 10px;
+  color: #94a3b8;
+  font-size: 18px;
+}
+
+.kerosene-calculator-section {
+  margin-top: 2rem 0 3rem;
+}
+
+.kerosene-calculator-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  padding: 25px;
+}
+
+.kerosene-calculator-card .calculator-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px;
+}
+
+.kerosene-calculator-card .calculator-field label {
+  display: block;
+  margin-bottom: 8px;
+}
+
+.kerosene-calculator-card .calculator-field input,
+.kerosene-calculator-card .calculator-field select {
+  width: 100%;
+  padding: 14px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text);
+}
+
+.kerosene-calculator-card .calculator-result {
+  padding: 1.5rem;
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  text-align: center;
+}
+
+.kerosene-calculator-card .calculator-result strong {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #ea580c;
+}
+
+.kerosene-calculator-card .calculator-result span {
+  display: block;
+  color: var(--muted);
+  margin-bottom: 0.5rem;
+}
+
+#keroseneChartArea {
+  height: 30px;
+  min-width: 160px;
+}
+
+.kerosene-chart-card {
+  height: 400px;
+  display: flex;
+  margin-left: 150px;
+}
+
+.kerosene-movement.positive {
+  background: #dcfce7;
+  color: #16a34a;
+}
+
+.kerosene-movement.negative {
+  background: #fee2e2;
+  color: #dc2626;
+}
+
+.kerosene-movement.neutral {
+  background: rgba(148, 163, 184, 0.2);
+  color: #94a3b8;
+}
