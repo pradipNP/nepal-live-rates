@@ -4,6 +4,7 @@ const pageRoutes = {
   silver: "silver.html",
   petrol: "petrol.html",
   diesel: "diesel.html",
+  kerosene: "kerosene.html",
   lpg: "lpg.html",
   oil: "crude.html",
 };
