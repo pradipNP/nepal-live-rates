@@ -10,17 +10,21 @@
 
 Modern real-time Nepal financial and commodity rates platform.
 
-Live tracking for:
+**Live tracking for:**
 
-- Forex
-- Gold
-- Silver
-- Petrol
-- Diesel
-- LPG
-- Kerosene
-- Aviation Fuel
-- Crude Oil
+<table align="center" border="1" cellspacing="0" cellpadding="10">
+  <tr>
+    <td align="center">💱<br><strong>Forex</strong></td>
+    <td align="center">🥇<br><strong>Gold</strong></td>
+    <td align="center">🥈<br><strong>Silver</strong></td>
+    <td align="center">⛽<br><strong>Petrol</strong></td>
+    <td align="center">🛢️<br><strong>Diesel</strong></td>
+    <td align="center">🔥<br><strong>LPG</strong></td>
+    <td align="center">🪔<br><strong>Kerosene</strong></td>
+    <td align="center">✈️<br><strong>Aviation Fuel</strong></td>
+    <td align="center">📈<br><strong>Crude Oil</strong></td>
+  </tr>
+</table>
 
 ---
 
