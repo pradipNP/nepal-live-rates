@@ -1,0 +1,392 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aviation Fuel Rates - Nepal Live Rates</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/responsive.css" />
+    <link rel="stylesheet" href="css/theme.css" />
+    <link rel="stylesheet" href="css/aviation.css" />
+    <link rel="icon" href="assets/flags/logo1.png" />
+    <meta name="description" content="Live Aviation Fuel rates Nepal." />
+  </head>
+
+  <body>
+    <div class="background-glow glow-one"></div>
+    <div class="background-glow glow-two"></div>
+
+    <header class="navbar">
+      <div class="brand">
+        <div class="brand-icon">
+          <img src="assets/flags/logo1.png" alt="Nepal Flag" />
+        </div>
+        <div class="brand-text">
+          <h2>Nepal Live <span>Rates</span></h2>
+          <p>Real-time Nepal Aviation Fuel Rates</p>
+        </div>
+      </div>
+
+      <nav class="nav-links">
+        <a href="index.html" class="nav-link active"
+          ><span class="nav-icon">⌂</span>Home</a
+        >
+        <a href="about.html" class="nav-link"
+          ><span class="nav-icon">ⓘ</span>About</a
+        >
+
+        <label class="theme-switch" aria-label="Toggle theme">
+          <input type="checkbox" id="themeToggle" />
+          <span class="theme-slider">
+            <span class="theme-icon moon">☾</span>
+            <span class="theme-icon sun">☀</span>
+            <span class="theme-knob"></span>
+          </span>
+        </label>
+
+        <button id="refreshButton" class="refresh-button">
+          <span class="refresh-icon">↻</span>Refresh Rates
+        </button>
+      </nav>
+    </header>
+
+    <main class="container">
+      <section class="hero">
+        <div class="hero-content">
+          <div class="hero-line"></div>
+
+          <h1>
+            Nepal
+            <span class="gradient-text"> Aviation Fuel Rates </span>
+          </h1>
+          <p>
+            Live Jet A-1 and duty free aviation fuel prices from Nepal Oil
+            Corporation (NOC).
+          </p>
+        </div>
+
+        <div class="hero-visual">
+          <div class="currency-orbit orbit-one">✈️</div>
+          <div class="currency-orbit orbit-two">🛫</div>
+          <div class="currency-orbit orbit-three">🌤️</div>
+          <div class="currency-orbit orbit-four">🏔️</div>
+          <div class="currency-orbit orbit-five">🛬</div>
+          <div class="currency-orbit orbit-six">⚡</div>
+          <div class="currency-orbit orbit-seven">🌍</div>
+
+          <div class="currency-center">✈️</div>
+
+          <div class="currency-ring ring-one"></div>
+          <div class="currency-ring ring-two"></div>
+        </div>
+      </section>
+
+      <section class="status-bar">
+        <div class="status-item">
+          <div class="status-icon calendar-icon">📅</div>
+          <div class="status-content">
+            <span> Rates Date </span>
+            <strong id="rateDate"> Loading... </strong>
+          </div>
+        </div>
+
+        <div class="status-divider"></div>
+
+        <div class="status-item">
+          <div class="status-icon clock-icon">🕐</div>
+          <div class="status-content">
+            <span> Last Updated </span>
+            <strong id="lastUpdated"> Loading... </strong>
+          </div>
+        </div>
+
+        <div class="status-divider"></div>
+
+        <div class="status-item">
+          <div class="status-icon bank-icon">🏦</div>
+          <div class="status-content">
+            <span> Source </span>
+            <strong class="source-name"> NOC </strong>
+          </div>
+        </div>
+
+        <div class="status-divider"></div>
+
+        <div class="live-status">
+          <div class="live-badge"><span class="live-dot"></span>Live</div>
+          <small> Auto-updating </small>
+        </div>
+      </section>
+
+      <section class="market-section">
+        <div class="section-heading">
+          <div>
+            <span class="section-label">MARKET DATA</span>
+            <h2>Explore Rates</h2>
+          </div>
+          <span class="section-description">Select a category</span>
+        </div>
+
+        <div class="market-grid">
+          <div class="market-card active-card" data-category="forex">
+            <div class="market-icon">💱</div>
+            <div class="market-info">
+              <h3>Foreign Exchange</h3>
+              <p>Live currency rates</p>
+            </div>
+            <div class="market-status live-status">
+              <span></span>
+              LIVE
+            </div>
+          </div>
+
+          <div class="market-card active-card" data-category="gold">
+            <div class="market-icon">🥇</div>
+            <div class="market-info">
+              <h3>Gold</h3>
+              <p>Gold market rates</p>
+            </div>
+            <div class="market-status live-status">
+              <span></span>
+              LIVE
+            </div>
+          </div>
+
+          <div class="market-card active-card" data-category="silver">
+            <div class="market-icon">🥈</div>
+            <div class="market-info">
+              <h3>Silver</h3>
+              <p>Silver market rates</p>
+            </div>
+            <div class="market-status live-status">
+              <span></span>
+              LIVE
+            </div>
+          </div>
+
+          <div class="market-card active-card" data-category="petrol">
+            <div class="market-icon">⛽</div>
+            <div class="market-info">
+              <h3>Petrol</h3>
+              <p>Fuel price information</p>
+            </div>
+            <div class="market-status live-status">
+              <span></span>
+              LIVE
+            </div>
+          </div>
+
+          <div class="market-card active-card" data-category="diesel">
+            <div class="market-icon">🛢️</div>
+            <div class="market-info">
+              <h3>Diesel</h3>
+              <p>Diesel price information</p>
+            </div>
+            <div class="market-status live-status">
+              <span></span>
+              LIVE
+            </div>
+          </div>
+
+          <div class="market-card active-card" data-category="kerosene">
+            <div class="market-icon">🪔</div>
+            <div class="market-info">
+              <h3>Kerosene</h3>
+              <p>Kerosene price information</p>
+            </div>
+            <div class="market-status live-status">
+              <span></span>
+              LIVE
+            </div>
+          </div>
+
+          <div class="market-card active-card active" data-category="aviation">
+            <div class="market-icon">✈️</div>
+            <div class="market-info">
+              <h3>Aviation Fuel</h3>
+              <p>Jet A-1 and duty free rates</p>
+            </div>
+            <div class="market-status live-status">
+              <span></span>
+              LIVE
+            </div>
+          </div>
+
+          <div class="market-card active-card" data-category="lpg">
+            <div class="market-icon">🔥</div>
+            <div class="market-info">
+              <h3>LPG</h3>
+              <p>LPG cylinder prices</p>
+            </div>
+            <div class="market-status live-status">
+              <span></span>
+              LIVE
+            </div>
+          </div>
+
+          <div class="market-card active-card" data-category="oil">
+            <div class="market-icon">📈</div>
+            <div class="market-info">
+              <h3>Crude Oil</h3>
+              <p>Global oil market</p>
+            </div>
+            <div class="market-status live-status">
+              <span></span>
+              LIVE
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="aviation-select-row">
+        <div>
+          <label for="aviationFuelSelect">Select Fuel Type</label>
+          <select id="aviationFuelSelect" class="aviation-fuel-dropdown">
+            <option value="JetA1" selected>Jet A-1 (Domestic)</option>
+            <option value="DutyFree">Aviation Fuel (Duty Free)</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="aviationAreaSelect">Select Area</label>
+          <select id="aviationAreaSelect" class="aviation-area-dropdown">
+            <option value="Kathmandu" selected>Kathmandu</option>
+            <option value="Pokhara">Pokhara</option>
+            <option value="Dipayal">Dipayal</option>
+            <option value="Biratnagar">Biratnagar</option>
+            <option value="Birgunj">Birgunj</option>
+            <option value="Janakpur">Janakpur</option>
+            <option value="Nepalgunj">Nepalgunj</option>
+            <option value="Dhangadhi">Dhangadhi</option>
+            <option value="Dang">Dang</option>
+            <option value="Surkhet">Surkhet</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="aviation-rates-grid">
+        <div class="aviation-rate-card">
+          <div class="aviation-card-header">
+            <div class="aviation-icon">✈️</div>
+            <div id="aviationMovement" class="aviation-movement neutral">
+              ▬ 0.00%
+            </div>
+          </div>
+
+          <h3>Aviation Fuel</h3>
+          <div id="aviationFuelLabel" class="aviation-fuel-label">
+            Jet A-1 (Domestic)
+          </div>
+          <div id="aviationAreaLabel" class="aviation-area-label">
+            Kathmandu
+          </div>
+
+          <div class="aviation-price-row">
+            <span id="aviationCurrency" class="aviation-currency">NPR</span>
+            <span id="aviationPrice" class="aviation-price"> Loading... </span>
+            <span id="aviationPerUnit" class="aviation-per-unit">/Litre</span>
+          </div>
+
+          <div id="aviationYesterday" class="aviation-yesterday">
+            Yesterday: Loading...
+          </div>
+
+          <div class="aviation-updated">
+            <span>Last updated:</span>
+            <strong id="aviationUpdated"> Loading... </strong>
+          </div>
+
+          <div class="aviation-bottom-line"></div>
+        </div>
+      </div>
+
+      <section class="aviation-calculator-section">
+        <div class="section-heading">
+          <div>
+            <span class="section-label"> AVIATION FUEL CALCULATOR </span>
+            <h2>Calculate Aviation Fuel Cost</h2>
+          </div>
+        </div>
+
+        <div class="aviation-calculator-card">
+          <div class="calculator-row">
+            <div class="calculator-field">
+              <label>Quantity</label>
+              <input
+                type="number"
+                id="aviationQuantity"
+                value="1"
+                min="0"
+                step="0.01"
+              />
+            </div>
+
+            <div class="calculator-field">
+              <label>Unit</label>
+              <select id="aviationCalculatorUnit">
+                <option value="litre">Litre</option>
+                <option value="5litre">5 Litre</option>
+                <option value="10litre">10 Litre</option>
+                <option value="20litre">20 Litre</option>
+              </select>
+            </div>
+
+            <div class="calculator-result">
+              <span>Total Value</span>
+              <strong id="aviationCalculatorResult"> NPR 0 </strong>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="aviation-chart-section">
+        <div class="section-heading">
+          <div>
+            <span class="section-label">AVIATION FUEL TREND</span>
+            <h2>Last 7 Days Aviation Fuel Prices</h2>
+          </div>
+          <div class="chart-controls aviation-chart-controls">
+            <select id="aviationChartFuel">
+              <option value="JetA1" selected>Jet A-1 (Domestic)</option>
+              <option value="DutyFree">Aviation Fuel (Duty Free)</option>
+            </select>
+            <select id="aviationChartArea">
+              <option value="Kathmandu" selected>Kathmandu</option>
+              <option value="Pokhara">Pokhara</option>
+              <option value="Dipayal">Dipayal</option>
+              <option value="Biratnagar">Biratnagar</option>
+              <option value="Birgunj">Birgunj</option>
+              <option value="Janakpur">Janakpur</option>
+              <option value="Nepalgunj">Nepalgunj</option>
+              <option value="Dhangadhi">Dhangadhi</option>
+              <option value="Dang">Dang</option>
+              <option value="Surkhet">Surkhet</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="aviation-chart-card">
+          <canvas id="aviationChart"></canvas>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p class="copyright">
+        ©
+        <img src="assets/flags/np.svg" alt="Nepal-Flag" /><span id="year"></span
+        >Nepal Live Rates
+      </p>
+
+      <p class="footer-note">
+        Fuel prices are for informational purposes only and may change without
+        notice.
+      </p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/nepali-date-converter/dist/nepali-date-converter.umd.js"></script>
+    <script src="js/aviation.js"></script>
+    <script src="js/common.js"></script>
+  </body>
+</html>

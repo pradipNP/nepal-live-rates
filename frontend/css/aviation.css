@@ -1,0 +1,209 @@
+.aviation-select-row {
+  margin-top: 60px;
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  flex-wrap: wrap;
+  margin-bottom: 30px;
+}
+
+.aviation-select-row label {
+  display: block;
+  margin-bottom: 8px;
+  text-align: center;
+  color: var(--muted);
+}
+
+.aviation-fuel-dropdown,
+.aviation-area-dropdown {
+  min-width: 280px;
+  padding: 14px 16px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: #bae6fd;
+  color: var(--text);
+  font-size: 16px;
+}
+
+.aviation-rates-grid {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.aviation-rate-card {
+  width: 100%;
+  max-width: 850px;
+  padding: 20px 28px;
+  border-radius: 24px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  overflow: hidden;
+}
+
+.aviation-movement {
+  padding: 10px 18px;
+  border-radius: 999px;
+  background: #fee2e2;
+  color: #dc2626;
+  font-weight: 700;
+  font-size: 20px;
+}
+
+.aviation-price {
+  font-size: 45px;
+  font-weight: 800;
+  color: #0284c7;
+  line-height: 1;
+}
+
+.aviation-yesterday {
+  margin-top: 30px;
+  color: var(--muted);
+}
+
+.aviation-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.aviation-icon {
+  font-size: 42px;
+}
+
+.aviation-rate-card h3 {
+  font-size: 48px;
+  margin-bottom: 8px;
+}
+
+.aviation-fuel-label {
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 6px;
+}
+
+.aviation-area-label {
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--muted);
+  margin-bottom: 12px;
+}
+
+.aviation-price-row {
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+  margin: 8px 0;
+}
+
+.aviation-currency {
+  font-size: 22px;
+  color: var(--muted);
+}
+
+.aviation-per-unit {
+  font-size: 22px;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+
+.aviation-bottom-line {
+  height: 6px;
+  width: 100%;
+  margin-top: 40px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #38bdf8, #0284c7);
+}
+
+.aviation-updated {
+  margin-top: 10px;
+  color: #94a3b8;
+  font-size: 18px;
+}
+
+.aviation-calculator-section {
+  margin-top: 2rem 0 3rem;
+}
+
+.aviation-calculator-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  padding: 25px;
+}
+
+.aviation-calculator-card .calculator-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px;
+}
+
+.aviation-calculator-card .calculator-field label {
+  display: block;
+  margin-bottom: 8px;
+}
+
+.aviation-calculator-card .calculator-field input,
+.aviation-calculator-card .calculator-field select {
+  width: 100%;
+  padding: 14px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text);
+}
+
+.aviation-calculator-card .calculator-result {
+  padding: 1.5rem;
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  text-align: center;
+}
+
+.aviation-calculator-card .calculator-result strong {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #0284c7;
+}
+
+.aviation-calculator-card .calculator-result span {
+  display: block;
+  color: var(--muted);
+  margin-bottom: 0.5rem;
+}
+
+#aviationChartFuel,
+#aviationChartArea {
+  height: 30px;
+  min-width: 160px;
+}
+
+.aviation-chart-controls {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.aviation-chart-card {
+  height: 400px;
+  display: flex;
+  margin-left: 150px;
+}
+
+.aviation-movement.positive {
+  background: #dcfce7;
+  color: #16a34a;
+}
+
+.aviation-movement.negative {
+  background: #fee2e2;
+  color: #dc2626;
+}
+
+.aviation-movement.neutral {
+  background: rgba(148, 163, 184, 0.2);
+  color: #94a3b8;
+}
