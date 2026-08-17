@@ -56,27 +56,27 @@ Backend API: **https://nepal-live-rates.onrender.com**
 
 ## Screenshots
 
-| Home (Forex) | Gold |
+| Home (Forex) | Market Cards |
 | :---: | :---: |
 | <img src="assets/screenshots/screenshot1%20(1).png" width="360" alt="Home page"> | <img src="assets/screenshots/screenshot1%20(2).png" width="360" alt="Gold page"> |
-| *Forex dashboard with live NRB exchange rates* | *Gold rates, calculator, converter & chart* |
+| *Forex dashboard with live NRB exchange rates* | *Available market cards* |
 
-| Silver | Petrol |
+| Chart Sample | Exchange Rate Cards |
 | :---: | :---: |
 | <img src="assets/screenshots/screenshot1%20(3).png" width="360" alt="Silver page"> | <img src="assets/screenshots/screenshot1%20(4).png" width="360" alt="Petrol page"> |
-| *Silver rates with calculator and trend chart* | *Petrol prices by area with calculator* |
+| *Trend chart sample for exchange rate* | *Currency cards with rates* |
 
-| Diesel | LPG |
+| Gold | Gold Rates |
 | :---: | :---: |
 | <img src="assets/screenshots/screenshot1%20(5).png" width="360" alt="Diesel page"> | <img src="assets/screenshots/screenshot1%20(6).png" width="360" alt="LPG page"> |
-| *Diesel rates by area with historical chart* | *LPG cylinder prices and official documents* |
+| *Interface of gold page* | *Live gold rates with details* |
 
-| Kerosene |
+| Converter |
 | :---: |
 | <img src="assets/screenshots/screenshot1%20(7).png" width="360" alt="Kerosene page"> |
-| *Kerosene rates by area with calculator and chart* |
+| *Unit converter for gold* |
 
-Crude Oil, Aviation Fuel, and About pages are live on the site; add captures to this gallery when available.
+Crude Oil, Aviation Fuel, and more details are live on the site; go and visit there: **https://nepal-live-rates.pages.dev/**.
 
 ---
 
@@ -87,7 +87,7 @@ Crude Oil, Aviation Fuel, and About pages are live on the site; add captures to 
 | Frontend | HTML5, CSS3, Vanilla JavaScript, Chart.js |
 | Backend | Node.js, Express.js, Axios, Cheerio |
 | Deployment | Cloudflare Pages (frontend), Render (backend) |
-| Data Sources | Nepal Rastra Bank, FENEGOSIDA, NOC Nepal |
+| Data Sources | Nepal Rastra Bank, FENEGOSIDA, NOC Nepal, Oil-Price.net |
 
 ---
 
