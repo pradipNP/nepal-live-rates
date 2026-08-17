@@ -3162,6 +3162,252 @@
     }
 
     /* -------------------------
+       CRUDE OIL PAGE — market select, calculator, chart (320–767px)
+    ------------------------- */
+
+    .crude-market-select {
+        margin-top: 30px;
+        margin-bottom: 24px;
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        padding: 0 4px;
+        box-sizing: border-box;
+    }
+
+    .crude-market-select > div {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+    }
+
+    .crude-market-dropdown {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        box-sizing: border-box;
+        font-size: 14px;
+        padding: 12px 14px;
+    }
+
+    .crude-rates-grid {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+    }
+
+    .crude-rate-card {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        padding: 18px 16px;
+        box-sizing: border-box;
+        overflow: hidden;
+    }
+
+    .crude-card-header {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .crude-rate-card h3 {
+        font-size: clamp(1.5rem, 7vw, 2.25rem);
+        word-break: break-word;
+    }
+
+    .crude-movement {
+        font-size: clamp(0.85rem, 3.5vw, 1.1rem);
+        padding: 8px 14px;
+    }
+
+    .crude-market-label {
+        font-size: clamp(1rem, 4vw, 1.35rem);
+        word-break: break-word;
+    }
+
+    .crude-price-row {
+        flex-wrap: wrap;
+        align-items: baseline;
+        gap: 6px;
+    }
+
+    .crude-price {
+        font-size: clamp(1.75rem, 9vw, 2.75rem);
+        word-break: break-word;
+    }
+
+    .crude-currency,
+    .crude-per-barrel {
+        font-size: clamp(1rem, 4vw, 1.35rem);
+    }
+
+    .crude-updated {
+        font-size: 15px;
+        word-break: break-word;
+    }
+
+    .crude-yesterday {
+        font-size: 14px;
+        word-break: break-word;
+    }
+
+    /* Crude calculator */
+    .crude-calculator-section {
+        margin-top: 40px;
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        overflow: hidden;
+    }
+
+    .crude-calculator-card {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        box-sizing: border-box;
+        padding: 18px 16px;
+        overflow: hidden;
+    }
+
+    .crude-calculator-section .crude-calculator-card .calculator-row {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+
+    .crude-calculator-section .crude-calculator-card .calculator-field {
+        width: 100%;
+        min-width: 0;
+    }
+
+    .crude-calculator-section .crude-calculator-card .calculator-field input,
+    .crude-calculator-section .crude-calculator-card .calculator-field select {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        box-sizing: border-box;
+    }
+
+    .crude-calculator-section .crude-calculator-card .calculator-result {
+        width: 100%;
+        min-width: 0;
+        box-sizing: border-box;
+        padding: 1.25rem;
+        border-radius: 16px;
+        border: 1px solid var(--border);
+        text-align: center;
+    }
+
+    .crude-calculator-section .crude-calculator-card .calculator-result span {
+        display: block;
+        color: var(--muted);
+        margin-bottom: 0.5rem;
+    }
+
+    .crude-calculator-section .crude-calculator-card .calculator-result strong {
+        font-size: clamp(1.25rem, 6vw, 2rem);
+        word-break: break-word;
+    }
+
+    /* Crude chart */
+    .crude-chart-section {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        overflow: hidden;
+        box-sizing: border-box;
+    }
+
+    .crude-chart-section .section-heading {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+        width: 100%;
+        min-width: 0;
+    }
+
+    .crude-chart-section .section-heading h2 {
+        font-size: clamp(1.1rem, 4.5vw, 1.5rem);
+        line-height: 1.25;
+        width: 100%;
+        word-break: break-word;
+    }
+
+    .crude-chart-section .section-heading .chart-controls {
+        width: 100%;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    #crudeChartMarket {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        height: 32px;
+        box-sizing: border-box;
+        font-size: 13px;
+    }
+
+    .crude-chart-card {
+        --chart-default-width: 560px;
+        --chart-default-height: 400px;
+
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        height: auto;
+        margin-left: 0 !important;
+        box-sizing: border-box;
+        padding: 12px 10px;
+        border-radius: 16px;
+        background: var(--card);
+        border: 1px solid var(--border);
+        display: flex;
+        flex-direction: column;
+        max-height: calc(var(--chart-default-height) + 24px);
+        overflow: auto;
+        -webkit-overflow-scrolling: touch;
+        touch-action: pan-x pan-y pinch-zoom;
+        scrollbar-width: thin;
+        scrollbar-color: rgba(148, 163, 184, 0.55) rgba(148, 163, 184, 0.12);
+    }
+
+    .crude-chart-card::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+    }
+
+    .crude-chart-card::-webkit-scrollbar-track {
+        background: rgba(148, 163, 184, 0.1);
+        border-radius: 4px;
+    }
+
+    .crude-chart-card::-webkit-scrollbar-thumb {
+        background: rgba(148, 163, 184, 0.45);
+        border-radius: 4px;
+    }
+
+    .crude-chart-card canvas,
+    #crudeChart {
+        display: block !important;
+        width: var(--chart-default-width) !important;
+        height: var(--chart-default-height) !important;
+        min-width: var(--chart-default-width);
+        min-height: var(--chart-default-height);
+        max-width: none;
+        margin-bottom: 0 !important;
+        flex-shrink: 0;
+        box-sizing: border-box;
+        touch-action: pan-x pan-y pinch-zoom;
+        zoom: 1;
+        transform-origin: top left;
+        transition: zoom 0.15s ease;
+    }
+
+    .crude-chart-card #crudeChart:active {
+        zoom: 1.35;
+    }
+
+    /* -------------------------
        FOREX CURRENCY EXCHANGE
     ------------------------- */
 
@@ -3369,13 +3615,18 @@
         --chart-default-width: 480px;
     }
 
+    .crude-chart-card {
+        --chart-default-width: 480px;
+    }
+
     .gold-rate-card,
     .silver-rate-card,
     .petrol-rate-card,
     .diesel-rate-card,
     .kerosene-rate-card,
     .aviation-rate-card,
-    .lpg-rate-card {
+    .lpg-rate-card,
+    .crude-rate-card {
         padding: 16px 14px;
     }
 
@@ -3387,7 +3638,8 @@
     .diesel-calculator-card,
     .kerosene-calculator-card,
     .aviation-calculator-card,
-    .lpg-calculator-card {
+    .lpg-calculator-card,
+    .crude-calculator-card {
         padding: 16px 14px;
     }
 
