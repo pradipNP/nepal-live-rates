@@ -2385,6 +2385,511 @@
     }
 
     /* -------------------------
+       KEROSENE PAGE — area select, calculator, chart (320–767px)
+    ------------------------- */
+
+    .kerosene-area-select {
+        margin-top: 30px;
+        margin-bottom: 24px;
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        padding: 0 4px;
+        box-sizing: border-box;
+    }
+
+    .kerosene-area-select > div {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+    }
+
+    .kerosene-area-dropdown {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        box-sizing: border-box;
+        font-size: 14px;
+        padding: 12px 14px;
+    }
+
+    .kerosene-rates-grid {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+    }
+
+    .kerosene-rate-card {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        padding: 18px 16px;
+        box-sizing: border-box;
+        overflow: hidden;
+    }
+
+    .kerosene-card-header {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .kerosene-rate-card h3 {
+        font-size: clamp(1.5rem, 7vw, 2.25rem);
+        word-break: break-word;
+    }
+
+    .kerosene-movement {
+        font-size: clamp(0.85rem, 3.5vw, 1.1rem);
+        padding: 8px 14px;
+    }
+
+    .kerosene-area-label {
+        font-size: clamp(1rem, 4vw, 1.35rem);
+        word-break: break-word;
+    }
+
+    .kerosene-price-row {
+        flex-wrap: wrap;
+        align-items: baseline;
+        gap: 6px;
+    }
+
+    .kerosene-price {
+        font-size: clamp(1.75rem, 9vw, 2.75rem);
+        word-break: break-word;
+    }
+
+    .kerosene-currency,
+    .kerosene-per-litre {
+        font-size: clamp(1rem, 4vw, 1.35rem);
+    }
+
+    .kerosene-updated {
+        font-size: 15px;
+        word-break: break-word;
+    }
+
+    .kerosene-yesterday {
+        font-size: 14px;
+        word-break: break-word;
+    }
+
+    /* Kerosene calculator */
+    .kerosene-calculator-section {
+        margin-top: 40px;
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        overflow: hidden;
+    }
+
+    .kerosene-calculator-card {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        box-sizing: border-box;
+        padding: 18px 16px;
+        overflow: hidden;
+    }
+
+    .kerosene-calculator-section .kerosene-calculator-card .calculator-row {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+
+    .kerosene-calculator-section .kerosene-calculator-card .calculator-field {
+        width: 100%;
+        min-width: 0;
+    }
+
+    .kerosene-calculator-section .kerosene-calculator-card .calculator-field input,
+    .kerosene-calculator-section .kerosene-calculator-card .calculator-field select {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        box-sizing: border-box;
+    }
+
+    .kerosene-calculator-section .kerosene-calculator-card .calculator-result {
+        width: 100%;
+        min-width: 0;
+        box-sizing: border-box;
+        padding: 1.25rem;
+        border-radius: 16px;
+        border: 1px solid var(--border);
+        text-align: center;
+    }
+
+    .kerosene-calculator-section .kerosene-calculator-card .calculator-result span {
+        display: block;
+        color: var(--muted);
+        margin-bottom: 0.5rem;
+    }
+
+    .kerosene-calculator-section .kerosene-calculator-card .calculator-result strong {
+        font-size: clamp(1.25rem, 6vw, 2rem);
+        word-break: break-word;
+    }
+
+    /* Kerosene chart */
+    .kerosene-chart-section {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        overflow: hidden;
+        box-sizing: border-box;
+    }
+
+    .kerosene-chart-section .section-heading {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+        width: 100%;
+        min-width: 0;
+    }
+
+    .kerosene-chart-section .section-heading h2 {
+        font-size: clamp(1.1rem, 4.5vw, 1.5rem);
+        line-height: 1.25;
+        width: 100%;
+        word-break: break-word;
+    }
+
+    .kerosene-chart-section .section-heading .chart-controls {
+        width: 100%;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    #keroseneChartArea {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        height: 32px;
+        box-sizing: border-box;
+        font-size: 13px;
+    }
+
+    .kerosene-chart-card {
+        --chart-default-width: 560px;
+        --chart-default-height: 400px;
+
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        height: auto;
+        margin-left: 0 !important;
+        box-sizing: border-box;
+        padding: 12px 10px;
+        border-radius: 16px;
+        background: var(--card);
+        border: 1px solid var(--border);
+        display: flex;
+        flex-direction: column;
+        max-height: calc(var(--chart-default-height) + 24px);
+        overflow: auto;
+        -webkit-overflow-scrolling: touch;
+        touch-action: pan-x pan-y pinch-zoom;
+        scrollbar-width: thin;
+        scrollbar-color: rgba(148, 163, 184, 0.55) rgba(148, 163, 184, 0.12);
+    }
+
+    .kerosene-chart-card::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+    }
+
+    .kerosene-chart-card::-webkit-scrollbar-track {
+        background: rgba(148, 163, 184, 0.1);
+        border-radius: 4px;
+    }
+
+    .kerosene-chart-card::-webkit-scrollbar-thumb {
+        background: rgba(148, 163, 184, 0.45);
+        border-radius: 4px;
+    }
+
+    .kerosene-chart-card canvas,
+    #keroseneChart {
+        display: block !important;
+        width: var(--chart-default-width) !important;
+        height: var(--chart-default-height) !important;
+        min-width: var(--chart-default-width);
+        min-height: var(--chart-default-height);
+        max-width: none;
+        margin-bottom: 0 !important;
+        flex-shrink: 0;
+        box-sizing: border-box;
+        touch-action: pan-x pan-y pinch-zoom;
+        zoom: 1;
+        transform-origin: top left;
+        transition: zoom 0.15s ease;
+    }
+
+    .kerosene-chart-card #keroseneChart:active {
+        zoom: 1.35;
+    }
+
+    /* -------------------------
+       AVIATION FUEL PAGE — selects, calculator, chart (320–767px)
+    ------------------------- */
+
+    .aviation-select-row {
+        margin-top: 30px;
+        margin-bottom: 24px;
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        padding: 0 4px;
+        box-sizing: border-box;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 16px;
+    }
+
+    .aviation-select-row > div {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+    }
+
+    .aviation-fuel-dropdown,
+    .aviation-area-dropdown {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        box-sizing: border-box;
+        font-size: 14px;
+        padding: 12px 14px;
+    }
+
+    .aviation-rates-grid {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+    }
+
+    .aviation-rate-card {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        padding: 18px 16px;
+        box-sizing: border-box;
+        overflow: hidden;
+    }
+
+    .aviation-card-header {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .aviation-rate-card h3 {
+        font-size: clamp(1.5rem, 7vw, 2.25rem);
+        word-break: break-word;
+    }
+
+    .aviation-movement {
+        font-size: clamp(0.85rem, 3.5vw, 1.1rem);
+        padding: 8px 14px;
+    }
+
+    .aviation-fuel-label {
+        font-size: clamp(1rem, 4vw, 1.35rem);
+        word-break: break-word;
+    }
+
+    .aviation-area-label {
+        font-size: clamp(0.95rem, 3.5vw, 1.2rem);
+        word-break: break-word;
+    }
+
+    .aviation-price-row {
+        flex-wrap: wrap;
+        align-items: baseline;
+        gap: 6px;
+    }
+
+    .aviation-price {
+        font-size: clamp(1.75rem, 9vw, 2.75rem);
+        word-break: break-word;
+    }
+
+    .aviation-currency,
+    .aviation-per-unit {
+        font-size: clamp(1rem, 4vw, 1.35rem);
+    }
+
+    .aviation-updated {
+        font-size: 15px;
+        word-break: break-word;
+    }
+
+    .aviation-yesterday {
+        font-size: 14px;
+        word-break: break-word;
+    }
+
+    /* Aviation calculator */
+    .aviation-calculator-section {
+        margin-top: 40px;
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        overflow: hidden;
+    }
+
+    .aviation-calculator-card {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        box-sizing: border-box;
+        padding: 18px 16px;
+        overflow: hidden;
+    }
+
+    .aviation-calculator-section .aviation-calculator-card .calculator-row {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+
+    .aviation-calculator-section .aviation-calculator-card .calculator-field {
+        width: 100%;
+        min-width: 0;
+    }
+
+    .aviation-calculator-section .aviation-calculator-card .calculator-field input,
+    .aviation-calculator-section .aviation-calculator-card .calculator-field select {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        box-sizing: border-box;
+    }
+
+    .aviation-calculator-section .aviation-calculator-card .calculator-result {
+        width: 100%;
+        min-width: 0;
+        box-sizing: border-box;
+        padding: 1.25rem;
+        border-radius: 16px;
+        border: 1px solid var(--border);
+        text-align: center;
+    }
+
+    .aviation-calculator-section .aviation-calculator-card .calculator-result span {
+        display: block;
+        color: var(--muted);
+        margin-bottom: 0.5rem;
+    }
+
+    .aviation-calculator-section .aviation-calculator-card .calculator-result strong {
+        font-size: clamp(1.25rem, 6vw, 2rem);
+        word-break: break-word;
+    }
+
+    /* Aviation chart */
+    .aviation-chart-section {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        overflow: hidden;
+        box-sizing: border-box;
+    }
+
+    .aviation-chart-section .section-heading {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+        width: 100%;
+        min-width: 0;
+    }
+
+    .aviation-chart-section .section-heading h2 {
+        font-size: clamp(1.1rem, 4.5vw, 1.5rem);
+        line-height: 1.25;
+        width: 100%;
+        word-break: break-word;
+    }
+
+    .aviation-chart-section .section-heading .chart-controls,
+    .aviation-chart-controls {
+        width: 100%;
+        flex-direction: column;
+        align-items: stretch;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    #aviationChartFuel,
+    #aviationChartArea {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        height: 32px;
+        box-sizing: border-box;
+        font-size: 13px;
+    }
+
+    .aviation-chart-card {
+        --chart-default-width: 560px;
+        --chart-default-height: 400px;
+
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        height: auto;
+        margin-left: 0 !important;
+        box-sizing: border-box;
+        padding: 12px 10px;
+        border-radius: 16px;
+        background: var(--card);
+        border: 1px solid var(--border);
+        display: flex;
+        flex-direction: column;
+        max-height: calc(var(--chart-default-height) + 24px);
+        overflow: auto;
+        -webkit-overflow-scrolling: touch;
+        touch-action: pan-x pan-y pinch-zoom;
+        scrollbar-width: thin;
+        scrollbar-color: rgba(148, 163, 184, 0.55) rgba(148, 163, 184, 0.12);
+    }
+
+    .aviation-chart-card::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+    }
+
+    .aviation-chart-card::-webkit-scrollbar-track {
+        background: rgba(148, 163, 184, 0.1);
+        border-radius: 4px;
+    }
+
+    .aviation-chart-card::-webkit-scrollbar-thumb {
+        background: rgba(148, 163, 184, 0.45);
+        border-radius: 4px;
+    }
+
+    .aviation-chart-card canvas,
+    #aviationChart {
+        display: block !important;
+        width: var(--chart-default-width) !important;
+        height: var(--chart-default-height) !important;
+        min-width: var(--chart-default-width);
+        min-height: var(--chart-default-height);
+        max-width: none;
+        margin-bottom: 0 !important;
+        flex-shrink: 0;
+        box-sizing: border-box;
+        touch-action: pan-x pan-y pinch-zoom;
+        zoom: 1;
+        transform-origin: top left;
+        transition: zoom 0.15s ease;
+    }
+
+    .aviation-chart-card #aviationChart:active {
+        zoom: 1.35;
+    }
+
+    /* -------------------------
        FOREX CURRENCY EXCHANGE
     ------------------------- */
 
@@ -2580,10 +3085,20 @@
         --chart-default-width: 480px;
     }
 
+    .kerosene-chart-card {
+        --chart-default-width: 480px;
+    }
+
+    .aviation-chart-card {
+        --chart-default-width: 480px;
+    }
+
     .gold-rate-card,
     .silver-rate-card,
     .petrol-rate-card,
-    .diesel-rate-card {
+    .diesel-rate-card,
+    .kerosene-rate-card,
+    .aviation-rate-card {
         padding: 16px 14px;
     }
 
@@ -2592,7 +3107,9 @@
     .silver-calculator-card,
     .silver-converter-card,
     .petrol-calculator-card,
-    .diesel-calculator-card {
+    .diesel-calculator-card,
+    .kerosene-calculator-card,
+    .aviation-calculator-card {
         padding: 16px 14px;
     }
 
