@@ -8,6 +8,7 @@ const silverRoutes = require("./routes/silver");
 const petrolRoutes = require("./routes/petrol");
 const dieselRoutes = require("./routes/diesel");
 const keroseneRoutes = require("./routes/kerosene");
+const aviationRoutes = require("./routes/aviation");
 const lpgRoutes = require("./routes/lpg");
 const crudeRoutes = require("./routes/crude");
 
@@ -22,6 +23,7 @@ app.use("/api/silver", silverRoutes);
 app.use("/api/petrol", petrolRoutes);
 app.use("/api/diesel", dieselRoutes);
 app.use("/api/kerosene", keroseneRoutes);
+app.use("/api/aviation", aviationRoutes);
 app.use("/api/lpg", lpgRoutes);
 app.use("/api/crude", crudeRoutes);
 
