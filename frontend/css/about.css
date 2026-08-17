@@ -10,16 +10,16 @@
 
 :root {
 
-    --bg: #07111f;
-    --bg-secondary: #0b1728;
+    --bg: #f1f5f9;
+    --bg-secondary: #e2e8f0;
 
-    --card: rgba(15, 29, 48, 0.75);
+    --card: rgba(255, 255, 255, 0.8);
 
-    --border: rgba(255, 255, 255, 0.12);
+    --border: rgba(15, 23, 42, 0.12);
 
-    --text: #f8fafc;
+    --text: #0f172a;
 
-    --muted: #94a3b8;
+    --muted: #64748b;
 
     --accent: #38bdf8;
 
@@ -27,10 +27,10 @@
 
     --success: #22c55e;
 
-    --shadow: rgba(0, 0, 0, 0.35);
+    --shadow: rgba(15, 23, 42, 0.15);
 
     --glass-highlight:
-        rgba(255, 255, 255, 0.08);
+        rgba(255, 255, 255, 0.8);
 }
 
 

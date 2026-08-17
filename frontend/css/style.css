@@ -7,22 +7,22 @@
 }
 
 :root {
-  --bg: #07111f;
-  --bg-secondary: #0b1728;
-  --card: rgba(15, 29, 48, 0.75);
-  --text: #f8fafc;
-  --muted: #94a3b8;
+  --bg: #f1f5f9;
+  --bg-secondary: #e2e8f0;
+  --card: rgba(255, 255, 255, 0.8);
+  --text: #0f172a;
+  --muted: #64748b;
   --accent: #38bdf8;
   --accent-two: #818cf8;
   --success: #22c55e;
-  --hero-bg: rgba(10, 24, 42, 0.75);
-  --status-bg: rgba(10, 24, 42, 0.72);
+  --hero-bg: rgba(255, 255, 255, 0.75);
+  --status-bg: rgba(255, 255, 255, 0.72);
 
-  --border: rgba(255, 255, 255, 0.12);
+  --border: rgba(15, 23, 42, 0.12);
 
-  --glass-highlight: rgba(255, 255, 255, 0.08);
+  --glass-highlight: rgba(255, 255, 255, 0.8);
 
-  --shadow: rgba(0, 0, 0, 0.35);
+  --shadow: rgba(15, 23, 42, 0.15);
 }
 
 body {
