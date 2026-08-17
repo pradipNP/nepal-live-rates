@@ -2890,6 +2890,278 @@
     }
 
     /* -------------------------
+       LPG PAGE — rate card, calculator, chart, documents (320–767px)
+    ------------------------- */
+
+    .lpg-rates-grid {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        margin-top: 30px;
+    }
+
+    .lpg-rate-card {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        padding: 18px 16px;
+        box-sizing: border-box;
+        overflow: hidden;
+    }
+
+    .lpg-card-header {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .lpg-rate-card h3 {
+        font-size: clamp(1.5rem, 7vw, 2.25rem);
+        word-break: break-word;
+    }
+
+    .lpg-movement {
+        font-size: clamp(0.85rem, 3.5vw, 1.1rem);
+        padding: 8px 14px;
+    }
+
+    .lpg-type-label {
+        font-size: clamp(1rem, 4vw, 1.35rem);
+        word-break: break-word;
+    }
+
+    .lpg-price-row {
+        flex-wrap: wrap;
+        align-items: baseline;
+        gap: 6px;
+    }
+
+    .lpg-price {
+        font-size: clamp(1.75rem, 9vw, 2.75rem);
+        word-break: break-word;
+    }
+
+    .lpg-currency {
+        font-size: clamp(1rem, 4vw, 1.35rem);
+    }
+
+    .lpg-updated {
+        font-size: 15px;
+        word-break: break-word;
+    }
+
+    .lpg-yesterday {
+        font-size: 14px;
+        word-break: break-word;
+    }
+
+    /* LPG calculator */
+    .lpg-calculator-section {
+        margin-top: 40px;
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        overflow: hidden;
+    }
+
+    .lpg-calculator-card {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        box-sizing: border-box;
+        padding: 18px 16px;
+        overflow: hidden;
+    }
+
+    .lpg-calculator-section .lpg-calculator-card .calculator-row {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+
+    .lpg-calculator-section .lpg-calculator-card .calculator-field {
+        width: 100%;
+        min-width: 0;
+    }
+
+    .lpg-calculator-section .lpg-calculator-card .calculator-field input,
+    .lpg-calculator-section .lpg-calculator-card .calculator-field select {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        box-sizing: border-box;
+    }
+
+    .lpg-calculator-section .lpg-calculator-card .calculator-result {
+        width: 100%;
+        min-width: 0;
+        box-sizing: border-box;
+        padding: 1.25rem;
+        border-radius: 16px;
+        border: 1px solid var(--border);
+        text-align: center;
+    }
+
+    .lpg-calculator-section .lpg-calculator-card .calculator-result span {
+        display: block;
+        color: var(--muted);
+        margin-bottom: 0.5rem;
+    }
+
+    .lpg-calculator-section .lpg-calculator-card .calculator-result strong {
+        font-size: clamp(1.25rem, 6vw, 2rem);
+        word-break: break-word;
+    }
+
+    /* LPG chart */
+    .lpg-chart-section {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        overflow: hidden;
+        box-sizing: border-box;
+    }
+
+    .lpg-chart-section .section-heading {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+        width: 100%;
+        min-width: 0;
+    }
+
+    .lpg-chart-section .section-heading h2 {
+        font-size: clamp(1.1rem, 4.5vw, 1.5rem);
+        line-height: 1.25;
+        width: 100%;
+        word-break: break-word;
+    }
+
+    .lpg-chart-card {
+        --chart-default-width: 560px;
+        --chart-default-height: 400px;
+
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        height: auto;
+        margin-left: 0 !important;
+        box-sizing: border-box;
+        padding: 12px 10px;
+        border-radius: 16px;
+        background: var(--card);
+        border: 1px solid var(--border);
+        display: flex;
+        flex-direction: column;
+        max-height: calc(var(--chart-default-height) + 24px);
+        overflow: auto;
+        -webkit-overflow-scrolling: touch;
+        touch-action: pan-x pan-y pinch-zoom;
+        scrollbar-width: thin;
+        scrollbar-color: rgba(148, 163, 184, 0.55) rgba(148, 163, 184, 0.12);
+    }
+
+    .lpg-chart-card::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+    }
+
+    .lpg-chart-card::-webkit-scrollbar-track {
+        background: rgba(148, 163, 184, 0.1);
+        border-radius: 4px;
+    }
+
+    .lpg-chart-card::-webkit-scrollbar-thumb {
+        background: rgba(148, 163, 184, 0.45);
+        border-radius: 4px;
+    }
+
+    .lpg-chart-card canvas,
+    #lpgChart {
+        display: block !important;
+        width: var(--chart-default-width) !important;
+        height: var(--chart-default-height) !important;
+        min-width: var(--chart-default-width);
+        min-height: var(--chart-default-height);
+        max-width: none;
+        margin-bottom: 0 !important;
+        flex-shrink: 0;
+        box-sizing: border-box;
+        touch-action: pan-x pan-y pinch-zoom;
+        zoom: 1;
+        transform-origin: top left;
+        transition: zoom 0.15s ease;
+    }
+
+    .lpg-chart-card #lpgChart:active {
+        zoom: 1.35;
+    }
+
+    /* LPG documents */
+    .lpg-documents-section {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        overflow: hidden;
+        box-sizing: border-box;
+    }
+
+    .lpg-documents-section .section-heading {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+        width: 100%;
+        min-width: 0;
+    }
+
+    .lpg-documents-section .section-heading h2 {
+        font-size: clamp(1.1rem, 4.5vw, 1.5rem);
+        line-height: 1.25;
+        word-break: break-word;
+    }
+
+    .lpg-documents-description {
+        max-width: 100%;
+        word-break: break-word;
+    }
+
+    .lpg-documents-grid {
+        grid-template-columns: 1fr;
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+    }
+
+    .lpg-document-card {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        box-sizing: border-box;
+        padding: 18px 16px;
+    }
+
+    .lpg-document-title {
+        font-size: clamp(1rem, 4.5vw, 1.25rem);
+        word-break: break-word;
+    }
+
+    .lpg-document-meta {
+        font-size: 0.9rem;
+        word-break: break-word;
+    }
+
+    .lpg-document-button {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .lpg-documents-state {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        box-sizing: border-box;
+        padding: 1.5rem 1rem;
+    }
+
+    /* -------------------------
        FOREX CURRENCY EXCHANGE
     ------------------------- */
 
@@ -3093,12 +3365,17 @@
         --chart-default-width: 480px;
     }
 
+    .lpg-chart-card {
+        --chart-default-width: 480px;
+    }
+
     .gold-rate-card,
     .silver-rate-card,
     .petrol-rate-card,
     .diesel-rate-card,
     .kerosene-rate-card,
-    .aviation-rate-card {
+    .aviation-rate-card,
+    .lpg-rate-card {
         padding: 16px 14px;
     }
 
@@ -3109,7 +3386,12 @@
     .petrol-calculator-card,
     .diesel-calculator-card,
     .kerosene-calculator-card,
-    .aviation-calculator-card {
+    .aviation-calculator-card,
+    .lpg-calculator-card {
+        padding: 16px 14px;
+    }
+
+    .lpg-document-card {
         padding: 16px 14px;
     }
 
