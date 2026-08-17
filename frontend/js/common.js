@@ -5,6 +5,7 @@ const pageRoutes = {
   petrol: "petrol.html",
   diesel: "diesel.html",
   kerosene: "kerosene.html",
+  aviation: "aviation.html",
   lpg: "lpg.html",
   oil: "crude.html",
 };
