@@ -1891,6 +1891,253 @@
     }
 
     /* -------------------------
+       PETROL PAGE — area select, calculator, chart (320–767px)
+    ------------------------- */
+
+    .petrol-area-select {
+        margin-top: 30px;
+        margin-bottom: 24px;
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        padding: 0 4px;
+        box-sizing: border-box;
+    }
+
+    .petrol-area-select > div {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+    }
+
+    .petrol-area-dropdown {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        box-sizing: border-box;
+        font-size: 14px;
+        padding: 12px 14px;
+    }
+
+    .petrol-rates-grid {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+    }
+
+    .petrol-rate-card {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        padding: 18px 16px;
+        box-sizing: border-box;
+        overflow: hidden;
+    }
+
+    .petrol-card-header {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .petrol-rate-card h3 {
+        font-size: clamp(1.5rem, 7vw, 2.25rem);
+        word-break: break-word;
+    }
+
+    .petrol-movement {
+        font-size: clamp(0.85rem, 3.5vw, 1.1rem);
+        padding: 8px 14px;
+    }
+
+    .petrol-area-label {
+        font-size: clamp(1rem, 4vw, 1.35rem);
+        word-break: break-word;
+    }
+
+    .petrol-price-row {
+        flex-wrap: wrap;
+        align-items: baseline;
+        gap: 6px;
+    }
+
+    .petrol-price {
+        font-size: clamp(1.75rem, 9vw, 2.75rem);
+        word-break: break-word;
+    }
+
+    .petrol-currency,
+    .petrol-per-litre {
+        font-size: clamp(1rem, 4vw, 1.35rem);
+    }
+
+    .petrol-updated {
+        font-size: 15px;
+        word-break: break-word;
+    }
+
+    .petrol-yesterday {
+        font-size: 14px;
+        word-break: break-word;
+    }
+
+    /* Petrol calculator */
+    .petrol-calculator-section {
+        margin-top: 40px;
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        overflow: hidden;
+    }
+
+    .petrol-calculator-card {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        box-sizing: border-box;
+        padding: 18px 16px;
+        overflow: hidden;
+    }
+
+    /* Extra section scope so rules beat petrol.css (loaded after responsive.css) */
+    .petrol-calculator-section .petrol-calculator-card .calculator-row {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+
+    .petrol-calculator-section .petrol-calculator-card .calculator-field {
+        width: 100%;
+        min-width: 0;
+    }
+
+    .petrol-calculator-section .petrol-calculator-card .calculator-field input,
+    .petrol-calculator-section .petrol-calculator-card .calculator-field select {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        box-sizing: border-box;
+    }
+
+    .petrol-calculator-section .petrol-calculator-card .calculator-result {
+        width: 100%;
+        min-width: 0;
+        box-sizing: border-box;
+        padding: 1.25rem;
+        border-radius: 16px;
+        border: 1px solid var(--border);
+        text-align: center;
+    }
+
+    .petrol-calculator-section .petrol-calculator-card .calculator-result span {
+        display: block;
+        color: var(--muted);
+        margin-bottom: 0.5rem;
+    }
+
+    .petrol-calculator-section .petrol-calculator-card .calculator-result strong {
+        font-size: clamp(1.25rem, 6vw, 2rem);
+        word-break: break-word;
+    }
+
+    /* Petrol chart — default 400px in scroll container */
+    .petrol-chart-section {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        overflow: hidden;
+        box-sizing: border-box;
+    }
+
+    .petrol-chart-section .section-heading {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+        width: 100%;
+        min-width: 0;
+    }
+
+    .petrol-chart-section .section-heading h2 {
+        font-size: clamp(1.1rem, 4.5vw, 1.5rem);
+        line-height: 1.25;
+        width: 100%;
+        word-break: break-word;
+    }
+
+    .petrol-chart-section .section-heading .chart-controls {
+        width: 100%;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    #petrolChartArea {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        height: 32px;
+        box-sizing: border-box;
+        font-size: 13px;
+    }
+
+    .petrol-chart-card {
+        --chart-default-width: 560px;
+        --chart-default-height: 400px;
+
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        height: auto;
+        margin-left: 0 !important;
+        box-sizing: border-box;
+        padding: 12px 10px;
+        border-radius: 16px;
+        background: var(--card);
+        border: 1px solid var(--border);
+        display: flex;
+        flex-direction: column;
+        max-height: calc(var(--chart-default-height) + 24px);
+        overflow: auto;
+        -webkit-overflow-scrolling: touch;
+        touch-action: pan-x pan-y pinch-zoom;
+        scrollbar-width: thin;
+        scrollbar-color: rgba(148, 163, 184, 0.55) rgba(148, 163, 184, 0.12);
+    }
+
+    .petrol-chart-card::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+    }
+
+    .petrol-chart-card::-webkit-scrollbar-track {
+        background: rgba(148, 163, 184, 0.1);
+        border-radius: 4px;
+    }
+
+    .petrol-chart-card::-webkit-scrollbar-thumb {
+        background: rgba(148, 163, 184, 0.45);
+        border-radius: 4px;
+    }
+
+    .petrol-chart-card canvas,
+    #petrolChart {
+        display: block !important;
+        width: var(--chart-default-width) !important;
+        height: var(--chart-default-height) !important;
+        min-width: var(--chart-default-width);
+        min-height: var(--chart-default-height);
+        max-width: none;
+        margin-bottom: 0 !important;
+        flex-shrink: 0;
+        box-sizing: border-box;
+        touch-action: pan-x pan-y pinch-zoom;
+        zoom: 1;
+        transform-origin: top left;
+        transition: zoom 0.15s ease;
+    }
+
+    .petrol-chart-card #petrolChart:active {
+        zoom: 1.35;
+    }
+
+    /* -------------------------
        FOREX CURRENCY EXCHANGE
     ------------------------- */
 
@@ -2078,15 +2325,21 @@
         --chart-default-width: 480px;
     }
 
+    .petrol-chart-card {
+        --chart-default-width: 480px;
+    }
+
     .gold-rate-card,
-    .silver-rate-card {
+    .silver-rate-card,
+    .petrol-rate-card {
         padding: 16px 14px;
     }
 
     .gold-calculator-card,
     .gold-converter-card,
     .silver-calculator-card,
-    .silver-converter-card {
+    .silver-converter-card,
+    .petrol-calculator-card {
         padding: 16px 14px;
     }
 
