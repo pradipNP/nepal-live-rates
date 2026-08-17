@@ -1612,6 +1612,285 @@
     }
 
     /* -------------------------
+       SILVER PAGE — calculator, converter, chart (320–767px)
+    ------------------------- */
+
+    .silver-unit-toggle {
+        margin-top: 30px;
+        flex-wrap: wrap;
+        gap: 10px;
+        padding: 0 4px;
+    }
+
+    .silver-toggle {
+        padding: 10px 16px;
+        font-size: 14px;
+    }
+
+    .silver-rates-grid {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+    }
+
+    .silver-rate-card {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        padding: 18px 16px;
+        box-sizing: border-box;
+        overflow: hidden;
+    }
+
+    .silver-card-header {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .silver-rate-card h3 {
+        font-size: clamp(1.5rem, 7vw, 2.25rem);
+        word-break: break-word;
+    }
+
+    .silver-movement {
+        font-size: clamp(0.85rem, 3.5vw, 1.1rem);
+        padding: 8px 14px;
+    }
+
+    .silver-unit-label {
+        font-size: clamp(1rem, 4vw, 1.25rem);
+    }
+
+    .silver-price-row {
+        flex-wrap: wrap;
+        align-items: baseline;
+        gap: 6px;
+    }
+
+    .silver-price {
+        font-size: clamp(1.75rem, 9vw, 2.75rem);
+        word-break: break-word;
+    }
+
+    .silver-currency,
+    .silver-slash {
+        font-size: clamp(1rem, 4vw, 1.35rem);
+    }
+
+    .silver-updated {
+        font-size: 15px;
+        word-break: break-word;
+    }
+
+    .silver-yesterday {
+        font-size: 14px;
+        word-break: break-word;
+    }
+
+    /* Silver calculator */
+    .silver-calculator-section {
+        margin-top: 40px;
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        overflow: hidden;
+    }
+
+    .silver-calculator-card {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        box-sizing: border-box;
+        padding: 18px 16px;
+        overflow: hidden;
+    }
+
+    .silver-calculator-card .calculator-row {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+
+    .silver-calculator-card .calculator-field {
+        width: 100%;
+        min-width: 0;
+    }
+
+    .silver-calculator-card .calculator-field input,
+    .silver-calculator-card .calculator-field select {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        box-sizing: border-box;
+    }
+
+    .silver-calculator-card .calculator-result {
+        width: 100%;
+        min-width: 0;
+        box-sizing: border-box;
+        padding: 1.25rem;
+    }
+
+    .silver-calculator-card .calculator-result strong {
+        font-size: clamp(1.25rem, 6vw, 2rem);
+        word-break: break-word;
+    }
+
+    /* Silver unit converter */
+    .silver-converter-section {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        overflow: hidden;
+    }
+
+    .silver-converter-card {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        box-sizing: border-box;
+        padding: 18px 16px;
+        overflow: hidden;
+    }
+
+    .silver-converter-card h3 {
+        font-size: clamp(1.1rem, 4.5vw, 1.35rem);
+        word-break: break-word;
+    }
+
+    .silver-converter-card .silver-converter-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+        width: 100%;
+    }
+
+    .silver-converter-card .silver-converter-grid input,
+    .silver-converter-card .silver-converter-grid select {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        box-sizing: border-box;
+    }
+
+    .silver-converter-card .silver-converter-arrow {
+        text-align: center;
+        font-size: 1.25rem;
+    }
+
+    .silver-converter-result {
+        font-size: clamp(1rem, 5vw, 1.5rem);
+        flex-wrap: wrap;
+        justify-content: center;
+        word-break: break-word;
+        text-align: center;
+        padding: 1.25rem;
+    }
+
+    .silver-converter-result .silver-converter-number {
+        font-size: clamp(1.25rem, 6vw, 2rem);
+    }
+
+    .silver-converter-result .silver-converter-unit {
+        font-size: clamp(0.95rem, 4vw, 1.2rem);
+    }
+
+    /* Silver chart — default 400px in scroll container */
+    .silver-chart-section {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        overflow: hidden;
+        box-sizing: border-box;
+    }
+
+    .silver-chart-section .section-heading {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+        width: 100%;
+        min-width: 0;
+    }
+
+    .silver-chart-section .section-heading h2 {
+        font-size: clamp(1.1rem, 4.5vw, 1.5rem);
+        line-height: 1.25;
+        width: 100%;
+        word-break: break-word;
+    }
+
+    .silver-chart-section .section-heading .chart-controls {
+        width: 100%;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    #silverChartUnit {
+        width: 100%;
+        max-width: 140px;
+        min-width: 0;
+        box-sizing: border-box;
+    }
+
+    .silver-chart-card {
+        --chart-default-width: 560px;
+        --chart-default-height: 400px;
+
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        height: auto;
+        margin-left: 0 !important;
+        box-sizing: border-box;
+        padding: 12px 10px;
+        border-radius: 16px;
+        background: var(--card);
+        border: 1px solid var(--border);
+        display: flex;
+        flex-direction: column;
+        max-height: calc(var(--chart-default-height) + 24px);
+        overflow: auto;
+        -webkit-overflow-scrolling: touch;
+        touch-action: pan-x pan-y pinch-zoom;
+        scrollbar-width: thin;
+        scrollbar-color: rgba(148, 163, 184, 0.55) rgba(148, 163, 184, 0.12);
+    }
+
+    .silver-chart-card::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+    }
+
+    .silver-chart-card::-webkit-scrollbar-track {
+        background: rgba(148, 163, 184, 0.1);
+        border-radius: 4px;
+    }
+
+    .silver-chart-card::-webkit-scrollbar-thumb {
+        background: rgba(148, 163, 184, 0.45);
+        border-radius: 4px;
+    }
+
+    .silver-chart-card canvas,
+    #silverChart {
+        display: block !important;
+        width: var(--chart-default-width) !important;
+        height: var(--chart-default-height) !important;
+        min-width: var(--chart-default-width);
+        min-height: var(--chart-default-height);
+        max-width: none;
+        margin-bottom: 0 !important;
+        flex-shrink: 0;
+        box-sizing: border-box;
+        touch-action: pan-x pan-y pinch-zoom;
+        zoom: 1;
+        transform-origin: top left;
+        transition: zoom 0.15s ease;
+    }
+
+    .silver-chart-card #silverChart:active {
+        zoom: 1.35;
+    }
+
+    /* -------------------------
        FOREX CURRENCY EXCHANGE
     ------------------------- */
 
@@ -1795,12 +2074,19 @@
         --chart-default-width: 480px;
     }
 
-    .gold-rate-card {
+    .silver-chart-card {
+        --chart-default-width: 480px;
+    }
+
+    .gold-rate-card,
+    .silver-rate-card {
         padding: 16px 14px;
     }
 
     .gold-calculator-card,
-    .gold-converter-card {
+    .gold-converter-card,
+    .silver-calculator-card,
+    .silver-converter-card {
         padding: 16px 14px;
     }
 
