@@ -1,129 +1,93 @@
 # Nepal Live Rates
 
-Nepal Live Rates is a modern web application that provides real-time financial and commodity market information for Nepal. The platform currently offers live Foreign Exchange (Forex), Gold Rates, and Silver Rates through a responsive and user-friendly interface powered by a custom Node.js backend.
+![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)
+![HTML5](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/CSS3-1572B6?logo=css3&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black)
+![Node.js](https://img.shields.io/badge/Node.js-339933?logo=nodedotjs&logoColor=white)
+![Express](https://img.shields.io/badge/Express-000000?logo=express&logoColor=white)
+![Cloudflare Pages](https://img.shields.io/badge/Cloudflare%20Pages-F38020?logo=cloudflarepages&logoColor=white)
 
-## Live Demo
+Modern real-time Nepal financial and commodity rates platform.
 
-🌐 Frontend (Latest): https://nepal-live-rates.pages.dev
+Live tracking for:
 
-🌐 Legacy Frontend: https://nepalliverates.netlify.app
-
-⚙️ Backend API: https://nepal-live-rates.onrender.com
+- Forex
+- Gold
+- Silver
+- Petrol
+- Diesel
+- LPG
+- Kerosene
+- Aviation Fuel
+- Crude Oil
 
 ---
 
-## API Endpoints
+## Live Website
 
-```http
-GET /api/forex
-GET /api/gold
-GET /api/gold/history
-GET /api/silver
-GET /api/silver/history
-```
+**https://nepal-live-rates.pages.dev/**
 
----
-
-## Project Status
-
-### Current Version
-
-✅ Live Forex Exchange Rates
-
-✅ Currency Converter
-
-✅ Historical Forex Charts
-
-✅ Gold Rates Module
-
-✅ Gold Calculator
-
-✅ Gold Unit Converter
-
-✅ Gold Price Trend Chart
-
-✅ Silver Rates Module
-
-✅ Silver Calculator
-
-✅ Silver Unit Converter
-
-✅ Silver Price Trend Chart
-
-✅ Dark / Light Theme Support
-
-✅ Responsive UI
-
-### Planned Features
-
-* Fuel Prices
-* Cryptocurrency Market
-* Nepal Stock Exchange (NEPSE)
-* Market Insights Dashboard
-* Price Alerts & Notifications
-* Economic Indicators
+Backend API: **https://nepal-live-rates.onrender.com**
 
 ---
 
 ## Features
 
-### Forex Module
+- Real-time Forex Rates (Nepal Rastra Bank)
+- Live Gold Prices
+- Live Silver Prices
+- Petrol Rates by Area
+- Diesel Rates by Area
+- LPG Cylinder Prices
+- Kerosene Rates by Area
+- Aviation Fuel Rates (Jet A-1 & Duty Free)
+- Global Crude Oil Tracking (WTI & Brent)
+- Interactive Charts
+- Historical Trends (7-day)
+- Unit Calculators
+- Area & Market Selection
+- Currency Converter
+- Official NOC LPG Documents
+- Responsive Design
+- Auto Refresh Support
 
-* Live exchange rates from Nepal Rastra Bank (NRB)
-* Currency search functionality
-* Currency converter
-* Historical exchange rate chart
-* Auto refresh support
+---
 
-### Gold Module
+## Screenshots
 
-* Live Gold Rates
-* Tola and Gram pricing
-* Gold calculator
-* Gold unit converter
-* 7-day historical gold chart
-* Price movement tracking
+| Home (Forex) | Gold |
+| :---: | :---: |
+| <img src="assets/screenshots/screenshot1%20(1).png" width="360" alt="Home page"> | <img src="assets/screenshots/screenshot1%20(2).png" width="360" alt="Gold page"> |
+| *Forex dashboard with live NRB exchange rates* | *Gold rates, calculator, converter & chart* |
 
-### Silver Module
+| Silver | Petrol |
+| :---: | :---: |
+| <img src="assets/screenshots/screenshot1%20(3).png" width="360" alt="Silver page"> | <img src="assets/screenshots/screenshot1%20(4).png" width="360" alt="Petrol page"> |
+| *Silver rates with calculator and trend chart* | *Petrol prices by area with calculator* |
 
-* Live Silver Rates
-* Tola and Gram pricing
-* Silver calculator
-* Silver unit converter
-* 7-day historical silver chart
-* Price movement tracking
+| Diesel | LPG |
+| :---: | :---: |
+| <img src="assets/screenshots/screenshot1%20(5).png" width="360" alt="Diesel page"> | <img src="assets/screenshots/screenshot1%20(6).png" width="360" alt="LPG page"> |
+| *Diesel rates by area with historical chart* | *LPG cylinder prices and official documents* |
 
-### General Features
+| Kerosene |
+| :---: |
+| <img src="assets/screenshots/screenshot1%20(7).png" width="360" alt="Kerosene page"> |
+| *Kerosene rates by area with calculator and chart* |
 
-* Responsive design
-* Mobile-friendly interface
-* Dark and Light themes
-* Glassmorphism UI
-* API error handling
-* Auto-refresh functionality
-* Optimized performance
+Crude Oil, Aviation Fuel, and About pages are live on the site; add captures to this gallery when available.
 
 ---
 
 ## Tech Stack
 
-### Frontend
-
-* HTML5
-* CSS3
-* Vanilla JavaScript
-* Chart.js
-
-### Backend
-
-* Node.js
-* Express.js
-* Axios
-
-### Data Sources
-
-* Nepal Rastra Bank (NRB)
-* Federation of Nepal Gold and Silver Dealers' Associations (FENEGOSIDA)
+| Layer | Technologies |
+| --- | --- |
+| Frontend | HTML5, CSS3, Vanilla JavaScript, Chart.js |
+| Backend | Node.js, Express.js, Axios, Cheerio |
+| Deployment | Cloudflare Pages (frontend), Render (backend) |
+| Data Sources | Nepal Rastra Bank, FENEGOSIDA, NOC Nepal |
 
 ---
 
@@ -131,40 +95,81 @@ GET /api/silver/history
 
 ```text
 Nepal-Live-Rates/
-│
+├── assets/
+│   └── screenshots/
 ├── backend/
 │   ├── server.js
 │   ├── package.json
-│   ├── package-lock.json
 │   └── routes/
 │       ├── forex.js
 │       ├── gold.js
-│       └── silver.js
-│
+│       ├── silver.js
+│       ├── petrol.js
+│       ├── diesel.js
+│       ├── lpg.js
+│       ├── kerosene.js
+│       ├── aviation.js
+│       └── crude.js
 ├── frontend/
-│   ├── assets/
+│   ├── assets/flags/
 │   ├── css/
-│   │   ├── about.css
-│   │   ├── responsive.css
 │   │   ├── style.css
-│   │   ├── theme.css
+│   │   ├── responsive.css
+│   │   ├── about.css
+│   │   ├── petrol.css
+│   │   ├── diesel.css
+│   │   ├── lpg.css
+│   │   ├── kerosene.css
+│   │   ├── aviation.css
+│   │   ├── crude.css
 │   │   └── silver.css
-│   │
 │   ├── js/
-│   │   ├── about.js
 │   │   ├── script.js
+│   │   ├── common.js
 │   │   ├── gold.js
-│   │   └── silver.js
-│   │
+│   │   ├── silver.js
+│   │   ├── petrol.js
+│   │   ├── diesel.js
+│   │   ├── lpg.js
+│   │   ├── kerosene.js
+│   │   ├── aviation.js
+│   │   ├── crude.js
+│   │   └── about.js
 │   ├── index.html
-│   ├── about.html
 │   ├── gold.html
-│   └── silver.html
-│
-├── README.md
+│   ├── silver.html
+│   ├── petrol.html
+│   ├── diesel.html
+│   ├── lpg.html
+│   ├── kerosene.html
+│   ├── aviation.html
+│   ├── crude.html
+│   ├── about.html
+│   ├── robots.txt
+│   └── sitemap.xml
 ├── LICENSE
-└── .gitignore
+└── README.md
 ```
+
+---
+
+## API Endpoints
+
+Base URL: `https://nepal-live-rates.onrender.com`
+
+| Endpoint | Description |
+| --- | --- |
+| `GET /api/forex` | Live foreign exchange rates published by Nepal Rastra Bank (NRB). |
+| `GET /api/gold` | Current gold rates in tola and gram with daily change tracking. |
+| `GET /api/silver` | Current silver rates in tola and gram with daily change tracking. |
+| `GET /api/petrol` | Live petrol prices by area across Nepal (NOC). |
+| `GET /api/diesel` | Live diesel prices by area across Nepal (NOC). |
+| `GET /api/lpg` | Domestic LPG cylinder prices and official NOC document links. |
+| `GET /api/kerosene` | Live kerosene prices by area across Nepal (NOC). |
+| `GET /api/aviation` | Aviation fuel rates including Jet A-1 and duty-free by area. |
+| `GET /api/crude` | Global crude oil prices for WTI and Brent markets. |
+
+History endpoints (e.g. `/api/gold/history`, `/api/forex/history/:currency`) are also available for chart data.
 
 ---
 
@@ -190,80 +195,15 @@ npm install
 npm start
 ```
 
-Backend will run locally on:
+Local API: `http://localhost:5000/api/forex`
 
-```http
-http://localhost:5000
-```
-
-Example:
-
-```http
-http://localhost:5000/api/forex
-```
-
----
-
-## Sample API Response
-
-### Gold API
-
-```json
-{
-  "success": true,
-  "source": "FENEGOSIDA",
-  "lastUpdated": "2026-08-10",
-  "gold": {
-    "tola": {
-      "today": 210000,
-      "yesterday": 208500
-    },
-    "gram10": {
-      "today": 180050,
-      "yesterday": 178700
-    },
-    "change": 1500,
-    "percentChange": 0.72
-  }
-}
-```
-
----
-
-## Current Modules
-
-### Available
-
-* Foreign Exchange Rates (Forex)
-* Gold Rates
-* Silver Rates
-* Currency Converter
-* Historical Charts
-* Unit Converters
-
-### Upcoming
-
-* Fuel Prices
-* Cryptocurrency Market
-* Nepal Stock Market (NEPSE)
-* Notifications
-* Market Insights Dashboard
-
----
-
-## Security
-
-* No sensitive API credentials exposed
-* Backend-controlled data fetching
-* Request timeout protection
-* Structured error handling
-* HTTPS-compatible architecture
+Serve the `frontend/` folder with any static file server for local development.
 
 ---
 
 ## License
 
-This project is licensed under the MIT License.
+This project is licensed under the [MIT License](LICENSE).
 
 ---
 
@@ -271,10 +211,8 @@ This project is licensed under the MIT License.
 
 **Pradip Kumar Prajapati**
 
-Developer of Nepal Live Rates
-
-GitHub: https://github.com/pradipNP
+GitHub: [pradipNP](https://github.com/pradipNP)
 
 ---
 
-⭐ If you find this project useful, consider starring the repository and following future updates.
+⭐ If you find this project useful, consider starring the repository.
